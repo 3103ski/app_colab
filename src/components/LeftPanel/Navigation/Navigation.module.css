@@ -1,0 +1,36 @@
+.NavItem {
+	display: flex;
+	height: 40px;
+}
+
+.LeftItems {
+	display: flex;
+	align-items: center;
+	justify-items: center;
+}
+
+.NavItem img {
+	width: 20px;
+	margin: 10px;
+}
+
+.LeftItems h2 {
+	font-size: 1.1rem;
+}
+
+.RightItems {
+	display: flex;
+	align-items: center;
+	margin: 0px 10px 0px auto;
+}
+
+.RightItems h2 {
+	font-size: 0.8rem;
+}
+
+.NavItem h2 {
+	font-family: 'Overpass';
+	color: white;
+	font-weight: lighter;
+	letter-spacing: 0.06rem;
+}
