@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import TopNav from './Navigation/Navigation';
+
 import classes from './LeftPanel.module.css';
 
 class BlueSideNav extends Component {
@@ -6,7 +9,7 @@ class BlueSideNav extends Component {
 	render() {
 		return (
 			<div className={classes.NavContainer}>
-				<div></div>
+				<TopNav></TopNav>
 			</div>
 		);
 	}
