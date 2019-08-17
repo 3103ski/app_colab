@@ -1,0 +1,6 @@
+.NavContainer {
+	background-color: #2d9cdb;
+	min-width: 280px;
+	transition: 0.5s;
+	/* min-width: 70px; */
+}
