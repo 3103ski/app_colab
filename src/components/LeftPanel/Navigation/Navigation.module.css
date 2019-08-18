@@ -1,3 +1,7 @@
+.NavContainer {
+	padding-left: 10px;
+}
+
 .NavItem {
 	display: flex;
 	height: 40px;
@@ -29,7 +33,6 @@
 }
 
 .NavItem h2 {
-	font-family: 'Overpass';
 	color: white;
 	font-weight: lighter;
 	letter-spacing: 0.06rem;

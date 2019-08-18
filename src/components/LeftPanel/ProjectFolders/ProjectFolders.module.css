@@ -1,0 +1,88 @@
+.FoldersNav {
+	margin-top: 25px;
+}
+
+.ListTitles {
+	display: flex;
+	padding: 0px 20px;
+	border-bottom: 1px solid #ffffff28;
+}
+
+.ListTitles h4 {
+	font-size: 0.8rem;
+	font-weight: lighter;
+	letter-spacing: 0.05rem;
+	color: white;
+}
+
+.LeftTitle {
+	margin: 0px;
+}
+
+.RightTitle {
+	margin: 0px 0px 0px auto;
+}
+
+/* **************** FOLDER CONTAINER LIST ***************/
+
+.FolderList {
+	padding: 0px;
+}
+
+/* Folder List Items *********** */
+.FolderListItem {
+	display: flex;
+	padding: 10px 5px;
+	align-items: center;
+}
+
+/* Folder List Item LEFT SIDE *********** */
+.FolderLeft {
+	display: flex;
+	align-items: center;
+	height: 30px;
+}
+
+.FolderLeft img {
+	width: 22px;
+	margin: 4px 8px 4px 4px;
+}
+
+.ItemDetails {
+	padding: 0px;
+}
+
+.ItemDetails p {
+	margin: 0px;
+	font-size: 0.8rem;
+	color: white;
+}
+
+.StatusDots {
+	display: flex;
+}
+
+.Dot {
+	width: 8px;
+	height: 8px;
+	background-color: #757575;
+	margin: 2px;
+	border-radius: 25px;
+}
+
+/* Folder List Item RIGHT SIDE *********** */
+
+.FolderRight {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+}
+
+.FolderRight img {
+	width: 12px;
+}
+
+.FolderRight p {
+	color: white;
+	margin: 0px 5px;
+}
