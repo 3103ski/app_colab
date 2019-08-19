@@ -7,3 +7,144 @@
 .DashContainer h1 {
 	margin: 0px;
 }
+
+/* ************* Dash Containers */
+
+.TopDash {
+	display: flex;
+	height: 385px;
+}
+
+/* Todos */
+.RecentTodo {
+	background-color: white;
+	width: 400px;
+	margin: 10px;
+	overflow: scroll;
+}
+
+.TodoTitle {
+	border-bottom: solid 1px grey;
+	font-weight: lighter;
+	letter-spacing: 0.05rem;
+	text-align: left;
+	padding: 4px 10px;
+	margin: 10px 0px 5px 0px;
+}
+
+.TodoItem {
+	display: flex;
+	align-items: center;
+}
+
+.TodoDot {
+	width: 20px;
+	height: 20px;
+	border: solid 1px #000000;
+	border-radius: 25px;
+}
+
+.TodoInfo {
+	text-align: left;
+	margin: 5px 10px;
+}
+.TodoInfo p,
+.TodoInfo h4 {
+	margin: 0px;
+	font-weight: 100;
+}
+.TodoInfo p {
+	font-size: 0.8rem;
+	letter-spacing: 0.03rem;
+}
+.TodoInfo h4 {
+	padding: 0;
+}
+/* Files */
+.RecentFiles {
+	background-color: white;
+	width: 400px;
+	margin: 10px;
+	overflow: scroll;
+}
+.FileTitle {
+	border-bottom: solid 1px grey;
+	font-weight: lighter;
+	letter-spacing: 0.05rem;
+	text-align: left;
+	padding: 4px 10px;
+	margin: 10px 0px 5px 0px;
+}
+
+.FileItem {
+	display: flex;
+	align-items: center;
+	margin: 12px 0px;
+}
+.FileInfo {
+	text-align: left;
+	line-height: 1rem;
+}
+.FileInfo h4,
+.FileInfo p {
+	margin: 0;
+}
+.FileItem img {
+	width: 21px;
+	margin-right: 10px;
+}
+.FileInfo h4 {
+	font-weight: 100;
+}
+.FileInfo p {
+	font-size: 0.75rem;
+}
+/* Comments */
+.RecentComments {
+	background-color: white;
+	width: 400px;
+	margin: 10px;
+	overflow: scroll;
+}
+
+.CommentTitle {
+	border-bottom: solid 1px grey;
+	font-weight: lighter;
+	letter-spacing: 0.05rem;
+	text-align: left;
+	padding: 4px 10px;
+	margin: 10px 0px 5px 0px;
+}
+
+.CommentItem {
+	display: flex;
+	align-items: center;
+	margin: 12px 0px;
+}
+
+.CommentInfo {
+	text-align: left;
+	overflow: hidden;
+}
+
+.CommentItem img {
+	width: 25px;
+	margin-right: 10px;
+}
+
+.CommentInfo h4,
+.CommentInfo p {
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.CommentInfo h4 {
+	font-weight: 100;
+	line-height: 1rem;
+}
+
+.CommentInfo p {
+	font-size: 0.75rem;
+}
