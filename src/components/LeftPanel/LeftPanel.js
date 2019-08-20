@@ -6,11 +6,20 @@ import FolderNav from './ProjectFolders/ProjectFolders';
 import classes from './LeftPanel.module.css';
 
 class BlueSideNav extends Component {
-	state = {};
+	state = {
+		topnav: [
+			{ title: 'DASHBOARD', link: 'dashboard', icon: 'dashboard' },
+			{ title: 'TODO', link: 'todo', icon: 'checkmark' },
+			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' },
+			{ title: 'LIVE STREAM', link: 'live-stream', icon: 'livestream' },
+			{ title: 'MESSAGES', link: 'messages', icon: 'messages' },
+			{ title: 'CONTACTS', link: 'contacts', icon: 'contacts' }
+		]
+	};
 	render() {
 		return (
 			<div className={classes.NavContainer}>
-				<TopNav></TopNav>
+				<TopNav nav={this.state.topnav}></TopNav>
 				<FolderNav></FolderNav>
 				<img
 					alt="toggle"
