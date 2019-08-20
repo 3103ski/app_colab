@@ -71,7 +71,7 @@ class Dashboard extends Component {
 						<h4 className={classes.FileTitle}>Recently Added Files</h4>
 						<div className={classes.FileItem}>
 							<img
-								alt="file Image"
+								alt="file "
 								src={require('../../assets/audiofileicon.png')}
 							/>
 							<div className={classes.FileInfo}>
@@ -82,7 +82,7 @@ class Dashboard extends Component {
 
 						<div className={classes.FileItem}>
 							<img
-								alt="file Image"
+								alt="file "
 								src={require('../../assets/audiofileicon.png')}
 							/>
 							<div className={classes.FileInfo}>
@@ -92,10 +92,7 @@ class Dashboard extends Component {
 						</div>
 
 						<div className={classes.FileItem}>
-							<img
-								alt="file Image"
-								src={require('../../assets/zipfileicon.png')}
-							/>
+							<img alt="file " src={require('../../assets/zipfileicon.png')} />
 							<div className={classes.FileInfo}>
 								<h4>Do It Again Stems.zip</h4>
 								<p>Jimmy Jones - Do It Again • 8/11/19</p>
@@ -104,7 +101,7 @@ class Dashboard extends Component {
 
 						<div className={classes.FileItem}>
 							<img
-								alt="file Image"
+								alt="file "
 								src={require('../../assets/audiofileicon.png')}
 							/>
 							<div className={classes.FileInfo}>
@@ -119,10 +116,7 @@ class Dashboard extends Component {
 						<h4 className={classes.CommentTitle}>Recent Comments</h4>
 
 						<div className={classes.CommentItem}>
-							<img
-								alt="comment Image"
-								src={require('../../assets/msgbubble.png')}
-							/>
+							<img alt="comment " src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
 								<h4>Please bring up the guitar here</h4>
 								<p>Jimmy Jones - Do It Again • Today</p>
@@ -130,10 +124,7 @@ class Dashboard extends Component {
 						</div>
 
 						<div className={classes.CommentItem}>
-							<img
-								alt="comment Image"
-								src={require('../../assets/msgbubble.png')}
-							/>
+							<img alt="comment " src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
 								<h4>
 									This is amazing. You did exactly what I needed to the track
@@ -143,10 +134,7 @@ class Dashboard extends Component {
 						</div>
 
 						<div className={classes.CommentItem}>
-							<img
-								alt="comment Image"
-								src={require('../../assets/msgbubble.png')}
-							/>
+							<img alt="comment " src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
 								<h4>
 									These vocals are too loud. Can you use a diff compressor
@@ -156,10 +144,7 @@ class Dashboard extends Component {
 						</div>
 
 						<div className={classes.CommentItem}>
-							<img
-								alt="comment Image"
-								src={require('../../assets/msgbubble.png')}
-							/>
+							<img alt="comment " src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
 								<h4>This intro is sounding awesome</h4>
 								<p>Jimmy Jones - Do It Again • 8/10/19</p>
@@ -167,10 +152,7 @@ class Dashboard extends Component {
 						</div>
 
 						<div className={classes.CommentItem}>
-							<img
-								alt="comment Image"
-								src={require('../../assets/msgbubble.png')}
-							/>
+							<img alt="comment " src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
 								<h4>Shakers are too loud here</h4>
 								<p>Jimmy Jones - Do It Again • 8/10/19</p>
