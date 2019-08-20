@@ -1,0 +1,28 @@
+.TodoItem {
+	display: flex;
+	align-items: center;
+}
+
+.TodoDot {
+	width: 20px;
+	height: 20px;
+	border: solid 1px #000000;
+	border-radius: 25px;
+}
+
+.TodoInfo {
+	text-align: left;
+	margin: 5px 10px;
+}
+.TodoInfo p,
+.TodoInfo h4 {
+	margin: 0px;
+	font-weight: 100;
+}
+.TodoInfo p {
+	font-size: 0.8rem;
+	letter-spacing: 0.03rem;
+}
+.TodoInfo h4 {
+	padding: 0;
+}

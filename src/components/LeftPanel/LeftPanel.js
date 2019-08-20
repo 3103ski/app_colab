@@ -14,7 +14,8 @@ class BlueSideNav extends Component {
 			{ title: 'LIVE STREAM', link: 'live-stream', icon: 'livestream' },
 			{ title: 'MESSAGES', link: 'messages', icon: 'messages' },
 			{ title: 'CONTACTS', link: 'contacts', icon: 'contacts' }
-		]
+		],
+		panelOpen: true
 	};
 	render() {
 		return (

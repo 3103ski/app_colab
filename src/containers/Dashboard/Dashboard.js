@@ -2,68 +2,32 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+import TodoItem from '../../components/Todo/DashTodo/DashTodoItem';
+
 import classes from './Dashboard.module.css';
 
 class Dashboard extends Component {
 	state = {};
 	render() {
+		console.log(this.props.todos);
+
+		const recentTodos = this.props.todos.map(todo => {
+			return (
+				<TodoItem
+					key={todo.location.song}
+					title={todo.title}
+					artist={todo.location.artist}
+					song={todo.location.song}></TodoItem>
+			);
+		});
+
 		return (
 			<div className={classes.DashContainer}>
 				<div className={classes.TopDash}>
 					<div className={classes.RecentTodo}>
 						{/* Todo Item Tempalte */}
 						<h4 className={classes.TodoTitle}>Recently Added Todos</h4>
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Do that thing</h4>
-								<p>Jimmy Jones - Do It Again</p>
-							</div>
-						</div>
-
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Send final mix</h4>
-								<p>Jimmy Jones - Do It Again</p>
-							</div>
-						</div>
-
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Send stems</h4>
-								<p>Jimmy Jones - Do It Again</p>
-							</div>
-						</div>
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Get new vocals</h4>
-								<p>Jimmy Jones - Do It Again</p>
-							</div>
-						</div>
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Send clean version</h4>
-								<p>Jimmy Jones - Do It Again</p>
-							</div>
-						</div>
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Make instrumental and send</h4>
-								<p>Jimmy Jones - Do It Again</p>
-							</div>
-						</div>
-						<div className={classes.TodoItem}>
-							<div className={classes.TodoDot}></div>
-							<div className={classes.TodoInfo}>
-								<h4>Give them all the files</h4>
-								<p>Jimmy Jones - Do It Again </p>
-							</div>
-						</div>
+						{recentTodos}
 					</div>
 					{/* This is files break */}
 					<div className={classes.RecentFiles}>
@@ -170,7 +134,8 @@ const mapStateToProps = state => {
 		userName: state.user.userName,
 		firstName: state.user.firstName,
 		lastName: state.user.lastName,
-		password: state.user.password
+		password: state.user.password,
+		todos: state.todo.todos
 	};
 };
 

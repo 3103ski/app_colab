@@ -24,6 +24,50 @@ const intitialState = {
 		{
 			title: 'new vocal track',
 			notes: 'gotta get that vocal swapped out bruh.',
+			dueDate: 'today',
+			myDay: false,
+			location: {
+				artist: 'Jimmy Cones',
+				project: 'Do It Again',
+				song: 'Skyscraper'
+			}
+		},
+		{
+			title: 'edit those guitars',
+			notes: 'guitars sound like dying lamas.',
+			dueDate: 'tomorrow',
+			myDay: false,
+			location: {
+				artist: 'Jimmy Cones',
+				project: 'Do It Again',
+				song: 'Skyscraper'
+			}
+		},
+		{
+			title: 'new vocal track',
+			notes: 'gotta get that vocal swapped out bruh.',
+			dueDate: 'tomorrow',
+			myDay: false,
+			location: {
+				artist: 'Jimmy Cones',
+				project: 'Do It Again',
+				song: 'Skyscraper'
+			}
+		},
+		{
+			title: 'new vocal track',
+			notes: 'gotta get that vocal swapped out bruh.',
+			dueDate: 'tomorrow',
+			myDay: false,
+			location: {
+				artist: 'Jimmy Cones',
+				project: 'Do It Again',
+				song: 'Skyscraper'
+			}
+		},
+		{
+			title: 'new vocal track',
+			notes: 'gotta get that vocal swapped out bruh.',
 			dueDate: 'tomorrow',
 			myDay: false,
 			location: {
