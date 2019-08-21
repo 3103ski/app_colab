@@ -1,0 +1,53 @@
+.TodoItem {
+	display: flex;
+	align-items: center;
+	margin: 0px 15px;
+	border-bottom: solid 1px #b6b6b6;
+}
+
+.TodoItem p {
+	margin: 0;
+	font-size: 0.95rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Completed {
+	width: 20px;
+	margin: 0px 8px;
+}
+
+.TodoName {
+	width: 40%;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+
+.TodoLocation {
+	width: 30%;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+
+.TodoDate {
+	width: 15%;
+	text-align: center;
+}
+
+.TodoIcons {
+	width: 15%;
+	height: 35px;
+	box-sizing: border-box;
+	border-left: solid 1px #b6b6b6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.TodoIcons img {
+	width: 20px;
+	margin: 5px;
+}

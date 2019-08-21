@@ -1,0 +1,172 @@
+/* ********************MAIN CONTAINER */
+.Container {
+	overflow: scroll;
+	height: 100vh;
+}
+
+/* ********** SEARCH BAR AND TOP RIGHT ICONS */
+.FirstContainer {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.SearchInput {
+	margin: 0px auto;
+	height: 25px;
+	width: 200px;
+	border-radius: 25px;
+	text-align: center;
+}
+
+.TopRightIcons {
+	display: flex;
+	align-items: center;
+}
+
+.TopRightIcons img {
+	width: 25px;
+	margin: 5px;
+}
+
+/* **********FILTERS CONTAINER */
+
+.FilterContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+
+.FilterBtn {
+	border: solid 1px #bdbdbd;
+	padding: 5px 15px;
+	background-color: #fafafa;
+	margin: 4px;
+}
+.FilterBtn h2 {
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 100;
+	color: #bdbdbd;
+}
+
+/* **********BUTTONS CONTAINER */
+
+.BtnsContainer {
+	display: flex;
+	align-items: center;
+}
+
+.BtnsContainer img {
+	width: 20px;
+}
+.LeftBtns {
+	margin-left: 30px;
+}
+.LeftBtns img {
+	margin: 5px;
+	padding: 0;
+}
+
+.TodoAdd {
+	margin: 0px 30px 0px auto;
+}
+
+/* **********TODO LIST CONTAINER */
+
+/* FULL CONTAINER */
+.TodoListContainer {
+	padding: 0;
+}
+
+/* TITLES */
+.ColTitles {
+	display: flex;
+	align-items: center;
+	margin: 15px 15px 0px 15px;
+	border-bottom: solid 1px #b6b6b6;
+	padding-bottom: 5px;
+}
+
+.ColTitles p {
+	margin: 0;
+	box-sizing: border-box;
+	font-size: 0.88rem;
+	color: #000000;
+}
+
+.TodoTtl {
+	width: 40%;
+	text-align: left;
+	padding-left: 35px;
+}
+
+.LocationTtl {
+	width: 30%;
+	text-align: left;
+}
+
+.DueTtl {
+	width: 15%;
+	text-align: center;
+}
+/* TODO LIST ITEMS */
+
+.TodoList {
+	padding: 0;
+}
+
+.TodoItem {
+	display: flex;
+	align-items: center;
+	margin: 0px 15px;
+	border-bottom: solid 1px #b6b6b6;
+}
+
+.TodoItem p {
+	margin: 0;
+	font-size: 0.95rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.Completed {
+	width: 20px;
+	margin: 0px 8px;
+}
+
+.TodoName {
+	width: 40%;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+
+.TodoLocation {
+	width: 30%;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+
+.TodoDate {
+	width: 15%;
+	text-align: center;
+}
+
+.TodoIcons {
+	width: 15%;
+	height: 35px;
+	box-sizing: border-box;
+	border-left: solid 1px #b6b6b6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.TodoIcons img {
+	width: 20px;
+	margin: 5px;
+}

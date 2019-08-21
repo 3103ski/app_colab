@@ -19,7 +19,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: false,
+			archived: false
 		},
 		{
 			title: 'new vocal track',
@@ -30,7 +32,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: false,
+			archived: false
 		},
 		{
 			title: 'edit those guitars',
@@ -41,7 +45,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: false,
+			archived: false
 		},
 		{
 			title: 'new vocal track',
@@ -52,7 +58,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: true,
+			archived: false
 		},
 		{
 			title: 'new vocal track',
@@ -63,7 +71,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: false,
+			archived: false
 		},
 		{
 			title: 'new vocal track',
@@ -74,7 +84,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: true,
+			archived: false
 		},
 		{
 			title: 'send stems',
@@ -85,7 +97,9 @@ const intitialState = {
 				artist: 'Jimmy Cones',
 				project: 'Do It Again',
 				song: 'Skyscraper'
-			}
+			},
+			completed: false,
+			archived: false
 		}
 	]
 };
