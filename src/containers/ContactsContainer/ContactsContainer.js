@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import classes from './ContactsContainer.module.css';
+// import classes from './ContactsContainer.module.css';
 
 class ContactsContainer extends Component {
 	state = {};

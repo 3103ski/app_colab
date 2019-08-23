@@ -21,7 +21,6 @@ function App() {
 				<Route path="/live-stream" component={LiveStream}></Route>
 				<Route path="/messages" component={Messages}></Route>
 				<Route path="/Contacts" component={Contacts}></Route>
-				{/* <Dashboard></Dashboard> */}
 			</Layout>
 		</div>
 	);

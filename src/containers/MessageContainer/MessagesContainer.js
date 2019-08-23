@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import classes from './MessagesContainer.module.css';
+// import classes from './MessagesContainer.module.css';
 
 class MessagesContainer extends Component {
 	state = {};

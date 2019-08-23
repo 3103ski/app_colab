@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import classes from './AllFilesContainer.module.css';
+// import classes from './AllFilesContainer.module.css';
 
 class AllFilesBrowser extends Component {
 	state = {};

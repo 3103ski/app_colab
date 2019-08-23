@@ -23,6 +23,10 @@
 	overflow: scroll;
 }
 
+/* .TodoList {
+	overflow-y: scroll;
+} */
+
 .TodoTitle {
 	border-bottom: solid 1px grey;
 	font-weight: lighter;

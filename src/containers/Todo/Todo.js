@@ -7,7 +7,6 @@ import classes from './Todo.module.css';
 class TodoList extends Component {
 	state = {};
 	render() {
-		console.log(this.props.todos);
 		const currentTodos = this.props.todos.map(todo => {
 			return (
 				<TodoItem
@@ -24,13 +23,13 @@ class TodoList extends Component {
 		return (
 			<div className={classes.Container}>
 				<div className={classes.FirstContainer}>
-					<input className={classes.SearchInput} placeholder="Search..." />
+					<input className={classes.SearchInput} placeholder='Search...' />
 					<div className={classes.TopRightIcons}>
-						<img src={require('../../assets/check-todo.png')} alt="check" />
-						<img src={require('../../assets/trash-light.png')} alt="trash" />
+						<img src={require('../../assets/check-todo.png')} alt='check' />
+						<img src={require('../../assets/trash-light.png')} alt='trash' />
 						<img
 							src={require('../../assets/archive-light.png')}
-							alt="archive"
+							alt='archive'
 						/>
 					</div>
 				</div>
@@ -56,14 +55,14 @@ class TodoList extends Component {
 				</div>
 				<div className={classes.BtnsContainer}>
 					<div className={classes.LeftBtns}>
-						<img src={require('../../assets/trash.png')} alt="trash" />
-						<img src={require('../../assets/archive.png')} alt="archive" />
-						<img src={require('../../assets/move-dark.png')} alt="move" />
-						<img src={require('../../assets/check-todo.png')} alt="check" />
+						<img src={require('../../assets/trash.png')} alt='trash' />
+						<img src={require('../../assets/archive.png')} alt='archive' />
+						<img src={require('../../assets/move-dark.png')} alt='move' />
+						<img src={require('../../assets/check-todo.png')} alt='check' />
 					</div>
 					<img
 						src={require('../../assets/add.png')}
-						alt="trash"
+						alt='trash'
 						className={classes.TodoAdd}
 					/>
 				</div>

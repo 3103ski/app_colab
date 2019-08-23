@@ -7,7 +7,9 @@ import CenterPanel from '../../components/CenterPanel/CenterPanel';
 import classes from './Layout.module.css';
 
 class Layout extends Component {
-	state = {};
+	state = {
+		CenterPanel: false
+	};
 
 	render() {
 		return (
