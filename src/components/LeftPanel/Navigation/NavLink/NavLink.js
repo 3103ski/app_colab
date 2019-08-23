@@ -26,6 +26,9 @@ const navLink = props => {
 				content = <h2>8</h2>;
 				clickLink = props.openCenter;
 				return { content, clickLink };
+			case 'DASHBOARD':
+				clickLink = props.closeCenter;
+				return { clickLink };
 			case 'ALL FILES':
 				content = <h2>78</h2>;
 				clickLink = props.closeCenter;
