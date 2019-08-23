@@ -4,6 +4,9 @@
 	padding: 10px 5px;
 	align-items: center;
 }
+.FolderListItem:hover {
+	cursor: pointer;
+}
 
 /* Folder List Item LEFT SIDE *********** */
 .FolderLeft {

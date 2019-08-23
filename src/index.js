@@ -10,6 +10,7 @@ import messagesReducer from './store/reducers/messagesReducer';
 import fileMngrReducer from './store/reducers/fileMngrReducer';
 import contactReducer from './store/reducers/contactsReducer';
 import projectsReducer from './store/reducers/projectsReducer';
+import appReducer from './store/reducers/appReducer';
 
 //
 import './index.css';
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
 	messages: messagesReducer,
 	files: fileMngrReducer,
 	contacts: contactReducer,
-	projects: projectsReducer
+	projects: projectsReducer,
+	app: appReducer
 });
 
 const store = createStore(rootReducer);

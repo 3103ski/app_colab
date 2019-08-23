@@ -2,6 +2,7 @@
 .Container {
 	overflow: scroll;
 	height: 100vh;
+	min-width: 880px;
 }
 
 /* ********** SEARCH BAR AND TOP RIGHT ICONS */

@@ -1,8 +1,15 @@
 .PanelContainer {
-	min-width: 280px;
 	height: 100%;
 	background-color: #fafafa;
 	border-right: solid 1px #c1c1c1;
-	/* transition: 0.5s; */
+	transition: 0.3s;
+	transition-timing-function: ease-in-out;
+}
+
+.PanelOpen {
+	min-width: 280px;
+}
+
+.PanelClose {
 	min-width: 0px;
 }

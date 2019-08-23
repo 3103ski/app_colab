@@ -1,4 +1,4 @@
-// import * as actionTypes from '../actions';
+import * as actionTypes from '../actions';
 
 const intitialState = {
 	centerPanel: false,
@@ -8,7 +8,16 @@ const intitialState = {
 
 const appReducer = (state = intitialState, action) => {
 	switch (action.type) {
-        
+		case actionTypes.OPEN_CENTER:
+			return {
+				...state,
+				centerPanel: true
+			};
+		case actionTypes.CLOSE_CENTER:
+			return {
+				...state,
+				centerPanel: false
+			};
 		default:
 			return state;
 	}

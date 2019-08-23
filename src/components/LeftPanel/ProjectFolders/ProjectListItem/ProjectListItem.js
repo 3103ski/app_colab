@@ -1,5 +1,7 @@
 import React from 'react';
 import classes from './ProjectListItem.module.css';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../../../store/actions';
 
 // song status'
 // New Song - #757575
@@ -57,7 +59,7 @@ const ProjectItem = props => {
 	});
 
 	return (
-		<div className={classes.FolderListItem}>
+		<div className={classes.FolderListItem} onClick={props.openCenter}>
 			<div className={classes.FolderLeft}>
 				<img alt='folder' src={require(`../../../../assets/${open}.png`)} />
 				<div className={classes.ItemDetails}>
@@ -77,4 +79,19 @@ const ProjectItem = props => {
 	);
 };
 
-export default ProjectItem;
+const mapStateToProps = state => {
+	return {
+		centerPanel: state.app.centerPanel
+	};
+};
+
+const mapDispatchToState = dispatch => {
+	return {
+		openCenter: () => dispatch({ type: actionTypes.OPEN_CENTER })
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToState
+)(ProjectItem);

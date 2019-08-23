@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import classes from './CenterPanel.module.css';
 
 class CenterPanel extends Component {
-	state = {};
 	render() {
+		console.log(this.props.centerPanel);
+		let panelClasses = this.props.centerPanel
+			? [classes.PanelContainer, classes.PanelOpen]
+			: [classes.PanelContainer, classes.PanelClose];
 		return (
-			<div className={classes.PanelContainer}>
+			<div className={panelClasses.join(' ')}>
 				<div></div>
 			</div>
 		);
 	}
 }
 
-export default CenterPanel;
+const mapStateToProps = state => {
+	return {
+		centerPanel: state.app.centerPanel
+	};
+};
+
+const mapDispatchToState = dispatch => {
+	return {};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToState
+)(CenterPanel);
