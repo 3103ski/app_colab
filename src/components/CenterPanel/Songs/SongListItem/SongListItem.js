@@ -1,35 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import statusColor from '../../../UI/statusColor/statusColor';
 
 import classes from './SongListItem.module.css';
 
 const song = props => {
-	let status;
-	switch (props.status) {
-		case 'New Song':
-			status = `#757575`;
-			break;
-		case 'In Progress':
-			status = `#D0D0D0`;
-			break;
-		case 'Mix Sent':
-			status = `#3BADFF`;
-			break;
-		case 'Revisions Requested':
-			status = `#FFC83B`;
-			break;
-		case 'Live Stream Scheduled':
-			status = `#FFE03B`;
-			break;
-		case 'Sent Final Mixes':
-			status = `#3BFFD0`;
-			break;
-		case 'Completed':
-			status = `#57FF3B`;
-			break;
-		default:
-			status = `#000000`;
-	}
+	const status = statusColor(props.status);
 	return (
 		<NavLink to={`/projects/${props.songName}`}>
 			<div className={classes.SongListItem}>
@@ -48,15 +24,15 @@ const song = props => {
 						<div className={classes.QuickBottom}>
 							<div className={classes.SongUsers}>
 								<img
-									alt='user image'
+									alt='user'
 									src={require('../../../../assets/placeholderFace-1.png')}
 								/>
 								<img
-									alt='user image'
+									alt='user'
 									src={require('../../../../assets/placeholderFace-2.png')}
 								/>
 								<img
-									alt='user image'
+									alt='user'
 									src={require('../../../../assets/placeholderFace-3.png')}
 								/>
 							</div>

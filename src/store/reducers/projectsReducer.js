@@ -1,14 +1,5 @@
 // import * as actionTypes from '../actions';
 
-// Status Colors
-// New Song - #757575
-// In Progress - #D0D0D0
-// Mix Sent - #3BADFF
-// Revisions Requested - #FFC83B
-// Live Stream Scheduled - #FFE03B
-// Sent Final Mixes - #3BFFD0
-// Completed - #57FF3B
-
 const intitialState = {
 	projects: [
 		{

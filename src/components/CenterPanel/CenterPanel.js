@@ -11,8 +11,9 @@ class CenterPanel extends Component {
 		// Builds Center Panel Content When Project Is Selected
 		let projectSongs = this.props.projectIsOpen
 			? this.props.projects.map(project => {
+					let songs;
 					if (project.projectName === this.props.activeProject) {
-						let songs = project.songs.map(song => {
+						songs = project.songs.map(song => {
 							return (
 								<SongListItem
 									key={song.name}
@@ -20,8 +21,8 @@ class CenterPanel extends Component {
 									songName={song.name}></SongListItem>
 							);
 						});
-						return songs;
 					}
+					return songs;
 			  })
 			: null;
 		let openProjectContent = this.props.projectIsOpen ? (

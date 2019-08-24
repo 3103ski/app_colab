@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as actionTypes from '../../../../store/actions';
 
+import statusColor from '../../../UI/statusColor/statusColor';
+
 // song status'
 // New Song - #757575
 // In Progress - #D0D0D0
@@ -22,33 +24,7 @@ const ProjectItem = props => {
 		if (song.status === 'Completed') {
 			songsCompleted = songsCompleted + 1;
 		}
-
-		let status;
-		switch (song.status) {
-			case 'New Song':
-				status = `#757575`;
-				break;
-			case 'In Progress':
-				status = `#D0D0D0`;
-				break;
-			case 'Mix Sent':
-				status = `#3BADFF`;
-				break;
-			case 'Revisions Requested':
-				status = `#FFC83B`;
-				break;
-			case 'Live Stream Scheduled':
-				status = `#FFE03B`;
-				break;
-			case 'Sent Final Mixes':
-				status = `#3BFFD0`;
-				break;
-			case 'Completed':
-				status = `#57FF3B`;
-				break;
-			default:
-				status = `#000000`;
-		}
+		const status = statusColor(song.status);
 		return (
 			<div
 				key={song.name}
