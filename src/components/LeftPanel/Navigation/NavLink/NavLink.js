@@ -6,6 +6,7 @@ import * as actionTypes from '../../../../store/actions';
 
 const navLink = props => {
 	let content, clickLink;
+
 	const linkProps = () => {
 		switch (props.title) {
 			case 'TODO':

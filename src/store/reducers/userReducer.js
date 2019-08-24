@@ -4,7 +4,22 @@ const intitialState = {
 	userName: 'bjastski',
 	password: 'password',
 	firstName: 'Bryan',
-	lastName: 'Flopitron'
+	lastName: 'Flopitron',
+	openProject: '',
+	colaberators: [
+		{
+			name: 'Flizzy',
+			profilePic: '1'
+		},
+		{
+			name: 'Blaster',
+			profilePic: '2'
+		},
+		{
+			name: 'Crowly',
+			profilePic: '3'
+		}
+	]
 };
 
 const userReducer = (state = intitialState, action) => {

@@ -2,8 +2,10 @@
 	height: 100%;
 	background-color: #fafafa;
 	border-right: solid 1px #c1c1c1;
-	transition: 0.3s;
+	transition: 0.2s;
 	transition-timing-function: ease-in-out;
+	display: flex;
+	flex-direction: column;
 }
 
 .PanelOpen {
@@ -12,4 +14,72 @@
 
 .PanelClose {
 	min-width: 0px;
+}
+
+.ContentContainer {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Panel Mini Containers */
+.CenterPanelTopSection {
+	padding: 0;
+}
+
+.CenterPanelBottomSection {
+	margin-top: auto;
+}
+
+/******** Project Top State */
+
+/* Project Users */
+.AddUserToProject {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
+	border-bottom: solid 1px #e4e4e4;
+}
+
+.AddUserToProject img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+.AddUserToProject img:hover {
+	cursor: pointer;
+}
+
+.AddUserToProject h4 {
+	margin: 0;
+	font-weight: 100;
+	font-size: 0.8rem;
+	color: #00000025;
+}
+
+/******* Project Bottom State */
+
+/* Project Songs */
+
+.AddSongToProject {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+}
+
+.AddSongToProject:hover {
+	cursor: pointer;
+}
+
+.AddSongToProject img {
+	width: 25px;
+	margin-right: 10px;
+}
+
+.AddSongToProject p {
+	margin: 0;
+	font-size: 0.85rem;
+	color: #00000035;
 }

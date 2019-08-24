@@ -25,7 +25,6 @@ class Dashboard extends Component {
 			<div className={classes.DashContainer}>
 				<div className={classes.TopDash}>
 					<div className={classes.RecentTodo}>
-						{/* Todo Item Tempalte */}
 						<h4 className={classes.TodoTitle}>Recently Added Todos</h4>
 						<div className={classes.TodoList}>{recentTodos}</div>
 					</div>

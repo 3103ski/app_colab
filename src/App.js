@@ -10,17 +10,19 @@ import AllFilesBrowser from './containers/AllFilesContainer/AllFilesContainer';
 import LiveStream from './containers/LiveStream/LiveStreamContainer';
 import Contacts from './containers/ContactsContainer/ContactsContainer';
 import Messages from './containers/MessageContainer/MessagesContainer';
+import SongContainer from './containers/SongContainer/SongContainer';
 
 function App() {
 	return (
-		<div className="App">
+		<div className='App'>
 			<Layout>
-				<Route path="/dashboard" component={Dashboard}></Route>
-				<Route path="/todo" component={Todo}></Route>
-				<Route path="/all-files" component={AllFilesBrowser}></Route>
-				<Route path="/live-stream" component={LiveStream}></Route>
-				<Route path="/messages" component={Messages}></Route>
-				<Route path="/Contacts" component={Contacts}></Route>
+				<Route path='/dashboard' component={Dashboard}></Route>
+				<Route path='/todo' component={Todo}></Route>
+				<Route path='/all-files' component={AllFilesBrowser}></Route>
+				<Route path='/live-stream' component={LiveStream}></Route>
+				<Route path='/messages' component={Messages}></Route>
+				<Route path='/contacts' component={Contacts}></Route>
+				<Route path='/projects' component={SongContainer}></Route>
 			</Layout>
 		</div>
 	);

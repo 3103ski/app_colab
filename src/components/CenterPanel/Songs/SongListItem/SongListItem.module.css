@@ -1,0 +1,82 @@
+a {
+	color: #000000;
+}
+
+.SongListItem {
+	display: flex;
+	align-items: center;
+	height: 70px;
+}
+
+.SongListItem:hover {
+	cursor: pointer;
+}
+
+.LeftSide {
+	display: flex;
+	align-items: center;
+}
+
+.StatusDot {
+	padding: 0;
+	width: 15px;
+	height: 15px;
+	background-color: #57ff3a;
+	border-radius: 25px;
+	margin: 0px 15px;
+}
+
+.QuickInfo {
+	display: inherit;
+	align-items: center;
+	flex-direction: column;
+}
+
+.QuickTop {
+	display: inherit;
+	align-items: center;
+	padding-bottom: 5px;
+}
+
+.QuickTop img {
+	width: 20px;
+}
+
+.QuickTop p,
+.QuickTop a {
+	margin: 0 0 0 10px;
+	font-weight: 100;
+	letter-spacing: 0.02rem;
+	color: #000000;
+	font-size: 0.8rem;
+}
+
+.QuickBottom {
+	display: flex;
+	width: 100%;
+}
+
+.SongUsers img {
+	padding: 0;
+	width: 20px;
+	margin-right: -5px;
+}
+
+.SongUsers {
+	margin-right: auto;
+}
+
+.RightSide {
+	margin-left: auto;
+	width: 50px;
+	border-left: solid 1px #00000016;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.RightSide h4 {
+	margin: 0;
+	font-weight: 100;
+}

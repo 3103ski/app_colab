@@ -6,6 +6,7 @@ import Link from './NavLink/NavLink';
 import classes from './Navigation.module.css';
 
 const navigation = props => {
+	console.log(`[NAV TOWN USA]: I've been reloaded`);
 	const navLinks = props.nav.map(link => {
 		return (
 			<Link

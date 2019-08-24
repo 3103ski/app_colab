@@ -19,6 +19,7 @@ const intitialState = {
 					name: 'Giving Up',
 					status: 'In Progress',
 					songKey: 'Bb Minor',
+					users: ['Flizzy', 'Blaster', 'Crowly'],
 					bpm: 124,
 					reference: 'Dave Matthews Band',
 					notes:
@@ -69,6 +70,7 @@ const intitialState = {
 					name: 'We FLy',
 					status: 'Revisions Requested',
 					songKey: 'Bb Major',
+					users: ['Flizzy', 'Blaster'],
 					bpm: 120,
 					reference: 'Dave Matthews Band',
 					notes:
@@ -120,6 +122,7 @@ const intitialState = {
 					name: 'We FLy',
 					status: 'Sent Final Mixes',
 					songKey: 'Bb Major',
+					users: ['Blaster', 'Crowly'],
 					bpm: 120,
 					reference: 'Dave Matthews Band',
 					notes:
