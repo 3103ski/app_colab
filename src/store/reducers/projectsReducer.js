@@ -110,20 +110,19 @@ const intitialState = {
 					]
 				},
 				{
-					name: 'We FLy',
+					name: 'All The Things',
 					status: 'Sent Final Mixes',
-					songKey: 'Bb Major',
+					songKey: 'C Major',
 					users: ['Blaster', 'Crowly'],
 					bpm: 120,
 					reference: 'Dave Matthews Band',
-					notes:
-						'I have so much to say about this song I needed this notes section. Make me sound like Beyonce.',
+					notes: 'This song was about the time my pet cactust became a wolf.',
 					todos: [
 						{
-							title: 'fix timing',
-							notes: 'Need to make those drums tighter.',
-							dueDate: 'today',
-							myDay: false,
+							title: 'change hat',
+							notes: `I don't know about all these open hats you have in there`,
+							dueDate: '11/18/19',
+							myDay: true,
 							location: {
 								artist: 'Jimmy Cones',
 								project: 'Do It Again',
@@ -162,17 +161,18 @@ const intitialState = {
 					]
 				},
 				{
-					name: 'We FLy',
+					name: 'Drop Those Walnuts',
 					status: 'Completed',
-					songKey: 'Bb Major',
-					bpm: 120,
+					songKey: 'D Major',
+					bpm: 150,
 					reference: 'Dave Matthews Band',
 					notes:
-						'I have so much to say about this song I needed this notes section. Make me sound like Beyonce.',
+						'I remember the first time my partner dropped walnuts in front of me. The strength of their shells insipred me.',
 					todos: [
 						{
-							title: 'fix timing',
-							notes: 'Need to make those drums tighter.',
+							title: 'drop nuts',
+							notes:
+								'See how it might sound if we recorded some walnuts falling and included those.',
 							dueDate: 'today',
 							myDay: false,
 							location: {
@@ -378,23 +378,147 @@ const intitialState = {
 					name: 'Never On The Ground',
 					songKey: 'E Major',
 					bpm: 124,
-					status: 'Completed'
+					status: 'Completed',
+					todos: [
+						{
+							title: 'send final mix',
+							notes: 'I really need to get those files out to whats his name.',
+							dueDate: 'today',
+							myDay: false,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: false,
+							archived: false
+						},
+						{
+							title: 'fix guitars',
+							notes: 'guitars are trash. change that.',
+							dueDate: 'tomorrow',
+							myDay: true,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: true,
+							archived: false
+						},
+						{
+							title: 'finish mixing vocals',
+							notes: 'backup vocals need to be better blended into mix.',
+							dueDate: '10/9/19',
+							myDay: true,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: true,
+							archived: false
+						}
+					]
 				},
 				{
 					name: 'Damn These Clouds',
 					songKey: 'B Major',
 					bpm: 120,
-					status: 'In Progress'
+					status: 'In Progress',
+					todos: [
+						{
+							title: 'send final mix',
+							notes: 'I really need to get those files out to whats his name.',
+							dueDate: 'today',
+							myDay: false,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: false,
+							archived: false
+						},
+						{
+							title: 'fix guitars',
+							notes: 'guitars are trash. change that.',
+							dueDate: 'tomorrow',
+							myDay: true,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: true,
+							archived: false
+						},
+						{
+							title: 'finish mixing vocals',
+							notes: 'backup vocals need to be better blended into mix.',
+							dueDate: '10/9/19',
+							myDay: true,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: true,
+							archived: false
+						}
+					]
 				},
 				{
 					name: 'Three Blind Mice',
 					songKey: 'E Minor',
 					bpm: 110,
-					status: 'Mix Sent'
+					status: 'Mix Sent',
+					todos: [
+						{
+							title: 'send final mix',
+							notes: 'I really need to get those files out to whats his name.',
+							dueDate: 'today',
+							myDay: false,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: false,
+							archived: false
+						},
+						{
+							title: 'fix guitars',
+							notes: 'guitars are trash. change that.',
+							dueDate: 'tomorrow',
+							myDay: true,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: true,
+							archived: false
+						},
+						{
+							title: 'finish mixing vocals',
+							notes: 'backup vocals need to be better blended into mix.',
+							dueDate: '10/9/19',
+							myDay: true,
+							location: {
+								artist: 'The Bears',
+								project: 'Eating All Day',
+								song: 'I Climb Trees'
+							},
+							completed: true,
+							archived: false
+						}
+					]
 				}
 			]
 		}
-	]
+	],
+	allSongTodos: []
 };
 
 const projectsReducer = (state = intitialState, action) => {
@@ -403,5 +527,22 @@ const projectsReducer = (state = intitialState, action) => {
 			return state;
 	}
 };
+
+// PUSHES ALL SONG TODOS TO REDUCER STATE
+const collectAllSongTodos = () => {
+	let allSongs = [];
+	const fillSongs = () => {
+		intitialState.projects.map(project => {
+			project.songs.map(song => allSongs.push(song));
+		});
+	};
+	fillSongs();
+	let allTodos = [];
+	allSongs.map(song => {
+		song.todos.map(todo => intitialState.allSongTodos.push(todo));
+	});
+	return allTodos;
+};
+collectAllSongTodos();
 
 export default projectsReducer;

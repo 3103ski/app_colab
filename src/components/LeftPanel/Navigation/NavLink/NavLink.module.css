@@ -8,6 +8,10 @@ a {
 	width: 100%;
 }
 
+.active {
+	background-color: #5ebcf1a6;
+}
+
 .LeftItems {
 	display: flex;
 	align-items: center;

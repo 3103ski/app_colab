@@ -123,6 +123,9 @@ class Dashboard extends Component {
 						</div>
 					</div>
 				</div>
+				<div className={classes.BottomDash}>
+					<h1>TRELLO-LIKE LISTS GO HERE</h1>
+				</div>
 			</div>
 		);
 	}

@@ -3,28 +3,35 @@ import * as actionTypes from '../actions';
 const intitialState = {
 	centerPanel: false,
 	projectIsOpen: false,
-	activeProject: ''
+	activeProject: '',
+	selectedSong: '',
+	currArtist: ``,
+	currSong: null
 };
 
 const appReducer = (state = intitialState, action) => {
-	console.log(`app reducer fired`, action.projectName);
 	switch (action.type) {
-		case actionTypes.OPEN_CENTER:
+		case actionTypes.LINK_WITH_CENTER:
 			return {
 				...state,
 				centerPanel: true,
-				projectIsOpen: false
+				projectIsOpen: false,
+				activeProject: ''
 			};
-		case actionTypes.CLOSE_CENTER:
+		case actionTypes.LINK_NO_CENTER:
 			return {
 				...state,
 				centerPanel: false,
-				projectIsOpen: false
+				projectIsOpen: false,
+				activeProject: ''
 			};
 		case actionTypes.NO_PROJECT:
 			return {
 				...state,
-				activeProject: ''
+				activeProject: '',
+				selectedSong: '',
+				currArtist: '',
+				currSong: null
 			};
 		case actionTypes.OPEN_PROJECT:
 			return {
@@ -33,7 +40,21 @@ const appReducer = (state = intitialState, action) => {
 				projectIsOpen: true,
 				activeProject: action.projectName
 			};
-
+		case actionTypes.SELECT_SONG:
+			return {
+				...state,
+				selectedSong: action.songName
+			};
+		case actionTypes.CURR_SONG:
+			return {
+				...state,
+				currSong: action.song
+			};
+		case actionTypes.CURR_ARTIST:
+			return {
+				...state,
+				currArtist: action.artist
+			};
 		default:
 			return state;
 	}

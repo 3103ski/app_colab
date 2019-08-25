@@ -1,0 +1,43 @@
+.DetailsContainer,
+.DetailItem {
+	display: flex;
+}
+
+.LeftSide,
+.RightSide {
+	width: 50%;
+}
+
+.DetailItem {
+	align-items: center;
+	padding-left: 25px;
+}
+
+.DetailItem,
+.Notes {
+	background-color: #fcfcfc;
+	border: solid 1px #f6f6f6;
+	margin: 10px 5px;
+}
+
+.DetailTitle,
+.NotesContent {
+	margin: 0 10px 0 0;
+	letter-spacing: 0.03rem;
+	text-align: left;
+}
+
+.DetailContent {
+	font-weight: bold;
+	letter-spacing: 0.035rem;
+}
+
+.Notes {
+	padding: 10px 5px 10px 25px;
+	height: 200px;
+}
+
+.NotesContent {
+	font-size: 0.85rem;
+	padding: 5px 6px;
+}

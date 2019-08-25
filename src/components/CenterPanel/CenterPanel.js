@@ -12,10 +12,13 @@ class CenterPanel extends Component {
 		let projectSongs = this.props.projectIsOpen
 			? this.props.projects.map(project => {
 					let songs;
+					const artist = project.artist;
 					if (project.projectName === this.props.activeProject) {
 						songs = project.songs.map(song => {
 							return (
 								<SongListItem
+									song={song}
+									artist={artist}
 									key={song.name}
 									status={song.status}
 									songName={song.name}></SongListItem>

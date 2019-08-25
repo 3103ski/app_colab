@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import TodoList from '../../components/Todo/TodoList/TodoList';
 import TodoItem from '../../components/Todo/TodoPage/TodoItem';
+
 import classes from './Todo.module.css';
 
-class TodoList extends Component {
+class GlobalTodoPage extends Component {
 	state = {};
 	render() {
 		const currentTodos = this.props.todos.map(todo => {
@@ -20,6 +22,21 @@ class TodoList extends Component {
 				/>
 			);
 		});
+
+		const currSongTodos = this.props.songTodos.map(todo => {
+			return (
+				<TodoItem
+					key={todo.title}
+					completed={todo.completed}
+					title={todo.title}
+					artist={todo.location.artist}
+					project={todo.location.project}
+					song={todo.location.song}
+					due={todo.dueDate}
+				/>
+			);
+		});
+
 		return (
 			<div className={classes.Container}>
 				<div className={classes.FirstContainer}>
@@ -53,27 +70,10 @@ class TodoList extends Component {
 						<h2>NEXT 7 DAYS {this.props.filters.nextSeven}</h2>
 					</div>
 				</div>
-				<div className={classes.BtnsContainer}>
-					<div className={classes.LeftBtns}>
-						<img src={require('../../assets/trash.png')} alt='trash' />
-						<img src={require('../../assets/archive.png')} alt='archive' />
-						<img src={require('../../assets/move-dark.png')} alt='move' />
-						<img src={require('../../assets/check-todo.png')} alt='check' />
-					</div>
-					<img
-						src={require('../../assets/add.png')}
-						alt='trash'
-						className={classes.TodoAdd}
-					/>
-				</div>
-				<div className={classes.TodoListContainer}>
-					<div className={classes.ColTitles}>
-						<p className={classes.TodoTtl}>Todo</p>
-						<p className={classes.LocationTtl}>Location</p>
-						<p className={classes.DueTtl}>Due</p>
-					</div>
-					<div className={classes.TodoList}>{currentTodos}</div>
-				</div>
+				<TodoList>
+					{currentTodos}
+					{currSongTodos}
+				</TodoList>
 			</div>
 		);
 	}
@@ -82,7 +82,8 @@ class TodoList extends Component {
 const mapStateToProps = state => {
 	return {
 		filters: state.todo.filters,
-		todos: state.todo.todos
+		todos: state.todo.todos,
+		songTodos: state.projects.allSongTodos
 	};
 };
 
@@ -93,4 +94,4 @@ const mapDispatchToProp = dipatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProp
-)(TodoList);
+)(GlobalTodoPage);

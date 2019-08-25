@@ -17,26 +17,26 @@ const navLink = props => {
 						{props.filters.nextSeven}
 					</h2>
 				);
-				clickLink = props.closeCenter;
+				clickLink = props.linkNoCenter;
 				return { content, clickLink };
 			case 'MESSAGES':
 				content = <h2>9</h2>;
-				clickLink = props.openCenter;
+				clickLink = props.linkWithCenter;
 				return { content, clickLink };
 			case 'LIVE STREAM':
 				content = <h2>8</h2>;
-				clickLink = props.openCenter;
+				clickLink = props.linkWithCenter;
 				return { content, clickLink };
 			case 'DASHBOARD':
-				clickLink = props.closeCenter;
+				clickLink = props.linkNoCenter;
 				return { clickLink };
 			case 'ALL FILES':
 				content = <h2>78</h2>;
-				clickLink = props.closeCenter;
+				clickLink = props.linkNoCenter;
 				return { content, clickLink };
 			case 'CONTACTS':
 				content = <h2>29</h2>;
-				clickLink = props.closeCenter;
+				clickLink = props.linkNoCenter;
 				return { content, clickLink };
 			default:
 				return { content, clickLink };
@@ -45,6 +45,7 @@ const navLink = props => {
 	linkProps();
 	return (
 		<NavLink
+			activeClassName={classes.active}
 			className={classes.NavItem}
 			to={`/${props.link}`}
 			onClick={clickLink}
@@ -70,8 +71,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProp = dispatch => {
 	return {
-		openCenter: () => dispatch({ type: actionTypes.OPEN_CENTER }),
-		closeCenter: () => dispatch({ type: actionTypes.CLOSE_CENTER })
+		linkWithCenter: () => dispatch({ type: actionTypes.LINK_WITH_CENTER }),
+		linkNoCenter: () => dispatch({ type: actionTypes.LINK_NO_CENTER })
 	};
 };
 

@@ -5,7 +5,6 @@ const intitialState = {
 	password: 'password',
 	firstName: 'Bryan',
 	lastName: 'Flopitron',
-	openProject: '',
 	colaberators: [
 		{
 			name: 'Flizzy',

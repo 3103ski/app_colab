@@ -8,6 +8,10 @@ a {
 	height: 70px;
 }
 
+.active {
+	background-color: #d2d0d038;
+}
+
 .SongListItem:hover {
 	cursor: pointer;
 }

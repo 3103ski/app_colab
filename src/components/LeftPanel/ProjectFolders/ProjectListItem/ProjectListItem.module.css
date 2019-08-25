@@ -4,6 +4,10 @@
 	padding: 10px 5px;
 	align-items: center;
 }
+
+.active {
+	background-color: white;
+}
 .FolderListItem:hover {
 	cursor: pointer;
 }

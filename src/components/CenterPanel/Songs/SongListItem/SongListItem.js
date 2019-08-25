@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import * as actionTypes from '../../../../store/actions';
 import statusColor from '../../../UI/statusColor/statusColor';
 
 import classes from './SongListItem.module.css';
@@ -7,7 +9,14 @@ import classes from './SongListItem.module.css';
 const song = props => {
 	const status = statusColor(props.status);
 	return (
-		<NavLink to={`/projects/${props.songName}`}>
+		<NavLink
+			activeClassName={classes.active}
+			to={`/projects/${props.songName}`}
+			onClick={() => {
+				props.selectSong(props.songName);
+				props.sendSongToState(props.song);
+				props.sendArtistToState(props.artist);
+			}}>
 			<div className={classes.SongListItem}>
 				<div className={classes.LeftSide}>
 					<div
@@ -46,5 +55,21 @@ const song = props => {
 		</NavLink>
 	);
 };
+const mapStateToProps = state => {
+	return {};
+};
+const mapDispatchToProps = dispatch => {
+	return {
+		selectSong: songName =>
+			dispatch({ type: actionTypes.SELECT_SONG, songName: songName }),
+		sendSongToState: song =>
+			dispatch({ type: actionTypes.CURR_SONG, song: song }),
+		sendArtistToState: artist =>
+			dispatch({ type: actionTypes.CURR_ARTIST, artist: artist })
+	};
+};
 
-export default song;
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(song);
