@@ -16,43 +16,30 @@ const appReducer = (state = intitialState, action) => {
 				...state,
 				centerPanel: true,
 				projectIsOpen: false,
-				activeProject: ''
+				activeProject: '',
+				selectedSong: ''
 			};
 		case actionTypes.LINK_NO_CENTER:
 			return {
 				...state,
 				centerPanel: false,
 				projectIsOpen: false,
-				activeProject: ''
-			};
-		case actionTypes.NO_PROJECT:
-			return {
-				...state,
 				activeProject: '',
-				selectedSong: '',
-				currArtist: '',
-				currSong: null
+				selectedSong: ''
 			};
 		case actionTypes.OPEN_PROJECT:
 			return {
 				...state,
 				centerPanel: true,
 				projectIsOpen: true,
+				selectedSong: '',
 				activeProject: action.projectName
 			};
 		case actionTypes.SELECT_SONG:
 			return {
 				...state,
-				selectedSong: action.songName
-			};
-		case actionTypes.CURR_SONG:
-			return {
-				...state,
-				currSong: action.song
-			};
-		case actionTypes.CURR_ARTIST:
-			return {
-				...state,
+				selectedSong: action.songName,
+				currSong: action.song,
 				currArtist: action.artist
 			};
 		default:

@@ -15,9 +15,7 @@ const song = props => {
 			activeClassName={classes.active}
 			to={`/projects/${props.project}/${props.songName}`}
 			onClick={() => {
-				props.selectSong(props.songName);
-				props.sendSongToState(props.song);
-				props.sendArtistToState(props.artist);
+				props.selectSong(props.songName, props.song, props.artist);
 			}}>
 			<div className={classes.SongListItem}>
 				<div className={classes.LeftSide}>
@@ -62,12 +60,13 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		selectSong: songName =>
-			dispatch({ type: actionTypes.SELECT_SONG, songName: songName }),
-		sendSongToState: song =>
-			dispatch({ type: actionTypes.CURR_SONG, song: song }),
-		sendArtistToState: artist =>
-			dispatch({ type: actionTypes.CURR_ARTIST, artist: artist })
+		selectSong: (songName, song, artist) =>
+			dispatch({
+				type: actionTypes.SELECT_SONG,
+				songName: songName,
+				song: song,
+				artist: artist
+			})
 	};
 };
 

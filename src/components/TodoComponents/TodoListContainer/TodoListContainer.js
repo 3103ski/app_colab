@@ -1,5 +1,6 @@
 // React Components
 import React from 'react';
+import { connect } from 'react-redux';
 
 // HOCs
 import Aux from '../../../hoc/Aux/Aux';
@@ -28,16 +29,27 @@ const TodoListButtonSet = props => {
 					className={classes.TodoAdd}
 				/>
 			</div>
-			<div className={classes.TodoListContainer}>
-				<div className={classes.ColTitles}>
-					<p className={classes.TodoTtl}>Todo</p>
-					<p className={classes.LocationTtl}>Location</p>
-					<p className={classes.DueTtl}>Due</p>
-				</div>
+			<div className={classes.ColTitles}>
+				<p className={classes.TodoTtl}>Todo</p>
+				<p className={classes.LocationTtl}>Location</p>
+				<p className={classes.DueTtl}>Due</p>
+			</div>
+			<div
+				className={
+					props.activeSong === ''
+						? classes.TodoListContainer
+						: classes.ListContainerTab
+				}>
 				<div className={classes.TodoList}>{listItems}</div>
 			</div>
 		</Aux>
 	);
 };
 
-export default TodoListButtonSet;
+const mapStateToProps = state => {
+	return {
+		activeSong: state.app.selectedSong
+	};
+};
+
+export default connect(mapStateToProps)(TodoListButtonSet);

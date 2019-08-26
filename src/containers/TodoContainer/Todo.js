@@ -47,7 +47,7 @@ class GlobalTodoPage extends Component {
 						<h2>NEXT 7 DAYS {this.props.filters.nextSeven}</h2>
 					</div>
 				</div>
-				<TodoListContainer>
+				<TodoListContainer className={classes.TodoListContainer}>
 					<TodoList todoArr={allTodos} size='full' />
 				</TodoListContainer>
 			</div>

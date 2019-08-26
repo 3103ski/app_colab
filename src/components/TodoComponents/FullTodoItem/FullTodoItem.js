@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Style
-import classes from './TodoItem.module.css';
+import classes from './FullTodoItem.module.css';
 
 const TodoItem = props => {
 	// Determines if todo item should be checked or not

@@ -11,7 +11,7 @@ import classes from './LeftPanel.module.css';
 class BlueSideNav extends Component {
 	state = {
 		topnav: [
-			// To add navlink: name icon same in assets folder (.png) and pass route as link. To add right side content, edit case in [ProjectListItem.js]
+			// To add navlink: name icon same in assets folder (.png) and pass route as link. To add right side content, edit case in [NavLink.js]
 			{ title: 'DASHBOARD', link: 'dashboard', icon: 'dashboard' },
 			{ title: 'TODO', link: 'todo', icon: 'checkmark' },
 			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' },

@@ -10,6 +10,8 @@
 	display: flex;
 	align-items: center;
 	padding: 10px;
+	height: 50px;
+	box-sizing: border-box;
 }
 
 .SearchInput {
@@ -37,6 +39,8 @@
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
+	height: 50px;
+	box-sizing: border-box;
 }
 
 .FilterBtn {
@@ -57,6 +61,8 @@
 .BtnsContainer {
 	display: flex;
 	align-items: center;
+	height: 40px;
+	box-sizing: border-box;
 }
 
 .BtnsContainer img {
@@ -78,7 +84,7 @@
 
 /* FULL CONTAINER */
 .TodoListContainer {
-	padding: 0;
+	height: calc(100vh - 140px);
 }
 
 /* TITLES */

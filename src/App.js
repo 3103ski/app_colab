@@ -1,6 +1,6 @@
 // REACT
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Styles
@@ -31,10 +31,14 @@ const App = props => {
 				<Route
 					path='/projects'
 					render={() => {
-						if (props.app.selectedSong !== '') {
-							return <SongTemplate></SongTemplate>;
+						if (props.app.activeProject === '') {
+							return <Redirect to='/dashboard' />;
 						} else {
-							return <h1>Please Select A Song</h1>;
+							if (props.app.selectedSong !== '') {
+								return <SongTemplate></SongTemplate>;
+							} else {
+								return <h1>Please Select A Song</h1>;
+							}
 						}
 					}}></Route>
 			</Layout>

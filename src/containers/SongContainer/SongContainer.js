@@ -14,7 +14,7 @@ import Todos from '../../components/SongComponents/TabTodo/TodoTab';
 // Styles
 import classes from './SongContainer.module.css';
 
-class SongTemplate extends Component {
+class SongContainer extends Component {
 	state = {
 		activeTab: 'details'
 	};
@@ -49,14 +49,13 @@ class SongTemplate extends Component {
 		};
 
 		let tabContent = pickTabContent(this.state.activeTab);
-
 		const songStatus = this.props.song ? this.props.song.status : 'noneOpen';
-
 		const statusColor = StatusColor(songStatus);
-		console.log(`[SongContainer.js] - This Song Is Active:`, this.props.song);
+
+		// console.log(`[SongContainer.js] - This Song Is Active:`, this.props.song); //TESTING
 
 		return (
-			<div className={classes.SongTemplateContainer}>
+			<div className={classes.SongContainer}>
 				<div className={classes.AbovePlayer}>
 					<div className={classes.QuickInfo}>
 						<h2>{this.props.selectedSong ? this.props.selectedSong : null}</h2>
@@ -180,4 +179,4 @@ const mapDispatchToState = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToState
-)(SongTemplate);
+)(SongContainer);

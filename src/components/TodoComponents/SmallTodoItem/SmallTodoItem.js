@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Styles
-import classes from './DashTodoItem.module.css';
+import classes from './SmallTodoItem.module.css';
 
 const TodoItem = props => {
 	return (

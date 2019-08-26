@@ -20,7 +20,13 @@
 
 /* FULL CONTAINER */
 .TodoListContainer {
-	padding: 0;
+	height: calc(100vh - 140px);
+	overflow: scroll;
+}
+
+.ListContainerTab {
+	height: 300px;
+	overflow: scroll;
 }
 
 /* TITLES */

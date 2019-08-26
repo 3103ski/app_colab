@@ -6,6 +6,8 @@ import React from 'react';
 import TodoContainer from '../../TodoComponents/TodoListContainer/TodoListContainer';
 import TodoList from '../../TodoComponents/TodoList/TodoList';
 
+// styles
+
 const TodoTab = props => {
 	return (
 		<div>
