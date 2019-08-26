@@ -1,32 +1,25 @@
+// React Imports
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 
-import TodoItem from '../../components/Todo/DashTodo/DashTodoItem';
+// Components
+import TodoList from '../../components/TodoComponents/TodoList/TodoList';
 
+// Styles
 import classes from './Dashboard.module.css';
 
 class Dashboard extends Component {
-	state = {};
 	render() {
-		console.log(this.props.todos);
-
-		const recentTodos = this.props.todos.map(todo => {
-			return (
-				<TodoItem
-					key={todo.location.song}
-					title={todo.title}
-					artist={todo.location.artist}
-					song={todo.location.song}></TodoItem>
-			);
-		});
-
 		return (
 			<div className={classes.DashContainer}>
 				<div className={classes.TopDash}>
+					{/* Top Dash Containers */}
 					<div className={classes.RecentTodo}>
 						<h4 className={classes.TodoTitle}>Recently Added Todos</h4>
-						<div className={classes.TodoList}>{recentTodos}</div>
+						<div className={classes.TodoList}>
+							{/* Feeds Recent todos */}
+							<TodoList todoArr={this.props.todos} size='small'></TodoList>
+						</div>
 					</div>
 					{/* This is files break */}
 					<div className={classes.RecentFiles}>

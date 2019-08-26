@@ -1,41 +1,18 @@
+// React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TodoList from '../../components/Todo/TodoList/TodoList';
-import TodoItem from '../../components/Todo/TodoPage/TodoItem';
+// Components
+import TodoListContainer from '../../components/TodoComponents/TodoListContainer/TodoListContainer';
+import TodoList from '../../components/TodoComponents/TodoList/TodoList';
 
+// Styles
 import classes from './Todo.module.css';
 
 class GlobalTodoPage extends Component {
 	state = {};
 	render() {
-		const currentTodos = this.props.todos.map(todo => {
-			return (
-				<TodoItem
-					key={todo.title}
-					completed={todo.completed}
-					title={todo.title}
-					artist={todo.location.artist}
-					project={todo.location.project}
-					song={todo.location.song}
-					due={todo.dueDate}
-				/>
-			);
-		});
-
-		const currSongTodos = this.props.songTodos.map(todo => {
-			return (
-				<TodoItem
-					key={todo.title}
-					completed={todo.completed}
-					title={todo.title}
-					artist={todo.location.artist}
-					project={todo.location.project}
-					song={todo.location.song}
-					due={todo.dueDate}
-				/>
-			);
-		});
+		const allTodos = [...this.props.todos, ...this.props.songTodos];
 
 		return (
 			<div className={classes.Container}>
@@ -70,10 +47,9 @@ class GlobalTodoPage extends Component {
 						<h2>NEXT 7 DAYS {this.props.filters.nextSeven}</h2>
 					</div>
 				</div>
-				<TodoList>
-					{currentTodos}
-					{currSongTodos}
-				</TodoList>
+				<TodoListContainer>
+					<TodoList todoArr={allTodos} size='full' />
+				</TodoListContainer>
 			</div>
 		);
 	}

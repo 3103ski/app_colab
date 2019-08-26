@@ -1,9 +1,11 @@
+// React
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import * as actionTypes from '../../../../store/actions';
-import statusColor from '../../../UI/statusColor/statusColor';
-
+import * as actionTypes from '../../../../../store/actions';
+// Functions
+import statusColor from '../../../../HelperFunctions/statusColor';
+// Styles
 import classes from './SongListItem.module.css';
 
 const song = props => {
@@ -11,7 +13,7 @@ const song = props => {
 	return (
 		<NavLink
 			activeClassName={classes.active}
-			to={`/projects/${props.songName}`}
+			to={`/projects/${props.project}/${props.songName}`}
 			onClick={() => {
 				props.selectSong(props.songName);
 				props.sendSongToState(props.song);
@@ -26,7 +28,7 @@ const song = props => {
 						<div className={classes.QuickTop}>
 							<img
 								alt='song item'
-								src={require('../../../../assets/songIcon.png')}
+								src={require('../../../../../assets/songIcon.png')}
 							/>
 							<p>{props.songName}</p>
 						</div>
@@ -34,15 +36,15 @@ const song = props => {
 							<div className={classes.SongUsers}>
 								<img
 									alt='user'
-									src={require('../../../../assets/placeholderFace-1.png')}
+									src={require('../../../../../assets/placeholderFace-1.png')}
 								/>
 								<img
 									alt='user'
-									src={require('../../../../assets/placeholderFace-2.png')}
+									src={require('../../../../../assets/placeholderFace-2.png')}
 								/>
 								<img
 									alt='user'
-									src={require('../../../../assets/placeholderFace-3.png')}
+									src={require('../../../../../assets/placeholderFace-3.png')}
 								/>
 							</div>
 						</div>

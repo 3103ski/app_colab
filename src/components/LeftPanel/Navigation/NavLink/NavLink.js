@@ -1,8 +1,13 @@
+// React Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import classes from './NavLink.module.css';
+
+// Redux action strings
 import * as actionTypes from '../../../../store/actions';
+
+// Styles
+import classes from './NavLink.module.css';
 
 const navLink = props => {
 	let content, clickLink;

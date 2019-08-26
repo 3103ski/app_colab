@@ -1,15 +1,17 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+// React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Components
 import DetailItem from './DetailItem/DetailItem';
 
+// Styles
 import classes from './DetailsTab.module.css';
 
 class SongDetails extends Component {
 	state = {};
 	render() {
-		console.log(`working????`, this.props.artist);
 		const reference = this.props.song ? this.props.song.reference : null;
 		const notes = this.props.song ? this.props.song.notes : null;
 
@@ -48,25 +50,7 @@ class SongDetails extends Component {
 
 		return (
 			<div className={classes.DetailsContainer}>
-				<div className={classes.LeftSide}>
-					{/* <div className={classes.DetailItem}>
-						<p className={classes.DetailTitle}>Artist / Band:</p>
-						<p className={classes.DetailContent}>Dan Jones</p>
-					</div>
-					<div className={classes.DetailItem}>
-						<p className={classes.DetailTitle}>Song Title:</p>
-						<p className={classes.DetailContent}>We Fly</p>
-					</div>
-					<div className={classes.DetailItem}>
-						<p className={classes.DetailTitle}>Song Key:</p>
-						<p className={classes.DetailContent}>Bb</p>
-					</div>
-					<div className={classes.DetailItem}>
-						<p className={classes.DetailTitle}>Tempo:</p>
-						<p className={classes.DetailContent}>120</p>
-					</div> */}
-					{details}
-				</div>
+				<div className={classes.LeftSide}>{details}</div>
 				<div className={classes.RightSide}>
 					<div className={classes.DetailItem}>
 						<p className={classes.DetailTitle}>Influences:</p>

@@ -1,18 +1,24 @@
+// REACT
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+// Styles
 import './App.css';
+
+// HOCS
 import Layout from './hoc/Layout/Layout';
 
-import Dashboard from './containers/Dashboard/Dashboard';
-import Todo from './containers/Todo/Todo';
+// Main Containers
+import Dashboard from './containers/DashboardContainer/Dashboard';
+import Todo from './containers/TodoContainer/Todo';
 import AllFilesBrowser from './containers/AllFilesContainer/AllFilesContainer';
-import LiveStream from './containers/LiveStream/LiveStreamContainer';
+import LiveStream from './containers/LiveStreamContainer/LiveStreamContainer';
 import Contacts from './containers/ContactsContainer/ContactsContainer';
 import Messages from './containers/MessageContainer/MessagesContainer';
-import SongContainer from './containers/SongContainer/SongContainer';
+import SongTemplate from './containers/SongContainer/SongContainer';
 
-function App() {
+const App = props => {
 	return (
 		<div className='App'>
 			<Layout>
@@ -22,10 +28,24 @@ function App() {
 				<Route path='/live-stream' component={LiveStream}></Route>
 				<Route path='/messages' component={Messages}></Route>
 				<Route path='/contacts' component={Contacts}></Route>
-				<Route path='/projects' component={SongContainer}></Route>
+				<Route
+					path='/projects'
+					render={() => {
+						if (props.app.selectedSong !== '') {
+							return <SongTemplate></SongTemplate>;
+						} else {
+							return <h1>Please Select A Song</h1>;
+						}
+					}}></Route>
 			</Layout>
 		</div>
 	);
-}
+};
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		app: state.app
+	};
+};
+
+export default connect(mapStateToProps)(App);

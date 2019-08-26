@@ -533,13 +533,13 @@ const collectAllSongTodos = () => {
 	let allSongs = [];
 	const fillSongs = () => {
 		intitialState.projects.map(project => {
-			project.songs.map(song => allSongs.push(song));
+			return project.songs.map(song => allSongs.push(song));
 		});
 	};
 	fillSongs();
 	let allTodos = [];
 	allSongs.map(song => {
-		song.todos.map(todo => intitialState.allSongTodos.push(todo));
+		return song.todos.map(todo => intitialState.allSongTodos.push(todo));
 	});
 	return allTodos;
 };

@@ -1,21 +1,19 @@
+// React Imports
 import React from 'react';
 
+// Style
 import classes from './TodoItem.module.css';
 
 const TodoItem = props => {
-	let todoStatus;
-	if (props.completed) {
-		todoStatus = `todo-done`;
-	}
-	if (!props.completed) {
-		todoStatus = `todo-undone`;
-	}
+	// Determines if todo item should be checked or not
+	let todoStatus = props.completed ? `todo-done` : `todo-undone`;
+
 	return (
 		<div className={classes.TodoItem}>
 			<div className={classes.TodoName}>
 				<img
 					src={require(`../../../assets/${todoStatus}.png`)}
-					alt="complete"
+					alt='complete'
 					className={classes.Completed}
 				/>
 				<p>{props.title}</p>
@@ -29,8 +27,8 @@ const TodoItem = props => {
 				<p>{props.due}</p>
 			</div>
 			<div className={classes.TodoIcons}>
-				<img src={require('../../../assets/myDay.png')} alt="myDay" />
-				<img src={require('../../../assets/move-light.png')} alt="move" />
+				<img src={require('../../../assets/myDay.png')} alt='myDay' />
+				<img src={require('../../../assets/move-light.png')} alt='move' />
 			</div>
 		</div>
 	);

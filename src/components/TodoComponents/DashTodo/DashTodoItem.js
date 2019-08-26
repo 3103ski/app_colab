@@ -1,4 +1,7 @@
+// React Imports
 import React from 'react';
+
+// Styles
 import classes from './DashTodoItem.module.css';
 
 const TodoItem = props => {

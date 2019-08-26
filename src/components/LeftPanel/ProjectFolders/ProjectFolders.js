@@ -1,12 +1,16 @@
+// React Imports
 import React, { Component } from 'react';
-import ProjectItem from './ProjectListItem/ProjectListItem';
 import { connect } from 'react-redux';
 
+// Components
+import ProjectItem from './ProjectListItem/ProjectListItem';
+
+// Styles
 import classes from './ProjectFolders.module.css';
 
 class ProjectFolders extends Component {
-	state = {};
 	render() {
+		// Returns Project Nave Items
 		const projects = this.props.projects.map(project => {
 			return (
 				<ProjectItem
@@ -16,7 +20,9 @@ class ProjectFolders extends Component {
 					projectName={project.projectName}></ProjectItem>
 			);
 		});
+
 		return (
+			// Project Navigation Container
 			<div className={classes.FoldersNav}>
 				<div className={classes.ListTitles}>
 					<h4 className={classes.LeftTitle}>Name</h4>

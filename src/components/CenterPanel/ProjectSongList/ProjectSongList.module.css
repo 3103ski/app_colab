@@ -1,0 +1,59 @@
+.SongListContainer {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/******** Project Top State */
+
+/* Project Users */
+.AddUserToProject {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
+	border-bottom: solid 1px #e4e4e4;
+}
+
+.AddUserToProject img {
+	width: 30px;
+	margin-right: 10px;
+}
+
+.AddUserToProject img:hover {
+	cursor: pointer;
+}
+
+.AddUserToProject h4 {
+	margin: 0;
+	font-weight: 100;
+	font-size: 0.8rem;
+	color: #00000025;
+}
+
+/******* Project Bottom State */
+
+/* Project Songs */
+
+.AddSongToProject {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	margin-top: auto;
+}
+
+.AddSongToProject:hover {
+	cursor: pointer;
+}
+
+.AddSongToProject img {
+	width: 25px;
+	margin-right: 10px;
+}
+
+.AddSongToProject p {
+	margin: 0;
+	font-size: 0.85rem;
+	color: #00000035;
+}

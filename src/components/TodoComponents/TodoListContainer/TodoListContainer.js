@@ -1,11 +1,17 @@
+// React Components
 import React from 'react';
 
+// HOCs
 import Aux from '../../../hoc/Aux/Aux';
 
-import classes from './TodoList.module.css';
+// Style
+import classes from './TodoListContainer.module.css';
 
 const TodoListButtonSet = props => {
+	// Fallback when no song is selected
 	const pleaseSelect = <h2>Please Select A Song</h2>;
+
+	// Determines if there are todos to list and renders please select if there aren't
 	const listItems = props.children ? props.children : pleaseSelect;
 	return (
 		<Aux>

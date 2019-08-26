@@ -1,8 +1,10 @@
+// React Imports
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
 
+// Components
 import Link from './NavLink/NavLink';
 
+// Styles
 import classes from './Navigation.module.css';
 
 const navigation = props => {

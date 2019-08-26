@@ -1,16 +1,23 @@
+// React Imports
 import React from 'react';
-import classes from './ProjectListItem.module.css';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+// Redux Action Strings
 import * as actionTypes from '../../../../store/actions';
-
-import statusColor from '../../../UI/statusColor/statusColor';
+// Functions
+import statusColor from '../../../HelperFunctions/statusColor';
+// Styles
+import classes from './ProjectListItem.module.css';
 
 const ProjectItem = props => {
+	// Changes folder icon from open to close if current item is active project
 	let open =
 		props.activeProject === props.projectName ? 'openfolder' : 'closefolder';
-	let songsCompleted = 0;
-	let totalSongs = 0;
+
+	// Holds counters for project progress
+	let [songsCompleted, totalSongs] = [0, 0];
+
+	// Generates status color dots below project titls
 	let dots = props.songs.map(song => {
 		totalSongs = totalSongs + 1;
 		if (song.status === 'Completed') {
@@ -26,8 +33,10 @@ const ProjectItem = props => {
 		);
 	});
 
+	console.log(`[ProjectListItem.js] - Active project is:`, props.activeProject);
+
 	return (
-		<NavLink to='/projects'>
+		<NavLink to={`/projects/${props.projectName}`}>
 			<div
 				className={classes.FolderListItem}
 				activeClassName={classes.active}

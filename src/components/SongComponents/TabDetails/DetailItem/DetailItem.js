@@ -1,4 +1,7 @@
+// React Imports
 import React from 'react';
+
+// Style
 import classes from '../DetailsTab.module.css';
 
 const Detail = props => {
