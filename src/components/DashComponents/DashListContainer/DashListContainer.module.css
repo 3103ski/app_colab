@@ -1,0 +1,20 @@
+.Container {
+	background-color: white;
+	min-width: 400px;
+	margin: 10px;
+	overflow: scroll;
+}
+
+.Title {
+	border-bottom: solid 1px grey;
+	font-weight: lighter;
+	letter-spacing: 0.05rem;
+	text-align: left;
+	padding: 4px 10px;
+	margin: 10px 0px 5px 0px;
+}
+
+.List {
+	height: 315px;
+	overflow: scroll;
+}

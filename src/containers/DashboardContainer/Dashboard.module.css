@@ -20,71 +20,7 @@
 	align-items: center;
 	justify-content: center;
 }
-
-/* Todos */
-.RecentTodo {
-	background-color: white;
-	min-width: 400px;
-	margin: 10px;
-	overflow: scroll;
-}
-
-/* .TodoList {
-	overflow-y: scroll;
-} */
-
-.TodoTitle {
-	border-bottom: solid 1px grey;
-	font-weight: lighter;
-	letter-spacing: 0.05rem;
-	text-align: left;
-	padding: 4px 10px;
-	margin: 10px 0px 5px 0px;
-}
-
-.TodoItem {
-	display: flex;
-	align-items: center;
-}
-
-.TodoDot {
-	width: 20px;
-	height: 20px;
-	border: solid 1px #000000;
-	border-radius: 25px;
-}
-
-.TodoInfo {
-	text-align: left;
-	margin: 5px 10px;
-}
-.TodoInfo p,
-.TodoInfo h4 {
-	margin: 0px;
-	font-weight: 100;
-}
-.TodoInfo p {
-	font-size: 0.8rem;
-	letter-spacing: 0.03rem;
-}
-.TodoInfo h4 {
-	padding: 0;
-}
 /* Files */
-.RecentFiles {
-	background-color: white;
-	min-width: 400px;
-	margin: 10px;
-	overflow: scroll;
-}
-.FileTitle {
-	border-bottom: solid 1px grey;
-	font-weight: lighter;
-	letter-spacing: 0.05rem;
-	text-align: left;
-	padding: 4px 10px;
-	margin: 10px 0px 5px 0px;
-}
 
 .FileItem {
 	display: flex;
@@ -110,21 +46,6 @@
 	font-size: 0.75rem;
 }
 /* Comments */
-.RecentComments {
-	background-color: white;
-	min-width: 400px;
-	margin: 10px;
-	overflow: scroll;
-}
-
-.CommentTitle {
-	border-bottom: solid 1px grey;
-	font-weight: lighter;
-	letter-spacing: 0.05rem;
-	text-align: left;
-	padding: 4px 10px;
-	margin: 10px 0px 5px 0px;
-}
 
 .CommentItem {
 	display: flex;

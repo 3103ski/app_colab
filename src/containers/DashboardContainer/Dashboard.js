@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Components
+import DashList from '../../components/DashComponents/DashListContainer/DashListContainer';
 import TodoList from '../../components/TodoComponents/TodoList/TodoList';
 
 // Styles
@@ -13,18 +14,11 @@ class Dashboard extends Component {
 		return (
 			<div className={classes.DashContainer}>
 				<div className={classes.TopDash}>
-					{/* Top Dash Containers */}
-					<div className={classes.RecentTodo}>
-						<h4 className={classes.TodoTitle}>Recently Added Todos</h4>
-						<div className={classes.TodoList}>
-							{/* Feeds Recent todos */}
-							<TodoList todoArr={this.props.todos} size='small'></TodoList>
-						</div>
-					</div>
-					{/* This is files break */}
-					<div className={classes.RecentFiles}>
-						{/* files template */}
-						<h4 className={classes.FileTitle}>Recently Added Files</h4>
+					<DashList title='Recently Added Todos'>
+						<TodoList todoArr={this.props.todos} size='small'></TodoList>
+					</DashList>
+
+					<DashList title='Recent Files'>
 						<div className={classes.FileItem}>
 							<img
 								alt='file '
@@ -35,7 +29,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • Today</p>
 							</div>
 						</div>
-
 						<div className={classes.FileItem}>
 							<img
 								alt='file '
@@ -46,7 +39,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • yesterday</p>
 							</div>
 						</div>
-
 						<div className={classes.FileItem}>
 							<img alt='file ' src={require('../../assets/zipfileicon.png')} />
 							<div className={classes.FileInfo}>
@@ -54,7 +46,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • 8/11/19</p>
 							</div>
 						</div>
-
 						<div className={classes.FileItem}>
 							<img
 								alt='file '
@@ -65,12 +56,9 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • 8/8/19</p>
 							</div>
 						</div>
-					</div>
-					{/* This is comments break */}
-					<div className={classes.RecentComments}>
-						{/* Comments template */}
-						<h4 className={classes.CommentTitle}>Recent Comments</h4>
+					</DashList>
 
+					<DashList title='Recent Comments'>
 						<div className={classes.CommentItem}>
 							<img alt='comment ' src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
@@ -78,7 +66,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • Today</p>
 							</div>
 						</div>
-
 						<div className={classes.CommentItem}>
 							<img alt='comment ' src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
@@ -88,7 +75,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • 8/15/19</p>
 							</div>
 						</div>
-
 						<div className={classes.CommentItem}>
 							<img alt='comment ' src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
@@ -98,7 +84,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • 8/13/19</p>
 							</div>
 						</div>
-
 						<div className={classes.CommentItem}>
 							<img alt='comment ' src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
@@ -106,7 +91,6 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • 8/10/19</p>
 							</div>
 						</div>
-
 						<div className={classes.CommentItem}>
 							<img alt='comment ' src={require('../../assets/msgbubble.png')} />
 							<div className={classes.CommentInfo}>
@@ -114,7 +98,7 @@ class Dashboard extends Component {
 								<p>Jimmy Jones - Do It Again • 8/10/19</p>
 							</div>
 						</div>
-					</div>
+					</DashList>
 				</div>
 				<div className={classes.BottomDash}>
 					<h1>TRELLO-LIKE LISTS GO HERE</h1>
