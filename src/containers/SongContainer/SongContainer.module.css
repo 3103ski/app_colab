@@ -65,7 +65,7 @@
 /* PLAYER */
 
 .PlayerPlaceholder {
-	width: 100%;
+	width: 85%;
 	max-width: 800px;
 }
 
@@ -103,4 +103,6 @@
 .TabContentContainer {
 	width: 90%;
 	margin-bottom: auto;
+	display: flex;
+	justify-content: center;
 }

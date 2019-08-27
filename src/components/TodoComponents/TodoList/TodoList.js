@@ -17,7 +17,8 @@ const todoList = props => {
 						key={todo.location.song}
 						title={todo.title}
 						artist={todo.location.artist}
-						song={todo.location.song}></DashTodoItem>
+						song={todo.location.song}
+						project={todo.location.project}></DashTodoItem>
 				))
 			) : (
 				<h2>No Recent Todos</h2>

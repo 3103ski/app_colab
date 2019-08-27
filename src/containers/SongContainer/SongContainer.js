@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // Helper Functions
 import StatusColor from '../../components/HelperFunctions/statusColor';
 import GetTodos from '../../components/HelperFunctions/getSongTodos';
+import getUserPics from '../../components/HelperFunctions/getIncludedUserPics';
 
 // Container Components
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
@@ -24,14 +25,19 @@ class SongContainer extends Component {
 			this.props.activeProject,
 			this.props.selectedSong
 		);
-
+		const userPics = getUserPics(this.props.song.users);
 		const pickTabContent = tab => {
 			switch (tab) {
 				case 'details': {
 					return <SongDetails></SongDetails>;
 				}
 				case 'comments': {
-					return <Comments></Comments>;
+					return (
+						<Comments
+							projects={this.props.projects}
+							song={this.props.selectedSong}
+							activeProject={this.props.activeProject}></Comments>
+					);
 				}
 				case 'todo': {
 					return <Todos songTodos={activeTodos}></Todos>;
@@ -73,18 +79,13 @@ class SongContainer extends Component {
 					{/* USERS */}
 					<div className={classes.Users}>
 						<div className={classes.IncludedUsers}>
+							{/* <img alt='user' src={require('../../assets/userPic-Bobby.png')} />
+							<img alt='user' src={require('../../assets/userPic-Dave.png')} />
 							<img
 								alt='user'
-								src={require('../../assets/placeholderFace-1.png')}
-							/>
-							<img
-								alt='user'
-								src={require('../../assets/placeholderFace-2.png')}
-							/>
-							<img
-								alt='user'
-								src={require('../../assets/placeholderFace-3.png')}
-							/>
+								src={require('../../assets/userPic-Franky.png')}
+							/> */}
+							{userPics}
 							<img
 								alt='add user'
 								className={classes.AddUserPlus}

@@ -10,7 +10,7 @@ import TodoList from '../../TodoComponents/TodoList/TodoList';
 
 const TodoTab = props => {
 	return (
-		<div>
+		<div style={{ width: `100%` }}>
 			<TodoContainer>
 				<TodoList size='full' todoArr={props.songTodos}></TodoList>
 			</TodoContainer>

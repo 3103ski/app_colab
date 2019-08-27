@@ -20,7 +20,8 @@ const TodoItem = props => {
 			</div>
 			<div className={classes.TodoLocation}>
 				<p>
-					{props.artist} - {props.project} > {props.song}
+					{props.artist} {props.project ? ` > ${props.project}` : null}{' '}
+					{props.song ? ` > ${props.song}` : null}
 				</p>
 			</div>
 			<div className={classes.TodoDate}>

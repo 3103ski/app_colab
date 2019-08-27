@@ -1,0 +1,68 @@
+/* Comment Container */
+.Comment {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2px 25px;
+	box-sizing: border-box;
+}
+
+.Comment img {
+	width: 37px;
+}
+
+.Responses {
+	width: 80%;
+}
+
+.Responses img {
+	width: 27px;
+}
+
+/* Comments */
+
+.OtherUserComment .Timestamp,
+.ThisUserComment .Timestamp {
+	font-size: 0.7rem;
+}
+
+.ThisUserComment,
+.OtherUserComment {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.BlueComment,
+.GreyComment {
+	width: 100%;
+	font-size: 0.8rem;
+	padding: 7px 7px 7px 25px;
+	border-radius: 25px;
+	text-align: left;
+}
+
+/* This User Comments */
+
+.ThisUserComment img {
+	margin: 0;
+}
+.ThisUserComment .Timestamp {
+	margin: 0px 10px 0px 20px;
+}
+.BlueComment {
+	background-color: #2d9cdb;
+	color: white;
+}
+/* This User Comments */
+
+.OtherUserComment img {
+	margin: 0;
+}
+.OtherUserComment .Timestamp {
+	margin: 0px 20px 0px 10px;
+}
+.GreyComment {
+	background-color: #d8d8d8;
+	color: #2e2e2e;
+}

@@ -36,6 +36,7 @@ const appReducer = (state = intitialState, action) => {
 				activeProject: action.projectName
 			};
 		case actionTypes.SELECT_SONG:
+			console.log(`[SELECT_SONG] dispatch got this song`, action.song);
 			return {
 				...state,
 				selectedSong: action.songName,

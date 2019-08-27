@@ -11,7 +11,8 @@ const TodoItem = props => {
 			<div className={classes.TodoInfo}>
 				<h4>{props.title}</h4>
 				<p>
-					{props.artist} - {props.song}
+					{props.artist} {props.project ? ` > ${props.project}` : null}
+					{props.song ? ` > ${props.song}` : null}
 				</p>
 			</div>
 		</div>

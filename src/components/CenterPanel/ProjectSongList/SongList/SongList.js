@@ -10,22 +10,23 @@ import classes from './SongList.module.css';
 
 const SongList = props => {
 	// ********** TESTING
-	console.log(`[SongList.js] - I can see these projects:`, props.projects);
-	console.log(
-		`[SongList.js] - I see the active project is:`,
-		props.activeProject
-	);
+	// console.log(`[SongList.js] - I can see these projects:`, props.projects);
+	// console.log(
+	// 	`[SongList.js] - I see the active project is:`,
+	// 	props.activeProject
+	// );
+	// console.log(`The answer is here:`, props.projects);
 	// **********
 	const [projects, activeProject] = [props.projects, props.activeProject];
-
 	const currProjectSongs = projects.map(project => {
 		let songs;
 		const artist = project.artist;
 		if (project.projectName === activeProject) {
 			songs = project.songs.map(song => {
-				console.log(`[SongList.js] - My song list generator saw this: `, song);
+				// console.log(`[SongList.js] - My song list generator saw this: `, song);
 				return (
 					<SongListItem
+						users={song.users}
 						project={activeProject}
 						song={song}
 						artist={artist}

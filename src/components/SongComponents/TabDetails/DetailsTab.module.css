@@ -1,6 +1,7 @@
 .DetailsContainer,
 .DetailItem {
 	display: flex;
+	width: 90%;
 }
 
 .LeftSide,

@@ -1,0 +1,51 @@
+.CommentsContainer {
+	width: 90%;
+	background-color: #c4c4c415;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.PlaylistSelector {
+	display: flex;
+	align-items: center;
+	padding-left: 30px;
+	box-sizing: border-box;
+	margin-right: auto;
+}
+.PlaylistSelector p {
+	font-weight: 100;
+	letter-spacing: 0.03rem;
+	font-size: 0.9rem;
+}
+.PlaylistSelector select {
+	background-color: white;
+	width: 120px;
+	margin: 10px 10px 10px 20px;
+	border-radius: 0px;
+	height: 25px;
+}
+.PlaylistSelector select option {
+	padding: 0;
+}
+
+.PlaylistSelector button {
+	width: 60px;
+	height: 25px;
+	background-color: #2d9cdb;
+	color: white;
+	border: none;
+	font-size: 0.6rem;
+	letter-spacing: 0.03rem;
+}
+
+.CommentsContainer input {
+	width: 105%;
+	height: 40px;
+	border-radius: 25px;
+	border: solid 1px #00000006;
+	padding: 2px 20px;
+	box-sizing: border-box;
+	font-size: 0.6rem;
+	letter-spacing: 0.02rem;
+}

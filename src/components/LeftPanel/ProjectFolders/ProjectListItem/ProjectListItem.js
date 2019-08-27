@@ -33,7 +33,7 @@ const ProjectItem = props => {
 		);
 	});
 
-	console.log(`[ProjectListItem.js] - Active project is:`, props.activeProject);
+	// console.log(`[ProjectListItem.js] - Active project is:`, props.activeProject);
 
 	return (
 		<NavLink to={`/projects/${props.projectName}`}>

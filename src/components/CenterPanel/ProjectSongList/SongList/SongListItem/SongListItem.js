@@ -3,13 +3,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as actionTypes from '../../../../../store/actions';
-// Functions
+
+// Helper Functions
 import statusColor from '../../../../HelperFunctions/statusColor';
+import getUserPics from '../../../../HelperFunctions/getIncludedUserPics';
+
 // Styles
 import classes from './SongListItem.module.css';
 
 const song = props => {
 	const status = statusColor(props.status);
+	const userPics = getUserPics(props.users);
 	return (
 		<NavLink
 			activeClassName={classes.active}
@@ -24,6 +28,7 @@ const song = props => {
 						style={{ backgroundColor: status }}></div>
 					<div className={classes.QuickInfo}>
 						<div className={classes.QuickTop}>
+							{/* {userPics} */}
 							<img
 								alt='song item'
 								src={require('../../../../../assets/songIcon.png')}
@@ -31,20 +36,7 @@ const song = props => {
 							<p>{props.songName}</p>
 						</div>
 						<div className={classes.QuickBottom}>
-							<div className={classes.SongUsers}>
-								<img
-									alt='user'
-									src={require('../../../../../assets/placeholderFace-1.png')}
-								/>
-								<img
-									alt='user'
-									src={require('../../../../../assets/placeholderFace-2.png')}
-								/>
-								<img
-									alt='user'
-									src={require('../../../../../assets/placeholderFace-3.png')}
-								/>
-							</div>
+							<div className={classes.SongUsers}>{userPics}</div>
 						</div>
 					</div>
 				</div>
@@ -56,7 +48,9 @@ const song = props => {
 	);
 };
 const mapStateToProps = state => {
-	return {};
+	return {
+		// song: state.app.currSong
+	};
 };
 const mapDispatchToProps = dispatch => {
 	return {

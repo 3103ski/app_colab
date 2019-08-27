@@ -12,6 +12,7 @@ import classes from './DetailsTab.module.css';
 class SongDetails extends Component {
 	state = {};
 	render() {
+		// console.log(`Details has these props`, this.props);
 		const reference = this.props.song ? this.props.song.reference : null;
 		const notes = this.props.song ? this.props.song.notes : null;
 
