@@ -50,7 +50,8 @@ const navLink = props => {
 	linkProps();
 	return (
 		<NavLink
-			activeClassName={classes.active}
+			activeclassname={classes.active}
+			key={props.link}
 			className={classes.NavItem}
 			to={`/${props.link}`}
 			onClick={clickLink}

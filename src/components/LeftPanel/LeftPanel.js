@@ -15,7 +15,7 @@ class BlueSideNav extends Component {
 			{ title: 'DASHBOARD', link: 'dashboard', icon: 'dashboard' },
 			{ title: 'TODO', link: 'todo', icon: 'checkmark' },
 			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' },
-			{ title: 'LIVE STREAM', link: 'live-stream', icon: 'livestream' },
+			// { title: 'LIVE STREAM', link: 'live-stream', icon: 'livestream' },
 			{ title: 'MESSAGES', link: 'messages', icon: 'messages' },
 			{ title: 'CONTACTS', link: 'contacts', icon: 'contacts' }
 		],

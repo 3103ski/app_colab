@@ -11,6 +11,8 @@ import getUserPics from '../../components/HelperFunctions/getIncludedUserPics';
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
 import Comments from '../../components/SongComponents/TabComments/CommentsTab';
 import Todos from '../../components/SongComponents/TabTodo/TodoTab';
+import Files from '../../components/SongComponents/TabFiles/TabFiles';
+import LiveStreams from '../../components/SongComponents/TabLiveStream/TabLiveStream';
 
 // Styles
 import classes from './SongContainer.module.css';
@@ -43,10 +45,10 @@ class SongContainer extends Component {
 					return <Todos songTodos={activeTodos}></Todos>;
 				}
 				case 'files': {
-					return <SongDetails></SongDetails>;
+					return <Files></Files>;
 				}
 				case 'livestream': {
-					return <SongDetails></SongDetails>;
+					return <LiveStreams></LiveStreams>;
 				}
 				default: {
 					return <SongDetails></SongDetails>;
@@ -79,12 +81,6 @@ class SongContainer extends Component {
 					{/* USERS */}
 					<div className={classes.Users}>
 						<div className={classes.IncludedUsers}>
-							{/* <img alt='user' src={require('../../assets/userPic-Bobby.png')} />
-							<img alt='user' src={require('../../assets/userPic-Dave.png')} />
-							<img
-								alt='user'
-								src={require('../../assets/userPic-Franky.png')}
-							/> */}
 							{userPics}
 							<img
 								alt='add user'
@@ -144,7 +140,7 @@ class SongContainer extends Component {
 						/>
 						<p>COMMENTS</p>
 					</div>
-					<div
+					{/* <div
 						className={classes.Tab}
 						onClick={() => {
 							const tab = 'livestream';
@@ -155,7 +151,7 @@ class SongContainer extends Component {
 							alt='livestream'
 						/>
 						<p>LIVE STREAM HISTORY</p>
-					</div>
+					</div> */}
 				</div>
 
 				<div className={classes.TabContentContainer}>{tabContent}</div>

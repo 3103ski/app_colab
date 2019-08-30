@@ -10,7 +10,7 @@ const intitialState = {
 					name: 'Giving Up',
 					status: 'In Progress',
 					songKey: 'Bb Minor',
-					users: ['Franky', 'Bobby'],
+					users: ['Franky', 'Bobby', 'Dave'],
 					engineerPrivs: [`Bobby`],
 					bpm: 124,
 					length: `00:03:52`,

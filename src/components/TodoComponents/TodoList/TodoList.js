@@ -6,20 +6,29 @@ import React from 'react';
 import FullTodoItem from '../FullTodoItem/FullTodoItem';
 import DashTodoItem from '../SmallTodoItem/SmallTodoItem';
 
+// Helper Functions
+import uniqueId from '../../HelperFunctions/uniqueID';
+
 const todoList = props => {
 	let list;
+
+	let idCounter = 0;
 
 	switch (props.size) {
 		case `small`:
 			list = props.todoArr ? (
-				props.todoArr.map(todo => (
-					<DashTodoItem
-						key={todo.location.song}
-						title={todo.title}
-						artist={todo.location.artist}
-						song={todo.location.song}
-						project={todo.location.project}></DashTodoItem>
-				))
+				props.todoArr.map(todo => {
+					const id = uniqueId();
+					idCounter++;
+					return (
+						<DashTodoItem
+							key={id + idCounter}
+							title={todo.title}
+							artist={todo.location.artist}
+							song={todo.location.song}
+							project={todo.location.project}></DashTodoItem>
+					);
+				})
 			) : (
 				<h2>No Recent Todos</h2>
 			);

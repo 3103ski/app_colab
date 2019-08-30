@@ -35,7 +35,7 @@ const Comment = props => {
 	};
 
 	const responses = props.responses
-		? props.responses.map((response, index) => {
+		? props.responses.map(response => {
 				let res = !response.isOtherUser
 					? thisUserComment(response.comment, response.user)
 					: otherUserComment(response.comment, response.user);

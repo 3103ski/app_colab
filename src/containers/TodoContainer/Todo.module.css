@@ -83,9 +83,9 @@
 /* **********TODO LIST CONTAINER */
 
 /* FULL CONTAINER */
-.TodoListContainer {
-	height: calc(100vh - 140px);
-}
+/* .TodoListContainer {
+	height: calc(100vh - 168px);
+} */
 
 /* TITLES */
 .ColTitles {

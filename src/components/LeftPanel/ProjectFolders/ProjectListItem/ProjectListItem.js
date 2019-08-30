@@ -39,7 +39,7 @@ const ProjectItem = props => {
 		<NavLink to={`/projects/${props.projectName}`}>
 			<div
 				className={classes.FolderListItem}
-				activeClassName={classes.active}
+				activeclassname={classes.active}
 				onClick={() => {
 					props.openProject(props.projectName);
 				}}>
