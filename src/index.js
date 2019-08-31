@@ -1,6 +1,9 @@
+// React Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import * as serviceWorker from './serviceWorker';
+
 // Redux & Reducers
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
@@ -12,10 +15,11 @@ import contactReducer from './store/reducers/contactsReducer';
 import projectsReducer from './store/reducers/projectsReducer';
 import appReducer from './store/reducers/appReducer';
 
-//
-import './index.css';
+// Components
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+// Styles
+import './index.css';
 
 const rootReducer = combineReducers({
 	user: userReducer,
