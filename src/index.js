@@ -4,16 +4,16 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
-// Redux & Reducers
+// Redux
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+// Reducers
+import appReducer from './store/reducers/appReducer';
 import userReducer from './store/reducers/userReducer';
 import todoReducer from './store/reducers/todoReducer';
-import messagesReducer from './store/reducers/messagesReducer';
-import fileMngrReducer from './store/reducers/fileMngrReducer';
-import contactReducer from './store/reducers/contactsReducer';
 import projectsReducer from './store/reducers/projectsReducer';
-import appReducer from './store/reducers/appReducer';
 
 // Components
 import App from './App';
@@ -24,14 +24,27 @@ import './index.css';
 const rootReducer = combineReducers({
 	user: userReducer,
 	todo: todoReducer,
-	messages: messagesReducer,
-	files: fileMngrReducer,
-	contacts: contactReducer,
 	projects: projectsReducer,
 	app: appReducer
 });
 
-const store = createStore(rootReducer);
+const logger = store => {
+	return next => {
+		return action => {
+			console.log(`[Middleware] Dispatching: `, action);
+			const result = next(action);
+			console.log(`[Middleware] next state: `, store.getState());
+			return result;
+		};
+	};
+};
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+	rootReducer,
+	composeEnhancers(applyMiddleware(logger, thunk))
+);
 
 ReactDOM.render(
 	<Provider store={store}>

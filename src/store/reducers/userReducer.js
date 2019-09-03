@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions';
+// import * as actionTypes from '../actions/actionTypes';
 
 const intitialState = {
 	userName: 'bjastski',
@@ -23,14 +23,6 @@ const intitialState = {
 
 const userReducer = (state = intitialState, action) => {
 	switch (action.type) {
-		case actionTypes.UPDATE_FIRSTNAME:
-			return {};
-		case actionTypes.UPDATE_LASTNAME:
-			return {};
-		case actionTypes.UPDATE_PASSWORD:
-			return {};
-		case actionTypes.UPDATE_USERNAME:
-			return {};
 		default:
 			return state;
 	}

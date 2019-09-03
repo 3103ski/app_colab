@@ -3,8 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// Redux action strings
-import * as actionTypes from '../../../../store/actions';
+// Redux Actions
+import * as actions from '../../../../store/actions/index';
 
 // Styles
 import classes from './NavLink.module.css';
@@ -77,8 +77,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProp = dispatch => {
 	return {
-		linkWithCenter: () => dispatch({ type: actionTypes.LINK_WITH_CENTER }),
-		linkNoCenter: () => dispatch({ type: actionTypes.LINK_NO_CENTER })
+		linkWithCenter: () => dispatch(actions.linkWithCenter()),
+		linkNoCenter: () => dispatch(actions.linkNoCenter())
 	};
 };
 

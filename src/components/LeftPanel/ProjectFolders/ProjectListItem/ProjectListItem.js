@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // Redux Action Strings
-import * as actionTypes from '../../../../store/actions';
+import * as actions from '../../../../store/actions/index';
 // Functions
 import statusColor from '../../../HelperFunctions/statusColor';
 // Styles
@@ -73,9 +73,8 @@ const mapStateToProps = state => {
 const mapDispatchToState = dispatch => {
 	return {
 		openProject: project => {
-			dispatch({ type: actionTypes.OPEN_PROJECT, projectName: project });
-		},
-		openCenter: () => dispatch({ type: actionTypes.OPEN_CENTER })
+			dispatch(actions.openProject(project));
+		}
 	};
 };
 

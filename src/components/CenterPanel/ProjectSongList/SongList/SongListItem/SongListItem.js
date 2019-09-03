@@ -2,7 +2,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import * as actionTypes from '../../../../../store/actions';
+
+import * as actions from '../../../../../store/actions/index';
 
 // Helper Functions
 import statusColor from '../../../../HelperFunctions/statusColor';
@@ -47,24 +48,15 @@ const song = props => {
 		</NavLink>
 	);
 };
-const mapStateToProps = state => {
-	return {
-		// song: state.app.currSong
-	};
-};
+
 const mapDispatchToProps = dispatch => {
 	return {
 		selectSong: (songName, song, artist) =>
-			dispatch({
-				type: actionTypes.SELECT_SONG,
-				songName: songName,
-				song: song,
-				artist: artist
-			})
+			dispatch(actions.selectSong(songName, song, artist))
 	};
 };
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(song);
