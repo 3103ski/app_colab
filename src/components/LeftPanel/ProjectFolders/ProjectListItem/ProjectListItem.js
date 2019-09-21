@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 // React Imports
 import React from 'react';
 import { connect } from 'react-redux';
@@ -5,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 // Redux Action Strings
 import * as actions from '../../../../store/actions/index';
 // Functions
-import statusColor from '../../../HelperFunctions/statusColor';
+import { statusColor } from '../../../../shared/utility';
 // Styles
 import classes from './ProjectListItem.module.css';
 
@@ -18,34 +19,40 @@ const ProjectItem = props => {
 	let [songsCompleted, totalSongs] = [0, 0];
 
 	// Generates status color dots below project titls
-	let dots = props.songs.map(song => {
-		totalSongs = totalSongs + 1;
-		if (song.status === 'Completed') {
-			songsCompleted = songsCompleted + 1;
-		}
-		const status = statusColor(song.status);
-		return (
-			<div
-				key={song.name}
-				className={classes.Dot}
-				style={{ backgroundColor: status }}
-			/>
-		);
-	});
+	let dots = props.songs
+		? props.songs.map(song => {
+				if (song.projectName === props.projectName) {
+					totalSongs = totalSongs + 1;
+					if (song.status === 'Completed') {
+						songsCompleted = songsCompleted + 1;
+					}
+					const status = statusColor(song.status);
+					return (
+						<div
+							key={song.name}
+							className={classes.Dot}
+							style={{ backgroundColor: status }}
+						/>
+					);
+				}
+		  })
+		: null;
 
-	// console.log(`[ProjectListItem.js] - Active project is:`, props.activeProject);
+	const detailsClasses = !props.add
+		? [classes.ProjectTxt, classes.ItemDetails]
+		: [classes.AddTxt, classes.ItemDetails];
 
-	return (
+	const listItemContent = !props.add ? (
 		<NavLink to={`/projects/${props.projectName}`}>
 			<div
 				className={classes.FolderListItem}
 				activeclassname={classes.active}
 				onClick={() => {
-					props.openProject(props.projectName);
+					props.openProject(props.projectName, props.artist);
 				}}>
 				<div className={classes.FolderLeft}>
 					<img alt='folder' src={require(`../../../../assets/${open}.png`)} />
-					<div className={classes.ItemDetails}>
+					<div className={detailsClasses.join(' ')}>
 						<p>
 							{props.artist} - {props.projectName}
 						</p>
@@ -60,7 +67,25 @@ const ProjectItem = props => {
 				</div>
 			</div>
 		</NavLink>
+	) : (
+		<NavLink to={`/projects/${props.projectName}`}>
+			<div
+				className={classes.FolderListItem}
+				activeclassname={classes.active}
+				onClick={() => {
+					props.addProject();
+				}}>
+				<div className={classes.FolderLeft}>
+					<img alt='folder' src={require(`../../../../assets/addfolder.png`)} />
+					<div className={detailsClasses.join(' ')}>
+						<p>Add Project</p>
+					</div>
+				</div>
+			</div>
+		</NavLink>
 	);
+
+	return listItemContent;
 };
 
 const mapStateToProps = state => {
@@ -72,8 +97,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToState = dispatch => {
 	return {
-		openProject: project => {
-			dispatch(actions.openProject(project));
+		openProject: (project, artist) => {
+			dispatch(actions.openProject(project, artist));
+		},
+		addProject: () => {
+			dispatch(actions.projectFormToggle());
 		}
 	};
 };

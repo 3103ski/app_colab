@@ -1,20 +1,19 @@
-// REACT
+// React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// Helper Functions
-import StatusColor from '../../components/HelperFunctions/statusColor';
-import GetTodos from '../../components/HelperFunctions/getSongTodos';
-import getUserPics from '../../components/HelperFunctions/getIncludedUserPics';
+// Utility Functions
+import { getUserPics } from '../../shared/reactUtility';
+import { statusColor, getSongTodos } from '../../shared/utility';
 
-// Container Components
+// Song Container Components
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
 import Comments from '../../components/SongComponents/TabComments/CommentsTab';
 import Todos from '../../components/SongComponents/TabTodo/TodoTab';
 import Files from '../../components/SongComponents/TabFiles/TabFiles';
 import LiveStreams from '../../components/SongComponents/TabLiveStream/TabLiveStream';
 
-// Styles
+// Styling
 import classes from './SongContainer.module.css';
 
 class SongContainer extends Component {
@@ -22,7 +21,7 @@ class SongContainer extends Component {
 		activeTab: 'details'
 	};
 	render() {
-		const activeTodos = GetTodos(
+		const activeTodos = getSongTodos(
 			this.props.projects,
 			this.props.activeProject,
 			this.props.selectedSong
@@ -57,10 +56,9 @@ class SongContainer extends Component {
 		};
 
 		let tabContent = pickTabContent(this.state.activeTab);
-		const songStatus = this.props.song ? this.props.song.status : 'noneOpen';
-		const statusColor = StatusColor(songStatus);
 
-		// console.log(`[SongContainer.js] - This Song Is Active:`, this.props.song); //TESTING
+		const songStatus = this.props.song ? this.props.song.status : 'noneOpen';
+		const songColor = statusColor(songStatus);
 
 		return (
 			<div className={classes.SongContainer}>
@@ -70,7 +68,7 @@ class SongContainer extends Component {
 						<div className={classes.Status}>
 							<div
 								className={classes.StatusDot}
-								style={{ backgroundColor: statusColor }}></div>
+								style={{ backgroundColor: songColor }}></div>
 							<select>
 								<option>New Song</option>
 								<option>In Progress</option>
@@ -140,18 +138,6 @@ class SongContainer extends Component {
 						/>
 						<p>COMMENTS</p>
 					</div>
-					{/* <div
-						className={classes.Tab}
-						onClick={() => {
-							const tab = 'livestream';
-							this.setState({ activeTab: tab });
-						}}>
-						<img
-							src={require('../../assets/songTabLive.png')}
-							alt='livestream'
-						/>
-						<p>LIVE STREAM HISTORY</p>
-					</div> */}
 				</div>
 
 				<div className={classes.TabContentContainer}>{tabContent}</div>

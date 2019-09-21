@@ -21,9 +21,22 @@ export const selectSong = (songName, song, artist) => {
 	};
 };
 
-export const openProject = project => {
+export const openProject = (project, artist) => {
 	return {
 		type: actionTypes.OPEN_PROJECT,
-		projectName: project
+		projectName: project,
+		currArtist: artist
+	};
+};
+
+export const projectFormToggle = () => {
+	return {
+		type: actionTypes.PROJECT_FORM_TOGGLE
+	};
+};
+
+export const closeModal = () => {
+	return {
+		type: actionTypes.CLOSE_MODAL
 	};
 };

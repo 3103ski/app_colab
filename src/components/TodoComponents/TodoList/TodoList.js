@@ -7,22 +7,20 @@ import FullTodoItem from '../FullTodoItem/FullTodoItem';
 import DashTodoItem from '../SmallTodoItem/SmallTodoItem';
 
 // Helper Functions
-import uniqueId from '../../HelperFunctions/uniqueID';
+import { randomId } from '../../../shared/utility';
 
 const todoList = props => {
 	let list;
-
-	let idCounter = 0;
 
 	switch (props.size) {
 		case `small`:
 			list = props.todoArr ? (
 				props.todoArr.map(todo => {
-					const id = uniqueId();
-					idCounter++;
+					const id = randomId();
 					return (
 						<DashTodoItem
-							key={id + idCounter}
+							key={id}
+							id={id}
 							title={todo.title}
 							artist={todo.location.artist}
 							song={todo.location.song}
@@ -35,17 +33,21 @@ const todoList = props => {
 			return list;
 		case `full`:
 			list = props.todoArr ? (
-				props.todoArr.map(todo => (
-					<FullTodoItem
-						key={todo.title}
-						completed={todo.completed}
-						title={todo.title}
-						artist={todo.location.artist}
-						project={todo.location.project}
-						song={todo.location.song}
-						due={todo.dueDate}
-					/>
-				))
+				props.todoArr.map(todo => {
+					const id = randomId();
+					return (
+						<FullTodoItem
+							key={id}
+							id={id}
+							completed={todo.completed}
+							title={todo.title}
+							artist={todo.location.artist}
+							project={todo.location.project}
+							song={todo.location.song}
+							due={todo.dueDate}
+						/>
+					);
+				})
 			) : (
 				<h2>You don't have any todos</h2>
 			);

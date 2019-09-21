@@ -2,21 +2,18 @@
 
 const intitialState = {
 	userName: 'bjastski',
-	password: 'password',
-	firstName: 'Bryan',
+	firstName: 'Bobby',
 	lastName: 'Flopitron',
 	colaberators: [
 		{
-			name: 'Flizzy',
-			profilePic: '1'
+			userName: 'Franky',
+			firstName: 'Franky',
+			userId: ''
 		},
 		{
-			name: 'Blaster',
-			profilePic: '2'
-		},
-		{
-			name: 'Crowly',
-			profilePic: '3'
+			userName: 'BearTops',
+			firstName: 'Dave',
+			userId: ''
 		}
 	]
 };

@@ -1,0 +1,16 @@
+.Modal {
+	position: fixed;
+	z-index: 500;
+	box-sizing: border-box;
+	transition: all 0.3s ease-out;
+}
+
+.ModalContainer {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	left: 0;
+}

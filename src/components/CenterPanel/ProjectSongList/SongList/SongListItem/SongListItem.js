@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 import * as actions from '../../../../../store/actions/index';
 
 // Helper Functions
-import statusColor from '../../../../HelperFunctions/statusColor';
-import getUserPics from '../../../../HelperFunctions/getIncludedUserPics';
+import { statusColor } from '../../../../../shared/utility';
+import { getUserPics } from '../../../../../shared/reactUtility';
 
 // Styles
 import classes from './SongListItem.module.css';

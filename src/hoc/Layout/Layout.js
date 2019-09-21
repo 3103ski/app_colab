@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Aux from '../Aux/Aux';
 import MainNave from '../../components/LeftPanel/LeftPanel';
@@ -12,14 +13,25 @@ class Layout extends Component {
 	};
 
 	render() {
-		return (
-			<Aux>
+		const userNav = this.props.isLoggedIn ? (
+			<div className={classes.MenuContainer}>
 				<MainNave></MainNave>
 				<CenterPanel></CenterPanel>
+			</div>
+		) : null;
+		return (
+			<Aux>
+				{userNav}
 				<main className={classes.Content}>{this.props.children}</main>
 			</Aux>
 		);
 	}
 }
 
-export default Layout;
+const mapStateToProps = state => {
+	return {
+		isLoggedIn: state.auth.token ? true : false
+	};
+};
+
+export default connect(mapStateToProps)(Layout);

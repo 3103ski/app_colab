@@ -4,7 +4,7 @@
 	transition: 0.5s;
 	padding: 30px 0px 0px 0px;
 	box-sizing: border-box;
-	/* min-width: 70px; */
+	height: 100%;
 }
 
 .ToggleIcon {

@@ -2,3 +2,7 @@ main {
 	width: 100%;
 	overflow-x: scroll;
 }
+
+.MenuContainer {
+	display: flex;
+}

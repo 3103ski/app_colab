@@ -31,7 +31,14 @@
 .ItemDetails p {
 	margin: 0px;
 	font-size: 0.8rem;
+}
+
+.ProjectTxt {
 	color: white;
+}
+
+.AddTxt {
+	color: #ffffff29;
 }
 
 .StatusDots {

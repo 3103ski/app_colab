@@ -2,6 +2,11 @@ export {
 	selectSong,
 	linkNoCenter,
 	linkWithCenter,
-	// openCenter,
-	openProject
+	openProject,
+	projectFormToggle,
+	closeModal
 } from './appReducer';
+
+export { addProject } from './projectsReducer';
+
+export { auth, logout, setAuthRedirectPath, authCheckState } from './auth';

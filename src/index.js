@@ -14,6 +14,7 @@ import appReducer from './store/reducers/appReducer';
 import userReducer from './store/reducers/userReducer';
 import todoReducer from './store/reducers/todoReducer';
 import projectsReducer from './store/reducers/projectsReducer';
+import authReducer from './store/reducers/auth';
 
 // Components
 import App from './App';
@@ -25,15 +26,14 @@ const rootReducer = combineReducers({
 	user: userReducer,
 	todo: todoReducer,
 	projects: projectsReducer,
-	app: appReducer
+	app: appReducer,
+	auth: authReducer
 });
 
 const logger = store => {
 	return next => {
 		return action => {
-			console.log(`[Middleware] Dispatching: `, action);
 			const result = next(action);
-			console.log(`[Middleware] next state: `, store.getState());
 			return result;
 		};
 	};
