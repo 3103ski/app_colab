@@ -1,6 +1,7 @@
 // React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 // Helper functions
 // import genId from '../../components/HelperFunctions/uniqueID';

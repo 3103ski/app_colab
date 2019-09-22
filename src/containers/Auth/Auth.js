@@ -49,10 +49,12 @@ class Auth extends Component {
 				touched: false
 			}
 		},
-		isSignup: true
+		isSignup: false
 	};
 
-	componentDidMount() {}
+	componentDidMount() {
+		this.props.resetCenterNav();
+	}
 
 	inputChangedHandler = (event, controlName) => {
 		const updatedControls = updateObject(this.state.controls, {
@@ -156,7 +158,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onAuth: (email, password, isSignup) =>
 			dispatch(actions.auth(email, password, isSignup)),
-		onSetRedirectPath: path => dispatch(actions.setAuthRedirectPath(path))
+		onSetRedirectPath: path => dispatch(actions.setAuthRedirectPath(path)),
+		resetCenterNav: () => dispatch(actions.linkNoCenter())
 	};
 };
 

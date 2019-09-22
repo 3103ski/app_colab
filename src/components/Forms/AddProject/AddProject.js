@@ -83,7 +83,7 @@ class AddProject extends Component {
 			songs: this.state.songs,
 			usersWithAccess: this.state.usersWithAccess
 		};
-		this.props.addProject(project);
+		this.props.addProject(project, this.props.token);
 		this.props.closeModal();
 	};
 
@@ -124,13 +124,15 @@ class AddProject extends Component {
 
 const mapStateToProps = state => {
 	return {
-		userId: state.auth.userId
+		userId: state.auth.userId,
+		token: state.auth.token
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addProject: project => dispatch(actions.addProject(project)),
+		addProject: (project, token) =>
+			dispatch(actions.addProject(project, token)),
 		closeModal: () => dispatch(actions.closeModal())
 	};
 };

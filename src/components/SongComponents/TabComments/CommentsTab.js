@@ -21,7 +21,9 @@ class Comments extends Component {
 		const songFilter = project.songs.filter(song => song.name === currSong);
 		const song = songFilter[0];
 
-		const comments = song.comments[currPlaylist];
+		const comments = song.comments[currPlaylist]
+			? song.comments[currPlaylist]
+			: null;
 
 		return comments;
 	};

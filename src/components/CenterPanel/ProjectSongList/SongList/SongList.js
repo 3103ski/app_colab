@@ -1,10 +1,14 @@
-// REACT
+// React Imports
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../../../store/actions/index';
+
 // Components
 import SongListItem from './SongListItem/SongListItem';
+
 // HOCs
 import Aux from '../../../../hoc/Aux/Aux';
+
 // Styles
 import classes from './SongList.module.css';
 
@@ -34,7 +38,7 @@ const SongList = props => {
 					<h4>Add User To All Songs</h4>
 				</div>
 				{currProjectSongs}
-				<div className={classes.AddSongToProject}>
+				<div onClick={props.addSong} className={classes.AddSongToProject}>
 					<img alt='add song' src={require('../../../../assets/add.png')} />
 					<p>Add Song To Project</p>
 				</div>
@@ -47,11 +51,16 @@ const mapStateToProps = state => {
 	return {
 		projects: state.projects.projects,
 		songs: state.projects.songs,
-		activeProject: state.app.activeProject
+		activeProject: state.app.activeProject,
+		token: state.auth.token,
+		userId: state.auth.userId
 	};
 };
 const mapDispatchToState = dispatch => {
-	return {};
+	return {
+		addSong: () => dispatch(actions.songFormToggle()),
+		songsInit: (token, userId) => dispatch(actions.songsInit(token, userId))
+	};
 };
 export default connect(
 	mapStateToProps,

@@ -1,10 +1,11 @@
 // React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import * as actions from '../../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 
 // Components
 import ProjectItem from './ProjectListItem/ProjectListItem';
+import Spinner from '../../UI/Spinner/Spinner';
 
 // HOCs
 import Aux from '../../../hoc/Aux/Aux';
@@ -13,17 +14,28 @@ import Aux from '../../../hoc/Aux/Aux';
 import classes from './ProjectFolders.module.css';
 
 class ProjectFolders extends Component {
+	componentDidMount() {
+		this.props.getProjects(this.props.auth.token, this.props.auth.userId);
+		this.props.getSongs(this.props.auth.token, this.props.auth.userId);
+	}
 	render() {
 		// Returns Project Nav Items
-		const projects = this.props.projects.map(project => {
-			return (
-				<ProjectItem
-					key={project.projectName}
-					songs={this.props.songs}
-					artist={project.artist}
-					projectName={project.projectName}></ProjectItem>
-			);
-		});
+		let projects = null;
+		if (this.props.projects) {
+			projects = this.props.projects.map(project => {
+				return (
+					<ProjectItem
+						key={project.projectName}
+						songs={this.props.songs}
+						artist={project.artist}
+						projectName={project.projectName}></ProjectItem>
+				);
+			});
+		}
+
+		if (this.props.loading) {
+			projects = <Spinner></Spinner>;
+		}
 
 		return (
 			// Project Navigation Container
@@ -44,12 +56,18 @@ class ProjectFolders extends Component {
 const mapStateToProps = state => {
 	return {
 		projects: state.projects.projects,
-		songs: state.projects.songs
+		songs: state.projects.songs,
+		auth: state.auth,
+		loading: state.projects.loading
 	};
 };
 
 const mapDispatchToState = dispatch => {
-	return {};
+	return {
+		getProjects: (token, userId) =>
+			dispatch(actions.projectsInit(token, userId)),
+		getSongs: (token, userId) => dispatch(actions.songsInit(token, userId))
+	};
 };
 
 export default connect(

@@ -14,7 +14,11 @@ export const getUserPics = users => {
 					<img
 						key={index}
 						alt='user'
-						src={require(`../assets/userPic-${userName}.png`)}
+						src={
+							require(`../assets/userPic-${userName}.png`)
+								? require(`../assets/userPic-${userName}.png`)
+								: require(`../assets/userPic-Franky.png`)
+						}
 					/>
 				);
 		  })

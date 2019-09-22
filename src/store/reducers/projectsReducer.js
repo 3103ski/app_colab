@@ -26,8 +26,8 @@ const intitialState = {
 			bpm: 160,
 			length: `00:06:05`,
 			status: 'New Song',
-			users: ['Dave', 'Bobby'],
-			engineerPrivs: [`Bobby`],
+			users: ['Dave', 'MhwAMHFv7rRHxW5AMmYHQUCnzgY2'],
+			engineerPrivs: [`MhwAMHFv7rRHxW5AMmYHQUCnzgY2`],
 			reference: 'Bear Hands',
 			notes: `I want the reverb on this song to sound like I'm in somebody's kitchen. You know, like I'm going through their food. `,
 			comments: {
@@ -35,7 +35,7 @@ const intitialState = {
 					{
 						comment: `Do you mind if I take out the vocals for this part? `,
 						timeStamp: `00:02:14`,
-						userName: `Bobby`,
+						userName: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 						playlist: `HideYourFood_mix-1.mp3`,
 						hasBeenSeen: false,
 						isOtherUser: false,
@@ -49,7 +49,7 @@ const intitialState = {
 							{
 								comment: `Great, I think it will work better with how long the song is.`,
 								isOtherUser: false,
-								user: `Bobby`,
+								user: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 								hasBeenSeen: true
 							}
 						]
@@ -59,7 +59,7 @@ const intitialState = {
 					{
 						comment: `I think we should end the song around here?`,
 						timeStamp: `00:04:54`,
-						userName: `Bobby`,
+						userName: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 						playlist: `HideYourFood_mix-2.mp3`,
 						hasBeenSeen: false,
 						isOtherUser: false,
@@ -73,7 +73,7 @@ const intitialState = {
 							{
 								comment: `Exactly.`,
 								isOtherUser: false,
-								user: `Bobby`,
+								user: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 								hasBeenSeen: true
 							},
 							{
@@ -136,8 +136,8 @@ const intitialState = {
 			bpm: 135,
 			length: `00:02:33`,
 			status: 'Completed',
-			users: ['Franky', 'Bobby'],
-			engineerPrivs: [`Bobby`],
+			users: ['Franky', 'MhwAMHFv7rRHxW5AMmYHQUCnzgY2'],
+			engineerPrivs: [`MhwAMHFv7rRHxW5AMmYHQUCnzgY2`],
 			reference: 'Childish Gambino',
 			notes: `I need the vocals in this one to be as airy as the breeze I'd feel if I were atop an actual tree. Like a redwood, man.`,
 			comments: {
@@ -153,7 +153,7 @@ const intitialState = {
 							{
 								comment: `Yeah, when I finished it I was like whoah.`,
 								isOtherUser: false,
-								user: `Bobby`,
+								user: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 								hasBeenSeen: false
 							}
 						]
@@ -208,8 +208,8 @@ const intitialState = {
 			projectName: `Do It Again`,
 			status: 'In Progress',
 			songKey: 'Bb Minor',
-			users: ['Franky', 'Bobby', 'Dave'],
-			engineerPrivs: [`Bobby`],
+			users: ['Franky', 'MhwAMHFv7rRHxW5AMmYHQUCnzgY2', 'Dave'],
+			engineerPrivs: [`MhwAMHFv7rRHxW5AMmYHQUCnzgY2`],
 			bpm: 124,
 			length: `00:03:52`,
 			reference: 'Father John Misty',
@@ -228,7 +228,7 @@ const intitialState = {
 							{
 								comment: `Yeah, something got messed up when I exported`,
 								isOtherUser: false,
-								user: `Bobby`,
+								user: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 								hasBeenSeen: true
 							}
 						]
@@ -236,7 +236,7 @@ const intitialState = {
 					{
 						comment: `What if We got rid of this shaker?`,
 						timeStamp: `00:02:14`,
-						userName: `Bobby`,
+						userName: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 						playlist: `givingUp_mix-1.mp3`,
 						hasBeenSeen: true,
 						isOtherUser: false,
@@ -262,7 +262,7 @@ const intitialState = {
 							{
 								comment: `like how soft?`,
 								isOtherUser: false,
-								user: `Bobby`,
+								user: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 								hasBeenSeen: false
 							},
 							{
@@ -323,8 +323,8 @@ const intitialState = {
 			projectName: `Do It Again`,
 			status: 'Revisions Requested',
 			songKey: 'Bb Major',
-			users: ['Franky', 'Bobby'],
-			engineerPrivs: [`Bobby`],
+			users: ['Franky', 'MhwAMHFv7rRHxW5AMmYHQUCnzgY2'],
+			engineerPrivs: [`MhwAMHFv7rRHxW5AMmYHQUCnzgY2`],
 			bpm: 120,
 			length: `00:03:24`,
 			reference: 'Logic',
@@ -334,7 +334,7 @@ const intitialState = {
 					{
 						comment: `Why does he sound like screeching metal?`,
 						timeStamp: `00:01:08`,
-						userName: `Bobby`,
+						userName: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 						playlist: `WeFly_mix-1.mp3`,
 						hasBeenSeen: true,
 						isOtherUser: false,
@@ -352,7 +352,7 @@ const intitialState = {
 					{
 						comment: `How do you want this to end?`,
 						timeStamp: `00:03:11`,
-						userName: `Bobby`,
+						userName: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 						playlist: `WeFly_mix-2.mp3`,
 						hasBeenSeen: true,
 						isOtherUser: false,
@@ -370,7 +370,7 @@ const intitialState = {
 					{
 						comment: `I decided to include some engine noises right at the end`,
 						timeStamp: `00:03:30`,
-						userName: `Bobby`,
+						userName: `MhwAMHFv7rRHxW5AMmYHQUCnzgY2`,
 						playlist: `WeFly_mix-3.mp3`,
 						hasBeenSeen: false,
 						isOtherUser: true,
@@ -428,25 +428,67 @@ const intitialState = {
 			]
 		}
 	],
-	allSongTodos: []
+	allSongTodos: [],
+	loading: false,
+	error: null
 };
+
+// Add Projects
 
 const addProject = (state, action) => {
 	return updateObject(state, {
-		projects: [...state.projects, action.newProject],
-		isAddingProject: false
+		projects: [...state.projects, action.newProject]
 	});
 };
 
-const addSong = (state, action) => {
-	const projectArr = state.projects.map(project => {
-		if (project.projectName === action.projectName) {
-			project.songs.push(action.song);
-		}
-		return project;
-	});
+// Fetch Projects
+const fetchProjectsStart = (state, action) => {
 	return updateObject(state, {
-		projects: projectArr
+		loading: true
+	});
+};
+
+const fetchProjectsSuccess = (state, action) => {
+	return updateObject(state, {
+		loading: false,
+		projects: action.projects
+	});
+};
+
+const fetchProjectsFail = (state, action) => {
+	return updateObject(state, {
+		loading: false,
+		error: action.error
+	});
+};
+
+// Add Songs
+
+const addSong = (state, action) => {
+	return updateObject(state, {
+		songs: [...state.songs, action.newSong]
+	});
+};
+
+// Fetch Songs
+
+const fetchSongsStart = (state, action) => {
+	return updateObject(state, {
+		loading: true
+	});
+};
+
+const fetchSongsSuccess = (state, action) => {
+	return updateObject(state, {
+		loading: false,
+		songs: action.songs
+	});
+};
+
+const fetchSongsFail = (state, action) => {
+	return updateObject(state, {
+		loading: false,
+		error: action.error
 	});
 };
 
@@ -456,26 +498,21 @@ const projectsReducer = (state = intitialState, action) => {
 			return addProject(state, action);
 		case actionTypes.ADD_SONG:
 			return addSong(state, action);
+		case actionTypes.FETCH_PROJECTS_START:
+			return fetchProjectsStart(state, action);
+		case actionTypes.FETCH_PROJECTS_FAIL:
+			return fetchProjectsFail(state, action);
+		case actionTypes.FETCH_PROJECTS_SUCCESS:
+			return fetchProjectsSuccess(state, action);
+		case actionTypes.FETCH_SONGS_START:
+			return fetchSongsStart(state, action);
+		case actionTypes.FETCH_SONGS_FAIL:
+			return fetchSongsFail(state, action);
+		case actionTypes.FETCH_SONGS_SUCCESS:
+			return fetchSongsSuccess(state, action);
 		default:
 			return state;
 	}
 };
-
-// PUSHES ALL SONG TODOS TO REDUCER STATE
-// const collectAllSongTodos = () => {
-// 	let allSongs = [];
-// 	const fillSongs = () => {
-// 		intitialState.projects.map(project => {
-// 			return project.songs.map(song => allSongs.push(song));
-// 		});
-// 	};
-// 	fillSongs();
-// 	let allTodos = [];
-// 	allSongs.map(song => {
-// 		return song.todos.map(todo => intitialState.allSongTodos.push(todo));
-// 	});
-// 	return allTodos;
-// };
-// collectAllSongTodos();
 
 export default projectsReducer;

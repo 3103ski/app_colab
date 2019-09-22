@@ -4,9 +4,15 @@ export {
 	linkWithCenter,
 	openProject,
 	projectFormToggle,
+	songFormToggle,
 	closeModal
 } from './appReducer';
 
-export { addProject } from './projectsReducer';
+export {
+	addProject,
+	addSong,
+	projectsInit,
+	songsInit
+} from './projectsReducer';
 
 export { auth, logout, setAuthRedirectPath, authCheckState } from './auth';

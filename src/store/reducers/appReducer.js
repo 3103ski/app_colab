@@ -51,7 +51,7 @@ const appReducer = (state = intitialState, action) => {
 		case actionTypes.SONG_FORM_TOGGLE:
 			return updateObject(state, {
 				modal: state.modal ? false : true,
-				isAddingProject: state.isAddingSong ? false : true
+				isAddingSong: state.isAddingSong ? false : true
 			});
 		case actionTypes.CLOSE_MODAL:
 			return updateObject(state, {

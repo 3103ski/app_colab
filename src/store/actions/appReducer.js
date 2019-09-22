@@ -35,6 +35,12 @@ export const projectFormToggle = () => {
 	};
 };
 
+export const songFormToggle = () => {
+	return {
+		type: actionTypes.SONG_FORM_TOGGLE
+	};
+};
+
 export const closeModal = () => {
 	return {
 		type: actionTypes.CLOSE_MODAL

@@ -27,6 +27,8 @@
 
 .FolderList {
 	padding: 0px;
+	max-height: 290px;
+	overflow: scroll;
 }
 
 /* Folder List Items *********** */
