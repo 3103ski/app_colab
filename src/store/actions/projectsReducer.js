@@ -85,6 +85,7 @@ export const songsInit = (token, userId) => {
 					});
 				}
 				dispatch(fetchSongsSuccess(fetchedSongs));
+				// console.log(fetchedSongs);
 			})
 			.catch(error => {
 				dispatch(fetchSongsFail(error));

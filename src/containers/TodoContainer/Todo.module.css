@@ -1,8 +1,8 @@
 /* ********************MAIN CONTAINER */
 .Container {
-	overflow: scroll;
+	overflow: hidden;
 	height: 100vh;
-	min-width: 880px;
+	min-width: 700px;
 }
 
 /* ********** SEARCH BAR AND TOP RIGHT ICONS */
@@ -51,7 +51,7 @@
 }
 .FilterBtn h2 {
 	margin: 0;
-	font-size: 1.1rem;
+	font-size: 0.8rem;
 	font-weight: 100;
 	color: #bdbdbd;
 }

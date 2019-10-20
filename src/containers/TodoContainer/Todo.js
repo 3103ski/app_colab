@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // Components
 import TodoListContainer from '../../components/TodoComponents/TodoListContainer/TodoListContainer';
 import TodoList from '../../components/TodoComponents/TodoList/TodoList';
+// import RightSlider from '../../components/RightPanel/RightPanel';
 
 // Styles
 import classes from './Todo.module.css';
@@ -12,7 +13,9 @@ import classes from './Todo.module.css';
 class GlobalTodoPage extends Component {
 	state = {};
 	render() {
-		const allTodos = [...this.props.todos, ...this.props.songTodos];
+		const allTodos = this.props.todos
+			? [...this.props.todos, ...this.props.songTodos]
+			: [];
 
 		return (
 			<div className={classes.Container}>
@@ -50,6 +53,7 @@ class GlobalTodoPage extends Component {
 				<TodoListContainer className={classes.TodoListContainer}>
 					<TodoList todoArr={allTodos} size='full' />
 				</TodoListContainer>
+				{/* <RightSlider></RightSlider> */}
 			</div>
 		);
 	}

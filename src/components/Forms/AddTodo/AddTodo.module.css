@@ -1,0 +1,6 @@
+.FormContainer {
+	width: 70vw;
+	height: 75vh;
+	background-color: white;
+	z-index: 200;
+}

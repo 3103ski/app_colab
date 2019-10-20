@@ -1,21 +1,30 @@
 // React Imports
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 // Style
 import classes from './FullTodoItem.module.css';
 
 const TodoItem = props => {
 	// Determines if todo item should be checked or not
-	let todoStatus = props.completed ? `todo-done` : `todo-undone`;
+	let todoStatus = props.complete ? `todo-done` : `todo-undone`;
+
+	let todoId = props.id;
+
+	const completeToggle = () => {
+		props.completeToggle(todoId, props.todo, props.token);
+	};
 
 	return (
-		<div className={classes.TodoItem}>
+		<div className={classes.TodoItem} onClick={() => props.setTodo(todoId)}>
+			<img
+				src={require(`../../../assets/${todoStatus}.png`)}
+				alt='complete'
+				className={classes.Completed}
+				onClick={completeToggle}
+			/>
 			<div className={classes.TodoName}>
-				<img
-					src={require(`../../../assets/${todoStatus}.png`)}
-					alt='complete'
-					className={classes.Completed}
-				/>
 				<p>{props.title}</p>
 			</div>
 			<div className={classes.TodoLocation}>
@@ -35,4 +44,15 @@ const TodoItem = props => {
 	);
 };
 
-export default TodoItem;
+const mapDispatchToState = dispatch => {
+	return {
+		setTodo: id => dispatch(actions.selectTodo(id)),
+		completeToggle: (id, todo, token) =>
+			dispatch(actions.completeToggle(id, todo, token))
+	};
+};
+
+export default connect(
+	null,
+	mapDispatchToState
+)(TodoItem);

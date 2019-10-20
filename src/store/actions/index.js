@@ -5,8 +5,14 @@ export {
 	openProject,
 	projectFormToggle,
 	songFormToggle,
-	closeModal
+	closeModal,
+	rightPanel,
+	todoForm,
+	selectTodo,
+	closeTodo
 } from './appReducer';
+
+export { fetchTodos, addTodo, completeToggle } from './todoReducer';
 
 export {
 	addProject,

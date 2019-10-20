@@ -3,6 +3,12 @@
 	align-items: center;
 	margin: 0px 15px;
 	border-bottom: solid 1px #b6b6b6;
+	position: relative;
+	z-index: 400;
+}
+
+.TodoItem:hover {
+	cursor: pointer;
 }
 
 .TodoItem p {
@@ -16,6 +22,8 @@
 .Completed {
 	width: 20px;
 	margin: 0px 8px;
+	position: relative;
+	z-index: 401;
 }
 
 .TodoName {

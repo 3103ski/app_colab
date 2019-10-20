@@ -4,25 +4,23 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 // Utility Functions
-import { updateObject, checkValidity } from '../../../shared/utility';
+import { updateObject, checkValidity, randomId } from '../../../shared/utility';
 
 // Components
 import Input from '../../UI/Input/Input';
 
 // Styles
-import classes from './AddProject.module.css';
+import classes from './AddTodo.module.css';
 
-class AddProject extends Component {
+class AddTodo extends Component {
 	state = {
 		userId: this.props.userId ? this.props.userId : null,
-		songs: [],
-		usersWithAccess: null,
 		entryForm: {
-			artist: {
+			todoTitle: {
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',
-					placeholder: 'Project Artist'
+					placeholder: 'Enter Todo'
 				},
 				value: '',
 				validation: {
@@ -31,15 +29,28 @@ class AddProject extends Component {
 				valid: false,
 				touched: false
 			},
-			projectName: {
+			notes: {
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',
-					placeholder: 'Project Name'
+					placeholder: 'Notes'
 				},
 				value: '',
 				validation: {
-					required: true
+					required: false
+				},
+				valid: false,
+				touched: false
+			},
+			dueDate: {
+				elementType: 'input',
+				elementConfig: {
+					type: 'text',
+					placeholder: 'Due Date'
+				},
+				value: '',
+				validation: {
+					required: false
 				},
 				valid: false,
 				touched: false
@@ -63,16 +74,26 @@ class AddProject extends Component {
 
 	submitHandler = event => {
 		event.preventDefault();
-		const project = {
+		const form = this.state.entryForm;
+		const todo = {
 			userId: this.props.userId,
-			artist: this.state.entryForm.artist.value,
-			projectName: this.state.entryForm.projectName.value,
-			engineer: [this.props.userId],
+			song: this.props.currSong ? this.props.currSong : null,
+			artist: this.props.currArtist ? this.props.currArtist : null,
+			projectName: this.props.activeProject ? this.props.activeProject : null,
+			title: form.todoTitle.value,
+			notes: form.notes.value ? form.notes.value : null,
+			dueDate: form.dueDate.value ? form.dueDate.value : null,
 			users: [this.props.userId],
-			usersWithAccess: this.state.usersWithAccess
+			engineerPrivs: [this.props.userId],
+			complete: false,
+			todoId: randomId(),
+			myDay: '',
+			myTomorrow: '',
+			myYesterday: '',
+			archived: false
 		};
-		this.props.addProject(project, this.props.token);
-		this.props.closeModal();
+		this.props.addTodo(todo, this.props.token);
+		this.props.toggleModal();
 	};
 
 	render() {
@@ -100,10 +121,10 @@ class AddProject extends Component {
 		));
 		return (
 			<div className={classes.FormContainer}>
-				<h1>Add Project</h1>
+				<h1>Add Todo</h1>
 				<form onSubmit={this.submitHandler}>
 					{form}
-					<button>Add Project</button>
+					<button>Add Todo</button>
 				</form>
 			</div>
 		);
@@ -113,19 +134,22 @@ class AddProject extends Component {
 const mapStateToProps = state => {
 	return {
 		userId: state.auth.userId,
-		token: state.auth.token
+		token: state.auth.token,
+		activeProject: state.app.activeProject,
+		activeSong: state.app.activeSong,
+		currArtist: state.app.currArtist,
+		currSong: state.app.selectedSong
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addProject: (project, token) =>
-			dispatch(actions.addProject(project, token)),
-		closeModal: () => dispatch(actions.closeModal())
+		addTodo: (todo, token) => dispatch(actions.addTodo(todo, token)),
+		toggleModal: () => dispatch(actions.closeModal())
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(AddProject);
+)(AddTodo);

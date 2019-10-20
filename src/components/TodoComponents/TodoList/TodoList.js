@@ -1,60 +1,88 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 // React Imports
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 // Components
 import FullTodoItem from '../FullTodoItem/FullTodoItem';
 import DashTodoItem from '../SmallTodoItem/SmallTodoItem';
 
 // Helper Functions
-import { randomId } from '../../../shared/utility';
+// import { randomId } from '../../../shared/utility';
 
-const todoList = props => {
-	let list;
+class TodoList extends Component {
+	state = {};
 
-	switch (props.size) {
-		case `small`:
-			list = props.todoArr ? (
-				props.todoArr.map(todo => {
-					const id = randomId();
-					return (
-						<DashTodoItem
-							key={id}
-							id={id}
-							title={todo.title}
-							artist={todo.location.artist}
-							song={todo.location.song}
-							project={todo.location.project}></DashTodoItem>
-					);
-				})
-			) : (
-				<h2>No Recent Todos</h2>
-			);
-			return list;
-		case `full`:
-			list = props.todoArr ? (
-				props.todoArr.map(todo => {
-					const id = randomId();
-					return (
-						<FullTodoItem
-							key={id}
-							id={id}
-							completed={todo.completed}
-							title={todo.title}
-							artist={todo.location.artist}
-							project={todo.location.project}
-							song={todo.location.song}
-							due={todo.dueDate}
-						/>
-					);
-				})
-			) : (
-				<h2>You don't have any todos</h2>
-			);
-			return list;
-		default:
-			return list;
+	componentDidMount() {
+		this.props.fetchTodos(this.props.auth.token, this.props.auth.userId);
 	}
+
+	render() {
+		let list;
+		switch (this.props.size) {
+			case `small`:
+				list =
+					this.props.todoArr.length > 0 ? (
+						this.props.todoArr.map(todo => {
+							// const id = randomId();
+							return (
+								<DashTodoItem
+									key={todo.todoId}
+									id={todo.todoId}
+									title={todo.title}
+									artist={todo.artist}
+									song={todo.song}
+									project={todo.project}></DashTodoItem>
+							);
+						})
+					) : (
+						<h2>No Recent Todos</h2>
+					);
+				return list;
+			case `full`:
+				list =
+					this.props.todoArr.length > 0 ? (
+						this.props.todoArr.map(todo => {
+							// const id = randomId();
+							return (
+								<FullTodoItem
+									todo={todo}
+									token={this.props.auth.token}
+									key={todo.todoId}
+									id={todo.todoId}
+									complete={todo.complete}
+									title={todo.title}
+									artist={todo.artist}
+									project={todo.project}
+									song={todo.song}
+									due={todo.dueDate}
+								/>
+							);
+						})
+					) : (
+						<h2>You don't have any todos</h2>
+					);
+				return list;
+			default:
+				return list;
+		}
+	}
+}
+
+const mapStateToProps = state => {
+	return {
+		auth: state.auth
+	};
 };
 
-export default todoList;
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchTodos: (token, userId) => dispatch(actions.fetchTodos(token, userId))
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TodoList);

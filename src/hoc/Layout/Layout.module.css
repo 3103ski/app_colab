@@ -1,8 +1,18 @@
 main {
-	width: 100%;
 	overflow-x: scroll;
+	transition: margin-right 0.5s;
+}
+
+.SignedIn {
+	width: calc(100% - 280px);
+}
+
+.SignedOut {
+	width: 100%;
 }
 
 .MenuContainer {
 	display: flex;
+	position: relative;
+	z-index: 500;
 }

@@ -1,10 +1,16 @@
+// React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// HOCs
 import Aux from '../Aux/Aux';
-import MainNave from '../../components/LeftPanel/LeftPanel';
-import CenterPanel from '../../components/CenterPanel/CenterPanel';
 
+// Components
+import MainNav from '../../components/LeftPanel/LeftPanel';
+import CenterPanel from '../../components/CenterPanel/CenterPanel';
+import RightPanel from '../../components/RightPanel/RightPanel';
+
+// Style
 import classes from './Layout.module.css';
 
 class Layout extends Component {
@@ -15,14 +21,20 @@ class Layout extends Component {
 	render() {
 		const userNav = this.props.isLoggedIn ? (
 			<div className={classes.MenuContainer}>
-				<MainNave></MainNave>
+				<MainNav></MainNav>
 				<CenterPanel></CenterPanel>
 			</div>
 		) : null;
 		return (
 			<Aux>
 				{userNav}
-				<main className={classes.Content}>{this.props.children}</main>
+				<main
+					className={
+						this.props.isLoggedIn ? classes.SignedIn : classes.SignedOut
+					}>
+					{this.props.children}
+				</main>
+				<RightPanel></RightPanel>
 			</Aux>
 		);
 	}

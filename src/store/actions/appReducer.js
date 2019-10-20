@@ -12,6 +12,25 @@ export const linkWithCenter = () => {
 	};
 };
 
+export const rightPanel = () => {
+	return {
+		type: actionTypes.RIGHT_PANEL_TOGGLE
+	};
+};
+
+export const selectTodo = id => {
+	return {
+		type: actionTypes.SELECT_TODO,
+		todoId: id
+	};
+};
+
+export const todoForm = () => {
+	return {
+		type: actionTypes.TODO_FORM
+	};
+};
+
 export const selectSong = (songName, song, artist) => {
 	return {
 		type: actionTypes.SELECT_SONG,
@@ -44,5 +63,11 @@ export const songFormToggle = () => {
 export const closeModal = () => {
 	return {
 		type: actionTypes.CLOSE_MODAL
+	};
+};
+
+export const closeTodo = () => {
+	return {
+		type: actionTypes.CLOSE_TODO
 	};
 };

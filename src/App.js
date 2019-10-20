@@ -15,6 +15,7 @@ import Modal from './components/UI/Modal/Modal';
 // Modal Children
 import NewProjectForm from './components/Forms/AddProject/AddProject';
 import NewSongForm from './components/Forms/AddSong/AddSong';
+import NewTodoForm from './components/Forms/AddTodo/AddTodo';
 
 // Main Containers
 import Logout from './containers/Auth/Logout/Logout';
@@ -39,6 +40,9 @@ class App extends Component {
 		}
 		if (this.props.isAddingSong) {
 			modalContent = <NewSongForm></NewSongForm>;
+		}
+		if (this.props.isAddingTodo) {
+			modalContent = <NewTodoForm></NewTodoForm>;
 		}
 
 		let loginRedirect = null;
@@ -82,6 +86,7 @@ const mapStateToProps = state => {
 	return {
 		app: state.app,
 		modal: state.app.modal,
+		isAddingTodo: state.app.isAddingTodo,
 		isAddingProject: state.app.isAddingProject,
 		isAddingSong: state.app.isAddingSong,
 		projects: state.projects,
