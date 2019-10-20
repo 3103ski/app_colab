@@ -12,6 +12,7 @@
 }
 
 .TodoItem p {
+	font-weight: 300;
 	margin: 0;
 	font-size: 0.95rem;
 	white-space: nowrap;

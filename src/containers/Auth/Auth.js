@@ -128,18 +128,33 @@ class Auth extends Component {
 		}
 
 		return (
-			<div className={classes.Auth}>
-				<form onSubmit={this.submitHandler}>
-					{autoRedirect}
-					{errorMessage}
-					{form}
-					<Button btnType='Success'>
-						{this.state.isSignup ? `SIGNUP` : `LOGIN`}
-					</Button>
-				</form>
-				<Button clicked={this.switchAuthModeHandler} btnType='Danger'>
-					SWITCH TO {this.state.isSignup ? 'LOGIN' : 'SIGNUP'}
+			<div className={classes.AuthPage}>
+				<Button
+					className={classes.SwitchBtn}
+					clicked={this.switchAuthModeHandler}
+					btnType='SwitchBtn'>
+					{this.state.isSignup ? 'LOGIN' : 'SIGNUP'}
 				</Button>
+				<div className={classes.LeftSide}>
+					<h2>Login To</h2>
+					<h1>Co-Lab</h1>
+					<p>
+						With Co-Lab, you’ll be able to work side by side with your clients
+						or band members. Co-Lab is your all in one place for collaboration,
+						file sharing, project management and gives you all the tools you
+						need to get your work done efficiently and effectively.
+					</p>
+				</div>
+				<div className={classes.RightSide}>
+					<form onSubmit={this.submitHandler}>
+						{autoRedirect}
+						{errorMessage}
+						{form}
+						<Button btnType='AuthBtn'>
+							{this.state.isSignup ? `SIGNUP` : `LOGIN`}
+						</Button>
+					</form>
+				</div>
 			</div>
 		);
 	}

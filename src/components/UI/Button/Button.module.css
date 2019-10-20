@@ -13,7 +13,6 @@
 
 .Button:first-of-type {
 	margin-left: 0;
-	padding-left: 0;
 }
 
 .Success {
@@ -22,6 +21,32 @@
 
 .Danger {
 	color: #944317;
+}
+
+/* Login Screen Btns */
+.SwitchBtn,
+.AuthBtn {
+	background-color: #2d9cdb;
+	color: white;
+	box-shadow: 0px 3px 3px #00000025;
+	font-weight: 400;
+	letter-spacing: 0.04rem;
+	text-align: center;
+	border-radius: 50px;
+}
+
+.SwitchBtn {
+	position: fixed;
+	top: 0;
+	right: 0;
+	font-size: 0.75rem;
+	padding: 9px 14px;
+}
+
+.AuthBtn {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px 0px;
 }
 
 .Button:disabled {
