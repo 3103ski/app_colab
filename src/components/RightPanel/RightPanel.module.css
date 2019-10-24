@@ -11,7 +11,7 @@
 
 .PanelOpen {
 	/* transform: translateX(0px); */
-	width: 200px;
+	width: 300px;
 	opacity: 1;
 }
 
@@ -41,7 +41,7 @@
 .EditButtons,
 .Notes {
 	width: 90%;
-	/* margin: 5px auto; */
+	margin: auto;
 }
 
 /* Edit Button */
@@ -67,3 +67,5 @@
 	font-size: 0.9rem;
 	color: #737373;
 }
+
+/* Date Picker */

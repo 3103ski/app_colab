@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 // axios instances
 import firebaseProjects from '../../components/FirebaseInstances/firebaseProjects';
 import firebaseSongs from '../../components/FirebaseInstances/firebaseSongs';
+import { updateObject } from '../../shared/utility';
 
 // Fetch projects
 
@@ -45,6 +46,22 @@ export const projectsInit = (token, userId) => {
 			.catch(error => {
 				dispatch(fetchProjectsFail(error));
 			});
+	};
+};
+
+// Update Song
+
+const updateServerSong = (song, token) => {
+	const queryParams = `?auth=${token}`;
+	firebaseSongs.put(`/${song.id}/.json` + queryParams, song).then(res => res);
+};
+
+export const updateSong = (song, token) => {
+	let newSong = song;
+	updateServerSong(newSong, token);
+	return {
+		type: actionTypes.UPDATE_SONGS,
+		song: newSong
 	};
 };
 

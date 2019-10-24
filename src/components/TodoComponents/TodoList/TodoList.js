@@ -20,59 +20,62 @@ class TodoList extends Component {
 
 	render() {
 		let list;
-		switch (this.props.size) {
-			case `small`:
-				list =
-					this.props.todoArr.length > 0 ? (
-						this.props.todoArr.map(todo => {
-							// const id = randomId();
-							return (
-								<DashTodoItem
-									key={todo.todoId}
-									id={todo.todoId}
-									title={todo.title}
-									artist={todo.artist}
-									song={todo.song}
-									project={todo.project}></DashTodoItem>
-							);
-						})
-					) : (
-						<h2>No Recent Todos</h2>
-					);
-				return list;
-			case `full`:
-				list =
-					this.props.todoArr.length > 0 ? (
-						this.props.todoArr.map(todo => {
-							// const id = randomId();
-							return (
-								<FullTodoItem
-									todo={todo}
-									token={this.props.auth.token}
-									key={todo.todoId}
-									id={todo.todoId}
-									complete={todo.complete}
-									title={todo.title}
-									artist={todo.artist}
-									project={todo.project}
-									song={todo.song}
-									due={todo.dueDate}
-								/>
-							);
-						})
-					) : (
-						<h2>You don't have any todos</h2>
-					);
-				return list;
-			default:
-				return list;
+		if (this.props.todoArr !== undefined) {
+			switch (this.props.size) {
+				case `small`:
+					list =
+						this.props.todoArr.length > 0 ? (
+							this.props.todos.map(todo => {
+								// const id = randomId();
+								return (
+									<DashTodoItem
+										key={todo.todoId}
+										id={todo.todoId}
+										title={todo.title}
+										artist={todo.artist}
+										song={todo.song}
+										project={todo.project}></DashTodoItem>
+								);
+							})
+						) : (
+							<h2>No Recent Todos</h2>
+						);
+					return list;
+				case `full`:
+					list =
+						this.props.todoArr.length > 0 ? (
+							this.props.todos.map(todo => {
+								// const id = randomId();
+								return (
+									<FullTodoItem
+										todo={todo}
+										token={this.props.auth.token}
+										key={todo.todoId}
+										id={todo.todoId}
+										complete={todo.complete}
+										title={todo.title}
+										artist={todo.artist}
+										project={todo.project}
+										song={todo.song}
+										due={todo.dueDate}
+									/>
+								);
+							})
+						) : (
+							<h2>You don't have any todos</h2>
+						);
+					return list;
+				default:
+					return list;
+			}
 		}
 	}
 }
 
 const mapStateToProps = state => {
 	return {
-		auth: state.auth
+		auth: state.auth,
+		todos: state.todo.todos
 	};
 };
 

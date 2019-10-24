@@ -1,10 +1,11 @@
 // React Imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 // Utility Functions
 import { getUserPics } from '../../shared/reactUtility';
-import { statusColor, getSongTodos } from '../../shared/utility';
+import { statusColor, getSongTodos, updateObject } from '../../shared/utility';
 
 // Song Container Components
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
@@ -26,7 +27,12 @@ class SongContainer extends Component {
 			this.props.activeProject,
 			this.props.selectedSong
 		);
-		const userPics = getUserPics(this.props.song.users);
+		let userPics;
+		if (this.props.hasPic) {
+			userPics = getUserPics(this.props.song.users);
+		} else {
+			userPics = null;
+		}
 		const pickTabContent = tab => {
 			switch (tab) {
 				case 'details': {
@@ -58,7 +64,17 @@ class SongContainer extends Component {
 		let tabContent = pickTabContent(this.state.activeTab);
 
 		const songStatus = this.props.song ? this.props.song.status : 'noneOpen';
-		const songColor = statusColor(songStatus);
+		let songColor = statusColor(songStatus);
+
+		const updateStatus = e => {
+			let currSong = this.props.song;
+			let newStatus = e.target.value;
+			let updatedSong = updateObject(currSong, {
+				status: newStatus
+			});
+			songColor = statusColor(newStatus);
+			this.props.updateStatus(updatedSong, this.props.token);
+		};
 
 		return (
 			<div className={classes.SongContainer}>
@@ -69,9 +85,13 @@ class SongContainer extends Component {
 							<div
 								className={classes.StatusDot}
 								style={{ backgroundColor: songColor }}></div>
-							<select>
+							<select onChange={e => updateStatus(e)}>
 								<option>New Song</option>
 								<option>In Progress</option>
+								<option>Mix Sent</option>
+								<option>Revisions Requested</option>
+								<option>Live Stream Scheduled</option>
+								<option>Sent Final Mixes</option>
 								<option>Completed</option>
 							</select>
 						</div>
@@ -128,10 +148,11 @@ class SongContainer extends Component {
 					</div>
 					<div
 						className={classes.Tab}
-						onClick={() => {
-							const tab = 'comments';
-							this.setState({ activeTab: tab });
-						}}>
+						// onClick={() => {
+						// 	const tab = 'comments';
+						// 	this.setState({ activeTab: tab });
+						// }}
+					>
 						<img
 							src={require('../../assets/sontTabComment.png')}
 							alt='comments'
@@ -151,12 +172,15 @@ const mapStateToProps = state => {
 		selectedSong: state.app.selectedSong,
 		activeProject: state.app.activeProject,
 		projects: state.projects.projects,
-		song: state.app.currSong
+		song: state.app.currSong,
+		token: state.auth.token
 	};
 };
 
 const mapDispatchToState = dispatch => {
-	return {};
+	return {
+		updateStatus: (song, token) => dispatch(actions.updateSong(song, token))
+	};
 };
 
 export default connect(

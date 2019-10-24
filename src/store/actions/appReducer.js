@@ -18,10 +18,11 @@ export const rightPanel = () => {
 	};
 };
 
-export const selectTodo = id => {
+export const selectTodo = (id, todo) => {
 	return {
 		type: actionTypes.SELECT_TODO,
-		todoId: id
+		todoId: id,
+		todo: todo
 	};
 };
 

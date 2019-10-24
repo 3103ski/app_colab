@@ -38,6 +38,11 @@ export const FETCH_SONGS_SUCCESS = 'FETCH_SONGS_SUCCESS';
 export const FETCH_SONGS_FAIL = 'FETCH_SONGS_FAIL';
 export const FETCH_SONGS = 'FETCH_SONGS';
 
+export const UPDATE_SONGS = 'UPDATE_SONGS';
+export const UPDATE_SONGS_START = 'UPDATE_SONGS_START';
+export const UPDATE_SONGS_SUCCESS = 'UPDATE_SONGS_SUCCESS';
+export const UPDATE_SONGS_FAIL = 'UPDATE_SONGS_FAIL';
+
 // ***** [todoRedurcer.js] - reducer actionTypes *****
 
 export const FETCH_TODOS = 'FETCH_TODOS';
@@ -53,3 +58,7 @@ export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS';
 export const SELECT_TODO = 'SELECT_TODO';
 export const CLOSE_TODO = 'CLOSE_TODO';
 export const COMPLETE_TOGGLE = 'COMPLETE_TOGGLE';
+export const SET_TODO_DUE_DATE = 'SET_TODO_DUE_DATE';
+export const TOGGLE_MY_DAY = 'TOGGLE_MY_DAY';
+export const TOGGLE_MY_YESTERDAY = 'TOGGLE_MY_YESTERDAY';
+export const TOGGLE_MY_TOMORROW = 'TOGGLE_MY_TOMORROW';

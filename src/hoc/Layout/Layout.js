@@ -25,6 +25,8 @@ class Layout extends Component {
 				<CenterPanel></CenterPanel>
 			</div>
 		) : null;
+		// console.log(`layout is seeing this todo from redux: `, this.props.currTodo);
+		const activeTodo = this.props.currTodo;
 		return (
 			<Aux>
 				{userNav}
@@ -34,7 +36,7 @@ class Layout extends Component {
 					}>
 					{this.props.children}
 				</main>
-				<RightPanel></RightPanel>
+				<RightPanel todo={activeTodo}></RightPanel>
 			</Aux>
 		);
 	}
@@ -42,7 +44,8 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isLoggedIn: state.auth.token ? true : false
+		isLoggedIn: state.auth.token ? true : false,
+		currTodo: state.app.currTodo
 	};
 };
 

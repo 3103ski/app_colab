@@ -1,8 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 
-// Axios Instances
-// import firebaseProjects from '../../components/FirebaseInstances/firebaseProjects';
-
 // Utility Functions
 import { updateObject } from '../../shared/utility';
 
@@ -470,6 +467,21 @@ const addSong = (state, action) => {
 	});
 };
 
+const updateSongs = (state, action) => {
+	const newSong = action.song;
+	const allCurrSongs = [...state.songs];
+	const updatedSongs = allCurrSongs.map(song => {
+		if (song.id === newSong.id) {
+			return newSong;
+		} else {
+			return song;
+		}
+	});
+	return updateObject(state, {
+		songs: updatedSongs
+	});
+};
+
 // Fetch Songs
 
 const fetchSongsStart = (state, action) => {
@@ -494,6 +506,8 @@ const fetchSongsFail = (state, action) => {
 
 const projectsReducer = (state = intitialState, action) => {
 	switch (action.type) {
+		case actionTypes.UPDATE_SONGS:
+			return updateSongs(state, action);
 		case actionTypes.ADD_PROJECT:
 			return addProject(state, action);
 		case actionTypes.ADD_SONG:

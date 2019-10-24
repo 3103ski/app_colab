@@ -16,9 +16,9 @@
 
 .DetailItem,
 .Notes {
-	background-color: #fcfcfc;
-	border: solid 1px #f6f6f6;
-	margin: 10px 5px;
+	background-color: #f8f8f8;
+	border: solid 1px #dcdcdc;
+	margin: 10px 0px 10px 5px;
 }
 
 .DetailTitle,

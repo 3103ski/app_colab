@@ -51,20 +51,40 @@ const completeToggle = (state, action) => {
 		if (todo.todoId !== action.todoId) {
 			return todo;
 		}
+
 		if (todo.todoId === action.todoId && todo.complete === true) {
-			console.log(`[Todo Says, "I'm True!]`);
 			return updateObject(todo, {
 				complete: false
 			});
 		}
+
 		if (todo.todoId === action.todoId && todo.complete === false) {
-			console.log(`[Todo Says, "I'm False!]`);
 			return updateObject(todo, {
 				complete: true
 			});
 		}
 	});
-	console.log(newTodos);
+
+	return updateObject(state, {
+		todos: newTodos
+	});
+};
+
+const updateTodo = (state, action) => {
+	let currTodos = [...state.todos];
+	const newTodos = currTodos.map(todo => {
+		// console.log(`this todo`, todo);
+		if (todo.todoId !== action.todoId) {
+			// console.log(`holy cow we good?`, todo);
+
+			return todo;
+		}
+
+		if (todo.todoId === action.todoId) {
+			console.log(`todo is diff, I see that`);
+			return action.todo;
+		}
+	});
 
 	return updateObject(state, {
 		todos: newTodos
@@ -75,6 +95,8 @@ const completeToggle = (state, action) => {
 
 const todoReducer = (state = intitialState, action) => {
 	switch (action.type) {
+		case actionTypes.TOGGLE_MY_DAY:
+			return updateTodo(state, action);
 		case actionTypes.COMPLETE_TOGGLE:
 			return completeToggle(state, action);
 		case actionTypes.FETCH_TODOS_START:
@@ -85,6 +107,8 @@ const todoReducer = (state = intitialState, action) => {
 			return fetchTodosFail(state, action);
 		case actionTypes.ADD_TODO:
 			return addTodo(state, action);
+		case actionTypes.SET_TODO_DUE_DATE:
+			return updateTodo(state, action);
 		default:
 			return state;
 	}

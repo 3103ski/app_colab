@@ -14,7 +14,15 @@ import classes from './SongListItem.module.css';
 
 const song = props => {
 	const status = statusColor(props.status);
-	const userPics = getUserPics(props.users);
+	let userPics;
+	if (props.hasPic) {
+		userPics = getUserPics(props.users);
+	} else {
+		// const userList = props.users.map(el => {
+		// 	console.log(el);
+		// });
+		userPics = null;
+	}
 	return (
 		<NavLink
 			activeClassName={classes.active}

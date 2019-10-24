@@ -13,7 +13,8 @@ const intitialState = {
 	activeProject: '',
 	selectedSong: '',
 	currArtist: ``,
-	currSong: null
+	currSong: null,
+	currTodo: null
 };
 
 const appReducer = (state = intitialState, action) => {
@@ -21,11 +22,13 @@ const appReducer = (state = intitialState, action) => {
 		case actionTypes.SELECT_TODO:
 			return updateObject(state, {
 				activeTodo: action.todoId,
+				currTodo: action.todo,
 				rightPanel: true
 			});
 		case actionTypes.CLOSE_TODO:
 			return updateObject(state, {
 				activeTodo: '',
+				currTodo: null,
 				rightPanel: false
 			});
 		case actionTypes.LINK_WITH_CENTER:

@@ -12,13 +12,20 @@ export {
 	closeTodo
 } from './appReducer';
 
-export { fetchTodos, addTodo, completeToggle } from './todoReducer';
+export {
+	fetchTodos,
+	addTodo,
+	completeToggle,
+	setTodoDueDate,
+	toggleMyDay
+} from './todoReducer';
 
 export {
 	addProject,
 	addSong,
 	projectsInit,
-	songsInit
+	songsInit,
+	updateSong
 } from './projectsReducer';
 
 export { auth, logout, setAuthRedirectPath, authCheckState } from './auth';

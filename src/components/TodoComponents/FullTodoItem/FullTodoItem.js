@@ -15,9 +15,11 @@ const TodoItem = props => {
 	const completeToggle = () => {
 		props.completeToggle(todoId, props.todo, props.token);
 	};
-
+	// console.log(`I am ${props.todo.title}'s Data:`, props.todo);
 	return (
-		<div className={classes.TodoItem} onClick={() => props.setTodo(todoId)}>
+		<div
+			className={classes.TodoItem}
+			onClick={() => props.setTodo(todoId, props.todo)}>
 			<img
 				src={require(`../../../assets/${todoStatus}.png`)}
 				alt='complete'
@@ -33,9 +35,7 @@ const TodoItem = props => {
 					{props.song ? ` > ${props.song}` : null}
 				</p>
 			</div>
-			<div className={classes.TodoDate}>
-				<p>{props.due}</p>
-			</div>
+			<div className={classes.TodoDate}>{/* <p>{props.due}</p> */}</div>
 			<div className={classes.TodoIcons}>
 				<img src={require('../../../assets/myDay.png')} alt='myDay' />
 				<img src={require('../../../assets/move-light.png')} alt='move' />
@@ -46,7 +46,7 @@ const TodoItem = props => {
 
 const mapDispatchToState = dispatch => {
 	return {
-		setTodo: id => dispatch(actions.selectTodo(id)),
+		setTodo: (id, todo) => dispatch(actions.selectTodo(id, todo)),
 		completeToggle: (id, todo, token) =>
 			dispatch(actions.completeToggle(id, todo, token))
 	};

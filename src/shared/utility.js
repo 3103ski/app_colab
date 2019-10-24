@@ -115,3 +115,37 @@ export const checkValidity = (value, rules) => {
 	}
 	return isValid;
 };
+
+// *********************************************************
+// ***** { monthStrToNum }                  ****************
+// *********************************************************
+
+export const monthStrToNum = monthStr => {
+	let newMonth;
+	if (monthStr === 'Jan') {
+		newMonth = 1;
+	} else if (monthStr === 'Feb') {
+		newMonth = 2;
+	} else if (monthStr === 'Mar') {
+		newMonth = 3;
+	} else if (monthStr === 'Apr') {
+		newMonth = 4;
+	} else if (monthStr === 'May') {
+		newMonth = 5;
+	} else if (monthStr === 'Jun') {
+		newMonth = 6;
+	} else if (monthStr === 'Jul') {
+		newMonth = 7;
+	} else if (monthStr === 'Aug') {
+		newMonth = 8;
+	} else if (monthStr === 'Sep') {
+		newMonth = 9;
+	} else if (monthStr === 'Oct') {
+		newMonth = 10;
+	} else if (monthStr === 'Nov') {
+		newMonth = 11;
+	} else if (monthStr === 'Dec') {
+		newMonth = 12;
+	}
+	return newMonth;
+};
