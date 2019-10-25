@@ -65,7 +65,9 @@ const addTodoToServer = (todo, token) => {
 
 const updateServerTodo = (todo, token) => {
 	const queryParams = `?auth=${token}`;
-	firebaseTodos.put(`/${todo.id}/.json` + queryParams, todo).then(res => res);
+	if (todo.id !== undefined) {
+		firebaseTodos.put(`/${todo.id}/.json` + queryParams, todo).then(res => res);
+	}
 };
 
 // EDIT TODO STATUS'

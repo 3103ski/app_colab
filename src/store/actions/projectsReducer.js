@@ -53,7 +53,9 @@ export const projectsInit = (token, userId) => {
 
 const updateServerSong = (song, token) => {
 	const queryParams = `?auth=${token}`;
-	firebaseSongs.put(`/${song.id}/.json` + queryParams, song).then(res => res);
+	if (song.id !== undefined) {
+		firebaseSongs.put(`/${song.id}/.json` + queryParams, song).then(res => res);
+	}
 };
 
 export const updateSong = (song, token) => {
