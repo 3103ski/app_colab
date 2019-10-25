@@ -1,0 +1,52 @@
+.Status {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Status select {
+	background-color: white;
+	border: none;
+	margin-right: auto;
+}
+
+.StatusDot {
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+}
+
+.StatCont {
+	display: flex;
+}
+
+.NewSong {
+	background-color: #757575;
+}
+
+.InProgress {
+	background-color: #d0d0d0;
+}
+
+.MixSent {
+	background-color: #3badff;
+}
+
+.RevisionsRequested {
+	background-color: #ffc83b;
+}
+
+.LiveStreamScheduled {
+	background-color: #ffe03b;
+}
+
+.SentFinalMixes {
+	background-color: #3bffd0;
+}
+
+.Completed {
+	background-color: #57ff3b;
+}
+
+.default {
+	background-color: #000000;
+}

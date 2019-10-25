@@ -58,7 +58,7 @@ class RightPanel extends Component {
 	}
 
 	loadDue = clickDate => {
-		console.log(`State ar firing of lodDue: `, this.state);
+		// console.log(`State ar firing of lodDue: `, this.state);
 		let todo = this.props.todo;
 		let dateArr, dayArr, newMonth, newDay, newYear, dueDate, modifiers, month;
 		modifiers = {};
@@ -117,7 +117,7 @@ class RightPanel extends Component {
 		  }`;
 		let test = 'testing this ish';
 		test = test.slice(4);
-		console.log(`Did this get sliced up?`, test);
+		// console.log(`Did this get sliced up?`, test);
 
 		containerClasses = this.props.panelOpen
 			? [classes.RightPanelContainer, classes.PanelOpen]

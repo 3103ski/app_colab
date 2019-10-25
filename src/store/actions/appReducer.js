@@ -33,6 +33,7 @@ export const todoForm = () => {
 };
 
 export const selectSong = (songName, song, artist) => {
+	console.log(songName, song, artist);
 	return {
 		type: actionTypes.SELECT_SONG,
 		songName: songName,

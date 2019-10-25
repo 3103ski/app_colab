@@ -13,13 +13,38 @@ import Comments from '../../components/SongComponents/TabComments/CommentsTab';
 import Todos from '../../components/SongComponents/TabTodo/TodoTab';
 import Files from '../../components/SongComponents/TabFiles/TabFiles';
 import LiveStreams from '../../components/SongComponents/TabLiveStream/TabLiveStream';
+import StatusSelect from '../../components/UI/DropSelect/DropSelect';
 
 // Styling
 import classes from './SongContainer.module.css';
 
 class SongContainer extends Component {
 	state = {
-		activeTab: 'details'
+		activeTab: 'details',
+		statusColor: this.props.song ? this.props.song.status : null
+	};
+
+	shouldMount = (args, nextProps, nextState) => {
+		if (args.props.song !== nextProps.song) {
+			return true;
+		}
+	};
+
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	if (this.props.song !== nextProps.song) {
+	// 		return true;
+	// 	}
+	// }
+	componentDidMount() {
+		this.handleUpdateName();
+	}
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.statusColor !== this.state.statusColor) {
+			this.handleUpdateName();
+		}
+	}
+	handleUpdateName = () => {
+		this.setState({ statusColor: this.props.statusColor });
 	};
 	render() {
 		const activeTodos = getSongTodos(
@@ -66,15 +91,38 @@ class SongContainer extends Component {
 		const songStatus = this.props.song ? this.props.song.status : 'noneOpen';
 		let songColor = statusColor(songStatus);
 
-		const updateStatus = e => {
-			let currSong = this.props.song;
+		const updateStatus = (e, song) => {
+			let currSong = song;
 			let newStatus = e.target.value;
 			let updatedSong = updateObject(currSong, {
 				status: newStatus
 			});
 			songColor = statusColor(newStatus);
+			this.setState({
+				statusColor: songColor
+			});
 			this.props.updateStatus(updatedSong, this.props.token);
 		};
+
+		const dot = (
+			<div
+				className={classes.StatusDot}
+				style={{ backgroundColor: songColor }}></div>
+		);
+
+		const selector = (
+			<select defaultValue={this.props.status} onChange={e => updateStatus(e)}>
+				<option>New Song</option>
+				<option>In Progress</option>
+				<option>Mix Sent</option>
+				<option>Revisions Requested</option>
+				<option>Live Stream Scheduled</option>
+				<option>Sent Final Mixes</option>
+				<option>Completed</option>
+			</select>
+		);
+
+		console.log(`SONG CONTAINER LOAD`, this);
 
 		return (
 			<div className={classes.SongContainer}>
@@ -82,18 +130,12 @@ class SongContainer extends Component {
 					<div className={classes.QuickInfo}>
 						<h2>{this.props.selectedSong ? this.props.selectedSong : null}</h2>
 						<div className={classes.Status}>
-							<div
-								className={classes.StatusDot}
-								style={{ backgroundColor: songColor }}></div>
-							<select onChange={e => updateStatus(e)}>
-								<option>New Song</option>
-								<option>In Progress</option>
-								<option>Mix Sent</option>
-								<option>Revisions Requested</option>
-								<option>Live Stream Scheduled</option>
-								<option>Sent Final Mixes</option>
-								<option>Completed</option>
-							</select>
+							{/* {dot}
+							{selector} */}
+							<StatusSelect
+								updateStatus={updateStatus}
+								token={this.props.token}
+								song={this.props.song}></StatusSelect>
 						</div>
 					</div>
 					{/* USERS */}

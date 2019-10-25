@@ -27,7 +27,7 @@
 .Status {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 }
 .Status select {
 	background-color: white;

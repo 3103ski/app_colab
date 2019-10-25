@@ -28,7 +28,8 @@ const mapStateToProps = state => {
 		centerPanel: state.app.centerPanel,
 		projectIsOpen: state.app.projectIsOpen,
 		activeProject: state.app.activeProject,
-		projects: state.projects.projects
+		projects: state.projects.projects,
+		songs: state.projects.songs
 	};
 };
 

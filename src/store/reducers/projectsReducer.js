@@ -469,14 +469,18 @@ const addSong = (state, action) => {
 
 const updateSongs = (state, action) => {
 	const newSong = action.song;
+	// console.log('is this really updating tho?', newSong);
 	const allCurrSongs = [...state.songs];
 	const updatedSongs = allCurrSongs.map(song => {
 		if (song.id === newSong.id) {
+			// console.log(`do all of these match? ${song.id} ::: ${newSong.id}`);
 			return newSong;
 		} else {
 			return song;
 		}
 	});
+	// console.log('and all these look right!!?', [updatedSongs]);
+
 	return updateObject(state, {
 		songs: updatedSongs
 	});

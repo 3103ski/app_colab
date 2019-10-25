@@ -5,6 +5,7 @@
 // Will return color as a string when fed status as a string
 
 export const statusColor = status => {
+	console.log(`I see: `, status);
 	switch (status) {
 		case 'New Song':
 			status = `#757575`;

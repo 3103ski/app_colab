@@ -70,7 +70,10 @@ class App extends Component {
 								return <Redirect to='/dashboard' />;
 							} else {
 								if (this.props.app.selectedSong !== '') {
-									return <SongTemplate></SongTemplate>;
+									return (
+										<SongTemplate
+											status={this.props.currSong.status}></SongTemplate>
+									);
 								} else {
 									return <h1>Please Select A Song</h1>;
 								}
@@ -90,7 +93,8 @@ const mapStateToProps = state => {
 		isAddingProject: state.app.isAddingProject,
 		isAddingSong: state.app.isAddingSong,
 		projects: state.projects,
-		isLoggedIn: state.auth.token !== null
+		isLoggedIn: state.auth.token !== null,
+		currSong: state.app.currSong
 	};
 };
 
