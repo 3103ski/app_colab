@@ -5,7 +5,7 @@
 // Will return color as a string when fed status as a string
 
 export const statusColor = status => {
-	console.log(`I see: `, status);
+	// console.log(`I see: `, status);
 	switch (status) {
 		case 'New Song':
 			status = `#757575`;
@@ -68,23 +68,15 @@ export const randomId = () => {
 
 // Feed an arr of projects
 
-export const getSongTodos = (projects, projectName, songName) => {
-	let currSongs, currTodos;
-	projects.map(project => {
-		if (project.projectName === projectName) {
-			currSongs = project.songs;
+export const getSongTodos = (todos, currSong) => {
+	console.log(`[ getSongTodos.js ] "todos" arg: `, todos);
+	console.log(`[ getSongTodos.js ] "currSong" arg: `, currSong);
+	const songTodos = todos.map(todo => {
+		if (todo.song !== undefined && todo.song === currSong) {
+			return todo;
 		}
-		return project;
 	});
-	if (currSongs !== undefined) {
-		currSongs.map(song => {
-			if (song.name === songName) {
-				currTodos = song.todos;
-			}
-			return song;
-		});
-	}
-	return currTodos;
+	return songTodos;
 };
 
 // *********************************************************

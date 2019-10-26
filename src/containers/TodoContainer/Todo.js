@@ -16,6 +16,9 @@ class GlobalTodoPage extends Component {
 		const allTodos = this.props.todos
 			? [...this.props.todos, ...this.props.songTodos]
 			: [];
+		// const allTodos = this.props.songTodos
+		// 	? [...this.props.songTodos]
+		// 	: [...this.props.todos, ...this.props.songTodos];
 
 		return (
 			<div className={classes.Container}>

@@ -5,7 +5,11 @@ import * as actions from '../../store/actions/index';
 
 // Utility Functions
 import { getUserPics } from '../../shared/reactUtility';
-import { statusColor, getSongTodos, updateObject } from '../../shared/utility';
+import {
+	statusColor,
+	// getSongTodos,
+	updateObject
+} from '../../shared/utility';
 
 // Song Container Components
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
@@ -30,11 +34,6 @@ class SongContainer extends Component {
 		}
 	};
 
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	if (this.props.song !== nextProps.song) {
-	// 		return true;
-	// 	}
-	// }
 	componentDidMount() {
 		this.handleUpdateName();
 	}
@@ -46,12 +45,30 @@ class SongContainer extends Component {
 	handleUpdateName = () => {
 		this.setState({ statusColor: this.props.statusColor });
 	};
+
+	getSongTodos = (todos, currSong) => {
+		console.log(`[ getSongTodos.js ] "todos" arg: `, todos);
+		console.log(`[ getSongTodos.js ] "currSong" arg: `, currSong);
+		const onlySongs = todos.filter(todo => {
+			if (todo.song !== undefined) {
+				if (todo.song !== null) {
+					return todo;
+				}
+			}
+		});
+
+		const songTodos = onlySongs.filter(todo => todo.song === currSong);
+		console.log(`[ this.getSongTodos.FUNCTION.js ] "songTodos" : `, songTodos);
+		return songTodos;
+	};
+
 	render() {
-		const activeTodos = getSongTodos(
-			this.props.projects,
-			this.props.activeProject,
+		// const todos
+		const activeTodos = this.getSongTodos(
+			this.props.todos,
 			this.props.selectedSong
 		);
+		console.log(`We are feeding this to a song todo list: `, activeTodos);
 		let userPics;
 		if (this.props.hasPic) {
 			userPics = getUserPics(this.props.song.users);
@@ -104,23 +121,23 @@ class SongContainer extends Component {
 			this.props.updateStatus(updatedSong, this.props.token);
 		};
 
-		const dot = (
-			<div
-				className={classes.StatusDot}
-				style={{ backgroundColor: songColor }}></div>
-		);
+		// const dot = (
+		// 	<div
+		// 		className={classes.StatusDot}
+		// 		style={{ backgroundColor: songColor }}></div>
+		// );
 
-		const selector = (
-			<select defaultValue={this.props.status} onChange={e => updateStatus(e)}>
-				<option>New Song</option>
-				<option>In Progress</option>
-				<option>Mix Sent</option>
-				<option>Revisions Requested</option>
-				<option>Live Stream Scheduled</option>
-				<option>Sent Final Mixes</option>
-				<option>Completed</option>
-			</select>
-		);
+		// const selector = (
+		// 	<select defaultValue={this.props.status} onChange={e => updateStatus(e)}>
+		// 		<option>New Song</option>
+		// 		<option>In Progress</option>
+		// 		<option>Mix Sent</option>
+		// 		<option>Revisions Requested</option>
+		// 		<option>Live Stream Scheduled</option>
+		// 		<option>Sent Final Mixes</option>
+		// 		<option>Completed</option>
+		// 	</select>
+		// );
 
 		console.log(`SONG CONTAINER LOAD`, this);
 
@@ -214,6 +231,7 @@ const mapStateToProps = state => {
 		selectedSong: state.app.selectedSong,
 		activeProject: state.app.activeProject,
 		projects: state.projects.projects,
+		todos: state.todo.todos,
 		song: state.app.currSong,
 		token: state.auth.token
 	};

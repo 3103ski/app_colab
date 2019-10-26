@@ -20,7 +20,10 @@ class TodoList extends Component {
 
 	render() {
 		let list;
-		if (this.props.todoArr !== undefined) {
+		if (
+			this.props.todoArr !== undefined &&
+			this.props.songTodos === undefined
+		) {
 			switch (this.props.size) {
 				case `small`:
 					list =
@@ -65,9 +68,57 @@ class TodoList extends Component {
 							<h2>You don't have any todos</h2>
 						);
 					return list;
+				case `song`:
+					list =
+						this.props.songTodos.length > 0 ? (
+							this.props.songTodos.map(todo => {
+								return (
+									<FullTodoItem
+										todo={todo}
+										token={this.props.auth.token}
+										key={todo.todoId}
+										id={todo.todoId}
+										complete={todo.complete}
+										title={todo.title}
+										artist={todo.artist}
+										project={todo.project}
+										song={todo.song}
+										due={todo.dueDate}
+									/>
+								);
+							})
+						) : (
+							<h2>You don't have any todos</h2>
+						);
+					return list;
 				default:
 					return list;
 			}
+		}
+
+		if (this.props.songTodos) {
+			list =
+				this.props.songTodos.length > 0 ? (
+					this.props.songTodos.map(todo => {
+						return (
+							<FullTodoItem
+								todo={todo}
+								token={this.props.auth.token}
+								key={todo.todoId}
+								id={todo.todoId}
+								complete={todo.complete}
+								title={todo.title}
+								artist={todo.artist}
+								project={todo.project}
+								song={todo.song}
+								due={todo.dueDate}
+							/>
+						);
+					})
+				) : (
+					<h2>You don't have any todos</h2>
+				);
+			return list;
 		}
 	}
 }

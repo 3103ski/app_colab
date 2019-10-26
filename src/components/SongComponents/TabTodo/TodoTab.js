@@ -10,21 +10,21 @@ import TodoList from '../../TodoComponents/TodoList/TodoList';
 // styles
 
 const TodoTab = props => {
-	const getTodos = todos => {
-		const newTodos = [];
+	// const getTodos = todos => {
+	// 	const newTodos = [];
 
-		todos.map(todo => {
-			return todo.song === props.activeSong ? newTodos.push(todo) : null;
-		});
+	// 	todos.map(todo => {
+	// 		return todo.song === props.activeSong ? newTodos.push(todo) : null;
+	// 	});
 
-		return newTodos;
-	};
-	const todoArr = props.todos ? getTodos(props.todos) : [];
-
+	// 	return newTodos;
+	// };
+	// const todoArr = props.todos ? getTodos(props.todos) : [];
+	console.log(`The todo tab got this for todos: `, props.songTodos);
 	return (
 		<div style={{ width: `100%` }}>
 			<TodoContainer>
-				<TodoList size='full' todoArr={todoArr}></TodoList>
+				<TodoList size='song' songTodos={props.songTodos}></TodoList>
 			</TodoContainer>
 		</div>
 	);
