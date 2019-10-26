@@ -46,6 +46,7 @@ class RightPanel extends Component {
 	}
 
 	async handleDayClick(day) {
+		console.log(`What does this date look like?`, day);
 		await this.setState({ selectedDay: day });
 		if (day !== undefined) {
 			this.props.setDueDate(this.props.todo, day, this.props.token);
@@ -67,6 +68,10 @@ class RightPanel extends Component {
 		if (todo !== null && todo.dueDate !== null && todo.dueDate !== undefined) {
 			dueDate = clickDate ? clickDate : todo.dueDate;
 			if (typeof dueDate === 'object') {
+				console.log(
+					`What does this date inside the clickDate function look like?`,
+					dueDate.getTime()
+				);
 				dueDate = JSON.stringify(dueDate);
 			}
 			if (dueDate.includes('Z')) {
@@ -115,9 +120,6 @@ class RightPanel extends Component {
 			background-color: #2d9cdb;
 			color: white;
 		  }`;
-		let test = 'testing this ish';
-		test = test.slice(4);
-		// console.log(`Did this get sliced up?`, test);
 
 		containerClasses = this.props.panelOpen
 			? [classes.RightPanelContainer, classes.PanelOpen]

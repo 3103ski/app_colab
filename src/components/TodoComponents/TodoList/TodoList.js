@@ -29,7 +29,6 @@ class TodoList extends Component {
 					list =
 						this.props.todoArr.length > 0 ? (
 							this.props.todos.map(todo => {
-								// const id = randomId();
 								return (
 									<DashTodoItem
 										key={todo.todoId}
@@ -48,30 +47,6 @@ class TodoList extends Component {
 					list =
 						this.props.todoArr.length > 0 ? (
 							this.props.todos.map(todo => {
-								// const id = randomId();
-								return (
-									<FullTodoItem
-										todo={todo}
-										token={this.props.auth.token}
-										key={todo.todoId}
-										id={todo.todoId}
-										complete={todo.complete}
-										title={todo.title}
-										artist={todo.artist}
-										project={todo.project}
-										song={todo.song}
-										due={todo.dueDate}
-									/>
-								);
-							})
-						) : (
-							<h2>You don't have any todos</h2>
-						);
-					return list;
-				case `song`:
-					list =
-						this.props.songTodos.length > 0 ? (
-							this.props.songTodos.map(todo => {
 								return (
 									<FullTodoItem
 										todo={todo}
