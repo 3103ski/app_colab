@@ -1,10 +1,11 @@
 .TodoItem {
 	display: flex;
 	align-items: center;
-	margin: 0px 15px;
+	margin: 0px 15px 0px 0px;
 	border-bottom: solid 1px #b6b6b6;
 	position: relative;
 	z-index: 400;
+	width: 100%;
 }
 
 .TodoItem:hover {

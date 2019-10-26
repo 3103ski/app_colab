@@ -8,8 +8,18 @@ import * as classes from './DropSelect.module.css';
 
 class Selector extends Component {
 	state = {
-		selector: this.props.song.status
+		selector: this.props.song.status,
+		loaded: false
 	};
+
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props.song.status !== nextProps.song.status) {
+			this.setState({
+				selector: nextProps.song.status
+			});
+			return true;
+		}
+	}
 
 	render() {
 		let dropValue = this.state.selector;

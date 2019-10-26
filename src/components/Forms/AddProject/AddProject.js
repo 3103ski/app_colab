@@ -19,6 +19,8 @@ class AddProject extends Component {
 		usersWithAccess: null,
 		entryForm: {
 			artist: {
+				'data-role': 'materialinput',
+				'data-label': 'User email',
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',

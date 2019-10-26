@@ -28,11 +28,11 @@ class SongContainer extends Component {
 		statusColor: this.props.song ? this.props.song.status : null
 	};
 
-	shouldMount = (args, nextProps, nextState) => {
-		if (args.props.song !== nextProps.song) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props !== nextProps) {
 			return true;
 		}
-	};
+	}
 
 	componentDidMount() {
 		this.handleUpdateName();
@@ -47,8 +47,6 @@ class SongContainer extends Component {
 	};
 
 	getSongTodos = (todos, currSong) => {
-		console.log(`[ getSongTodos.js ] "todos" arg: `, todos);
-		console.log(`[ getSongTodos.js ] "currSong" arg: `, currSong);
 		const onlySongs = todos.filter(todo => {
 			if (todo.song !== undefined) {
 				if (todo.song !== null) {
@@ -58,7 +56,7 @@ class SongContainer extends Component {
 		});
 
 		const songTodos = onlySongs.filter(todo => todo.song === currSong);
-		console.log(`[ this.getSongTodos.FUNCTION.js ] "songTodos" : `, songTodos);
+
 		return songTodos;
 	};
 
@@ -68,7 +66,7 @@ class SongContainer extends Component {
 			this.props.todos,
 			this.props.selectedSong
 		);
-		console.log(`We are feeding this to a song todo list: `, activeTodos);
+
 		let userPics;
 		if (this.props.hasPic) {
 			userPics = getUserPics(this.props.song.users);
@@ -139,7 +137,7 @@ class SongContainer extends Component {
 		// 	</select>
 		// );
 
-		console.log(`SONG CONTAINER LOAD`, this);
+		// console.log(`SONG CONTAINER LOAD`, this);
 
 		return (
 			<div className={classes.SongContainer}>

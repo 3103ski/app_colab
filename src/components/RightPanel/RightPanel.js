@@ -5,133 +5,110 @@ import * as actions from '../../store/actions/index';
 
 // Components
 import Backdrop from '../UI/Backdrop/Backdrop';
-import DayPicker from 'react-day-picker';
+import DatePicker from 'react-date-picker';
 import 'react-day-picker/lib/style.css';
 
 // Utility Function
-// import { monthStrToNum } from '../../shared/utility';
-// import { updateObject } from '../../shared/utility';
+import { updateObject } from '../../shared/utility';
 
 // Styling
 import classes from './RightPanel.module.css';
 
 class RightPanel extends Component {
-	constructor(props) {
-		super(props);
-		this.handleDayClick = this.handleDayClick.bind(this);
-		this.state = {
-			selectedDay: undefined,
-			modifiers: null,
-			month: null,
-			activeId: null,
-			loaded: '',
-			activeTodo: this.props.activeTodo
-		};
-	}
-
-	shouldMount = (args, nextProps, nextState) => {
-		if (
-			args.dueDate !== nextState.dueDate ||
-			args.activeTodo !== nextState.activeTodo
-		) {
-			return true;
-		}
-		if (args.activeTodo !== nextState.activeTodo) {
-			return this.setState({ selectedDay: undefined });
-		}
+	state = {
+		date: null,
+		activeId: null,
+		todo: null
 	};
 
 	shouldComponentUpdate(nextProps, nextState) {
-		return this.shouldMount(this, nextProps, nextState);
-	}
-
-	async handleDayClick(day) {
-		console.log(`What does this date look like?`, day);
-		await this.setState({ selectedDay: day });
-		if (day !== undefined) {
-			this.props.setDueDate(this.props.todo, day, this.props.token);
-		}
-		this.loadDue(day);
-		this.setState({
-			modifiers: null,
-			month: null
-		});
-	}
-
-	loadDue = clickDate => {
-		// console.log(`State ar firing of lodDue: `, this.state);
-		let todo = this.props.todo;
-		let dateArr, dayArr, newMonth, newDay, newYear, dueDate, modifiers, month;
-		modifiers = {};
-		month = null;
-
-		if (todo !== null && todo.dueDate !== null && todo.dueDate !== undefined) {
-			dueDate = clickDate ? clickDate : todo.dueDate;
-			if (typeof dueDate === 'object') {
-				console.log(
-					`What does this date inside the clickDate function look like?`,
-					dueDate.getTime()
-				);
-				dueDate = JSON.stringify(dueDate);
-			}
-			if (dueDate.includes('Z')) {
-				dateArr = dueDate.split('-');
-				dayArr = dateArr[2].split('T');
-				newMonth = parseInt(dateArr[1]);
-				newDay = parseInt(dayArr[0]);
-				newYear = parseInt(dateArr[0]);
-			}
-			modifiers = {
-				highlighted: new Date(newYear, newMonth - 1, newDay)
-			};
-			month = new Date(newYear, newMonth - 1);
-			if (this.state.activeId !== todo.todoId) {
-				this.setState({
-					modifiers: modifiers,
-					month: month,
-					loaded: todo.dueDate,
-					selectedDay: undefined,
-					activeId: todo.todoId
-				});
-				console.log(`does this state look right?`, this.state);
-			}
-		}
-
 		if (
-			(todo !== null &&
-				this.state.loaded !== todo.dueDate &&
-				todo.dueDate === undefined) ||
-			null
+			this.props.todo !== nextProps.todo ||
+			this.state.date !== nextState.date
 		) {
+			return true;
+		}
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (
+			nextProps.todo !== this.props.todo ||
+			nextProps.panelOpen !== this.props.panelOpen
+		) {
+			const todo = nextProps.todo ? nextProps.todo : null;
+			const activeId = todo !== null ? todo.id : null;
 			this.setState({
-				modifiers: null,
-				month: null,
-				loaded: undefined,
-				selectedDay: undefined,
-				activeId: todo.activeId
+				todo: todo,
+				activeId: activeId,
+				date: null
 			});
+		}
+	}
+
+	changeDate = date => {
+		let dateObj = {};
+		if (date === null) {
+			this.setState({ date: new Date() });
+			this.props.setDueDate(this.props.todo, dateObj, this.props.token);
+		} else {
+			const dStr = JSON.stringify(date)
+				.split(' ')[0]
+				.split('-');
+			const m = dStr[1];
+			const d = dStr[2].split('T')[0];
+			const y = dStr[0].slice(1);
+			dateObj = {
+				month: m,
+				day: d,
+				year: y
+			};
+			this.props.setDueDate(this.props.todo, dateObj, this.props.token);
+			this.setState({ date: date });
 		}
 	};
 
+	myDay = todo => {
+		const s = todo.myDay === true ? false : true;
+		const nT = updateObject(todo, {
+			myDay: s
+		});
+	};
+
 	render() {
-		let containerClasses, modifiers, month, todo, notes;
+		// Initial Panel State
+		let todo, activeId, day, month, year, containerClasses, notes;
 
-		const selectedDateStyle = `.DayPicker-Day--highlighted {
-			background-color: #2d9cdb;
-			color: white;
-		  }`;
+		if (this.state.todo !== null) {
+			[todo, activeId, notes] = [
+				this.state.todo,
+				this.state.todo.id,
+				this.state.todo.notes
+			];
+			this.setState({
+				todo: todo,
+				activeId: activeId,
+				notes: notes
+			});
+		}
 
+		[day, month, year, todo] = [null, null, null, this.state.todo];
+
+		if (todo !== null) {
+			if (todo.dueDate !== undefined && todo.dueDate !== null) {
+				let date = { ...todo.dueDate };
+				[day, month, year] = [date.day, date.month, date.year];
+			}
+			if (todo.dueDate === undefined || todo.dueDate === null) {
+				const d = new Date();
+				console.log(`Does this d even matter???`, d);
+				[day, month, year] = [d.getDate(), d.getMonth() + 1, d.getFullYear()];
+			}
+		}
+
+		// DYNAMIC STYLING
 		containerClasses = this.props.panelOpen
 			? [classes.RightPanelContainer, classes.PanelOpen]
 			: [classes.RightPanelContainer, classes.PanelClosed];
-		if (this.props.panelOpen) {
-			modifiers = this.state.modifiers ? this.state.modifiers : {};
-			month = this.state.month ? this.state.month : null;
-			todo = this.state.activeId ? this.props.todo : null;
-			notes = this.state.activeId ? todo.notes : null;
-		}
-
-		this.loadDue();
 
 		return (
 			<div>
@@ -148,13 +125,16 @@ class RightPanel extends Component {
 							<img src={require('../../assets/calendar.png')} />
 							<p>Add Due Date</p>
 						</div>
-						<style>{selectedDateStyle}</style>
-						<DayPicker
-							onDayClick={this.handleDayClick}
-							selectedDays={this.state.selectedDay}
-							month={month}
-							modifiers={modifiers}
-						/>
+						<div>
+							<DatePicker
+								yearPlaceholder={year}
+								monthPlaceholder={month}
+								dayPlaceholder={day}
+								onChange={this.changeDate}
+								value={this.state.date}
+							/>
+						</div>
+
 						<div onClick={this.myDay} className={classes.EditButton}>
 							<img src={require('../../assets/myDay-dark.png')} />
 							<p>Add To My Day</p>
@@ -180,9 +160,8 @@ class RightPanel extends Component {
 const mapStateToProps = state => {
 	return {
 		panelOpen: state.app.rightPanel,
-		todos: state.todo.todos,
 		token: state.auth.token,
-		activeTodo: state.app.currTodo
+		todo: state.app.currTodo
 	};
 };
 

@@ -91,14 +91,14 @@ export const completeToggle = (id, todo, token) => {
 };
 
 export const setTodoDueDate = (todo, date, token) => {
-	let newDate = date;
-	if (typeof newDate === 'object') {
-		newDate = JSON.stringify(newDate);
-	}
-	let length = newDate.length - 1;
-	newDate = newDate.substring(1, length);
+	// let newDate = date;
+	// if (typeof newDate === 'object') {
+	// 	newDate = JSON.stringify(newDate);
+	// }
+	// let length = newDate.length - 1;
+	// newDate = newDate.substring(1, length);
 	let newTodo = updateObject(todo, {
-		dueDate: newDate
+		dueDate: date
 	});
 
 	updateServerTodo(newTodo, token);
