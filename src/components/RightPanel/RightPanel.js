@@ -17,8 +17,11 @@ import classes from './RightPanel.module.css';
 class RightPanel extends Component {
 	state = {
 		date: null,
+		loaded: false,
 		activeId: null,
-		todo: null
+		todo: null,
+		myDay: false,
+		panelOpen: false
 	};
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -28,6 +31,11 @@ class RightPanel extends Component {
 		) {
 			return true;
 		}
+		if (this.state.myDay !== nextState) {
+			console.log(`this.state: `, this.state.myDay);
+			console.log(`nextState: `, nextState.myDay);
+			return true;
+		}
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps) {
@@ -35,12 +43,25 @@ class RightPanel extends Component {
 			nextProps.todo !== this.props.todo ||
 			nextProps.panelOpen !== this.props.panelOpen
 		) {
-			const todo = nextProps.todo ? nextProps.todo : null;
-			const activeId = todo !== null ? todo.id : null;
+			if (nextProps.todo !== null) {
+				const todo = nextProps.todo ? nextProps.todo : null;
+				const activeId = todo !== null ? todo.id : null;
+				let myDay;
+				if (this.state.todo !== null) {
+					myDay = todo.specialLists.myDay.val === true ? true : false;
+				}
+				console.log(`Right up in here`, nextProps);
+				this.setState({
+					todo: todo,
+					activeId: activeId,
+					date: null
+				});
+			}
+		}
+		if (nextProps.panelOpen !== this.props.panelOpen) {
+			console.log(`panel should change: `, nextProps);
 			this.setState({
-				todo: todo,
-				activeId: activeId,
-				date: null
+				panelOpen: nextProps.panelOpen
 			});
 		}
 	}
@@ -104,6 +125,10 @@ class RightPanel extends Component {
 				break;
 			case 'myDay':
 				{
+					let md = this.state.myDay === true ? false : true;
+					this.setState({
+						myDay: md
+					});
 					const val = newTodo.specialLists.myDay.val === true ? false : true;
 					newTodo = updateObject(newTodo, {
 						specialLists: {
@@ -170,10 +195,10 @@ class RightPanel extends Component {
 
 	render() {
 		// Initial Panel State
-		let todo, activeId, day, month, year, containerClasses, notes;
+		let todo, activeId, day, month, year, containerClasses, notes, mD;
 
-		if (this.state.todo !== null) {
-			[todo, activeId, notes] = [
+		if (this.state.todo !== null && this.loaded === false) {
+			[todo, activeId, notes, mD] = [
 				this.state.todo,
 				this.state.todo.id,
 				this.state.todo.notes
@@ -181,7 +206,8 @@ class RightPanel extends Component {
 			this.setState({
 				todo: todo,
 				activeId: activeId,
-				notes: notes
+				notes: notes,
+				loaded: true
 			});
 		}
 
@@ -200,7 +226,7 @@ class RightPanel extends Component {
 		}
 
 		// DYNAMIC STYLING
-		containerClasses = this.props.panelOpen
+		containerClasses = this.state.panelOpen
 			? [classes.RightPanelContainer, classes.PanelOpen]
 			: [classes.RightPanelContainer, classes.PanelClosed];
 
@@ -231,7 +257,9 @@ class RightPanel extends Component {
 
 						<div onClick={this.myDay} className={classes.EditButton}>
 							<img src={require('../../assets/myDay-dark.png')} />
-							<p>Add To My Day</p>
+							<p>
+								{this.state.myDay === true ? `remove from` : `add to`} My Day
+							</p>
 						</div>
 						<div className={classes.EditButton}>
 							<img src={require('../../assets/reminder.png')} />

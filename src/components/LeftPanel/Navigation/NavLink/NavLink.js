@@ -1,5 +1,5 @@
 // React Imports
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -8,64 +8,108 @@ import * as actions from '../../../../store/actions/index';
 
 // Styles
 import classes from './NavLink.module.css';
+import { updateObject } from '../../../../shared/utility';
 
-const navLink = props => {
-	let content, clickLink;
-
-	const linkProps = () => {
-		switch (props.title) {
-			case 'TODO':
-				content = (
-					<h2>
-						{props.filters.all} • {props.filters.inbox} • {props.filters.today}{' '}
-						• {props.filters.myDay} • {props.filters.tomorrow} •{' '}
-						{props.filters.nextSeven}
-					</h2>
-				);
-				clickLink = props.linkNoCenter;
-				return { content, clickLink };
-			case 'MESSAGES':
-				content = <h2>9</h2>;
-				clickLink = props.linkWithCenter;
-				return { content, clickLink };
-			case 'LIVE STREAM':
-				content = <h2>8</h2>;
-				clickLink = props.linkWithCenter;
-				return { content, clickLink };
-			case 'DASHBOARD':
-				clickLink = props.linkNoCenter;
-				return { clickLink };
-			case 'ALL FILES':
-				content = <h2>78</h2>;
-				clickLink = props.linkNoCenter;
-				return { content, clickLink };
-			case 'CONTACTS':
-				content = <h2>29</h2>;
-				clickLink = props.linkNoCenter;
-				return { content, clickLink };
-			default:
-				return { content, clickLink };
+class NLink extends Component {
+	state = {
+		filtersLoaded: false,
+		filters: {
+			all: 0,
+			myDay: 0,
+			today: 0,
+			tomorrow: 0,
+			nextSeven: 0
 		}
 	};
-	linkProps();
-	return (
-		<NavLink
-			activeclassname={classes.active}
-			key={props.link}
-			className={classes.NavItem}
-			to={`/${props.link}`}
-			onClick={clickLink}
-			exact>
-			<div className={classes.LeftItems}>
-				<img
-					alt={props.icon}
-					src={require(`../../../../assets/${props.icon}.png`)}></img>
-				<h2>{props.title}</h2>
-			</div>
-			<div className={classes.RightItems}>{content}</div>
-		</NavLink>
-	);
-};
+
+	// UNSAFE_componentWillReceiveProps(nextProps) {
+	// 	if (this.props.todos !== nextProps.todos) {
+	// 		console.log(`filter change`);
+	// 		return true;
+	// 	} else if (this.props.filters !== nextProps.filters) {
+	// 		return true;
+	// 	}
+	// }
+
+	// shouldComponentUpdate(nextProps) {
+	// 	console.log(`deez dem props`, nextProps);
+	// 	if (this.props.filters !== nextProps.filters) {
+	// 		console.log(`be the change you want to see`);
+	// 		return true;
+	// 	}
+	// }
+
+	render() {
+		let content, clickLink;
+
+		if (this.state.filtersLoaded === false) {
+			this.setState({
+				filtersLoaded: true,
+				filters: this.props.filters
+			});
+		}
+
+		// console.log(this.props.todos.length);
+
+		// const filters = { ...this.props.filters };
+
+		const linkProps = () => {
+			switch (this.props.title) {
+				case 'TODO':
+					content = (
+						<h2>
+							{this.props.filters.all} • {this.props.filters.today} •{' '}
+							{this.props.filters.myDay} • {this.props.filters.tomorrow} •{' '}
+							{this.props.filters.nextSeven}
+						</h2>
+					);
+					clickLink = this.props.linkNoCenter;
+					return { content, clickLink };
+				case 'MESSAGES':
+					content = <h2>9</h2>;
+					clickLink = this.props.linkWithCenter;
+					return { content, clickLink };
+				case 'LIVE STREAM':
+					content = <h2>8</h2>;
+					clickLink = this.props.linkWithCenter;
+					return { content, clickLink };
+				case 'DASHBOARD':
+					clickLink = this.props.linkNoCenter;
+					return { clickLink };
+				case 'ALL FILES':
+					content = <h2>78</h2>;
+					clickLink = this.props.linkNoCenter;
+					return { content, clickLink };
+				case 'CONTACTS':
+					content = <h2>29</h2>;
+					clickLink = this.props.linkNoCenter;
+					return { content, clickLink };
+				default:
+					return { content, clickLink };
+			}
+		};
+
+		linkProps();
+		// this.props.filterUpdate(this.props.todos);
+		return (
+			<NavLink
+				activeclassname={classes.active}
+				key={this.props.link}
+				className={classes.NavItem}
+				to={`/${this.props.link}`}
+				onClick={clickLink}
+				exact>
+				<div className={classes.LeftItems}>
+					<img
+						alt={this.props.icon}
+						src={require(`../../../../assets/${this.props.icon}.png`)}></img>
+					<h2>{this.props.title}</h2>
+				</div>
+				<div className={classes.RightItems}>{content}</div>
+			</NavLink>
+		);
+	}
+}
 
 const mapStateToProps = state => {
 	return {
@@ -78,11 +122,12 @@ const mapStateToProps = state => {
 const mapDispatchToProp = dispatch => {
 	return {
 		linkWithCenter: () => dispatch(actions.linkWithCenter()),
-		linkNoCenter: () => dispatch(actions.linkNoCenter())
+		linkNoCenter: () => dispatch(actions.linkNoCenter()),
+		filterUpdate: todos => dispatch(actions.filtersInit(todos))
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProp
-)(navLink);
+)(NLink);

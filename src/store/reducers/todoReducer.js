@@ -6,15 +6,23 @@ import { updateObject } from '../../shared/utility';
 
 const intitialState = {
 	filters: {
-		all: 18,
-		inbox: 1,
+		all: 0,
 		myDay: 0,
 		today: 0,
-		tomorrow: 4,
-		nextSeven: 13
+		tomorrow: 0,
+		nextSeven: 0
 	},
 	todos: [],
 	loading: false
+};
+
+const filtersInit = (state, action) => {
+	const todos = action.todos ? action.todos : null;
+
+	todos.every(todo => {
+		return console.log(todo);
+	});
+	return todos;
 };
 
 const fetchTodosStart = (state, action) => {
@@ -23,8 +31,35 @@ const fetchTodosStart = (state, action) => {
 	});
 };
 
+const setFilters = todos => {
+	let all = 0;
+	let myDay = 0;
+	let today = 0;
+	let tomorrow = 0;
+
+	const newTodos = todos.map(todo => {
+		all = all + 1;
+		if (todo.specialLists.myDay.val === true) {
+			myDay = myDay + 1;
+		}
+		return todo;
+	});
+	const filters = {
+		all: all,
+		myDay: myDay,
+		today: today,
+		tomorrow: tomorrow,
+		nextSeven: 0
+	};
+	console.log(`slam!`, filters);
+
+	return filters;
+};
+
 const fetchTodosSuccess = (state, action) => {
+	const filters = setFilters(action.todos);
 	return updateObject(state, {
+		filters: filters,
 		loading: false,
 		todos: [...action.todos]
 	});
@@ -77,8 +112,10 @@ const updateTodo = (state, action) => {
 			return action.todo;
 		}
 	});
+	const filters = setFilters(newTodos);
 	return updateObject(state, {
-		todos: newTodos
+		todos: newTodos,
+		filters: filters
 	});
 };
 
@@ -100,6 +137,8 @@ const todoReducer = (state = intitialState, action) => {
 			return addTodo(state, action);
 		case actionTypes.SET_TODO_DUE_DATE:
 			return updateTodo(state, action);
+		case actionTypes.TODO_FILTERS_INIT:
+			return filtersInit(state, action);
 		default:
 			return state;
 	}

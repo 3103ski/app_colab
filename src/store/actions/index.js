@@ -17,7 +17,8 @@ export {
 	addTodo,
 	completeToggle,
 	setTodoDueDate,
-	updateTodo
+	updateTodo,
+	filtersInit
 } from './todoReducer';
 
 export {

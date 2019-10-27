@@ -15,6 +15,7 @@ import classes from './Dashboard.module.css';
 
 class Dashboard extends Component {
 	render() {
+		const todos = [...this.props.todos];
 		return (
 			<div className={classes.DashContainer}>
 				<div className={classes.TopDash}>

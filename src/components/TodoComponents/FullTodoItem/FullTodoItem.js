@@ -12,7 +12,8 @@ class TodoItem extends Component {
 		printDate: '',
 		dateLoaded: false,
 		completed: this.props.complete,
-		statusLoaded: false
+		statusLoaded: false,
+		currTodo: this.props.currTodo
 	};
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -32,11 +33,22 @@ class TodoItem extends Component {
 	}
 
 	render() {
+		// console.log(`This state here says what`, this.props);
 		let [todo, dueDate, todoId] = [
 			this.props.todo,
 			this.props.todo.dueDate,
 			this.props.todo.id
 		];
+
+		let ListItemClasses = [classes.TodoItem];
+
+		if (this.props.currTodo !== '' && this.props.currTodo !== null) {
+			let curr = this.props.currTodo;
+			if (curr.id === todoId) {
+				console.log(`check 1?`, curr);
+				ListItemClasses = [classes.TodoItem, classes.Selected];
+			}
+		}
 
 		if (dueDate !== undefined && this.state.dateLoaded === false) {
 			let pD;
@@ -74,7 +86,7 @@ class TodoItem extends Component {
 					onClick={completeToggle}
 				/>
 				<div
-					className={classes.TodoItem}
+					className={ListItemClasses.join(' ')}
 					onClick={() => this.props.setTodo(todoId, todo)}>
 					<div className={classes.TodoName}>
 						<p>{this.props.title}</p>
@@ -99,6 +111,12 @@ class TodoItem extends Component {
 	}
 }
 
+const mapStateToProps = state => {
+	return {
+		currTodo: state.app.currTodo
+	};
+};
+
 const mapDispatchToState = dispatch => {
 	return {
 		setTodo: (id, todo) => dispatch(actions.selectTodo(id, todo)),
@@ -108,6 +126,6 @@ const mapDispatchToState = dispatch => {
 };
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToState
 )(TodoItem);

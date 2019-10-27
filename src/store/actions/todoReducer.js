@@ -110,3 +110,11 @@ export const updateTodo = (todo, token) => {
 		todo: todo
 	};
 };
+
+export const filtersInit = t => {
+	console.log(t);
+	return {
+		type: actionTypes.TODO_FILTERS_INIT,
+		todos: t
+	};
+};

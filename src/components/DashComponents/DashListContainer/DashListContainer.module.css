@@ -3,6 +3,9 @@
 	min-width: 400px;
 	margin: 10px;
 	overflow: scroll;
+	box-shadow: 1px 1px 5px #80808030;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .Title {
