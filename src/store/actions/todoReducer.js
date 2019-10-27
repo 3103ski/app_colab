@@ -91,12 +91,6 @@ export const completeToggle = (id, todo, token) => {
 };
 
 export const setTodoDueDate = (todo, date, token) => {
-	// let newDate = date;
-	// if (typeof newDate === 'object') {
-	// 	newDate = JSON.stringify(newDate);
-	// }
-	// let length = newDate.length - 1;
-	// newDate = newDate.substring(1, length);
 	let newTodo = updateObject(todo, {
 		dueDate: date
 	});
@@ -104,20 +98,15 @@ export const setTodoDueDate = (todo, date, token) => {
 	updateServerTodo(newTodo, token);
 	return {
 		type: actionTypes.SET_TODO_DUE_DATE,
-		todo: newTodo,
-		todoId: todo.todoId
+		todo: newTodo
 	};
 };
 
-export const toggleMyDay = (todo, token) => {
-	let newVal = todo.myDay === false ? true : false;
-	let newTodo = updateObject(todo, {
-		myDay: newVal
-	});
-	updateServerTodo(newTodo, token);
+export const updateTodo = (todo, token) => {
+	console.log(`myDay or the highway`, todo);
+	updateServerTodo(todo, token);
 	return {
-		type: actionTypes.TOGGLE_MY_DAY,
-		todo: newTodo,
-		todoId: todo.todoId
+		type: actionTypes.UPDATE_TODO,
+		todo: todo
 	};
 };

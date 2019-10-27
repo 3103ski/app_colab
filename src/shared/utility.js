@@ -142,3 +142,41 @@ export const monthStrToNum = monthStr => {
 	}
 	return newMonth;
 };
+
+// ********************************************************
+// ***** { makeNow }                        ****************
+// *********************************************************
+
+//  arg "when" takes 'yesterday', 'today', or 'tomorrow'
+
+export const makeNow = when => {
+	const d = new Date();
+	switch (when) {
+		case 'yesterday': {
+			const [m, dA, y] = [d.getMonth() + 1, d.getDate() - 1, d.getFullYear()];
+			when = `${m}${dA}${y}`;
+			break;
+		}
+		case 'today': {
+			const [m, dA, y] = [d.getMonth() + 1, d.getDate(), d.getFullYear()];
+			when = `${m}${dA}${y}`;
+			break;
+		}
+		case 'todayExp': {
+			const [m, dA, y] = [d.getMonth() + 1, d.getDate() + 2, d.getFullYear()];
+			when = `${m}${dA}${y}`;
+			break;
+		}
+		case 'tomorrow': {
+			const [m, dA, y] = [d.getMonth() + 1, d.getDate() + 1, d.getFullYear()];
+			when = `${m}${dA}${y}`;
+			break;
+		}
+		case 'tomorrowExp': {
+			const [m, dA, y] = [d.getMonth() + 1, d.getDate() + 3, d.getFullYear()];
+			when = `${m}${dA}${y}`;
+			break;
+		}
+	}
+	return when;
+};

@@ -51,20 +51,17 @@ const completeToggle = (state, action) => {
 		if (todo.todoId !== action.todoId) {
 			return todo;
 		}
-
 		if (todo.todoId === action.todoId && todo.complete === true) {
 			return updateObject(todo, {
 				complete: false
 			});
 		}
-
 		if (todo.todoId === action.todoId && todo.complete === false) {
 			return updateObject(todo, {
 				complete: true
 			});
 		}
 	});
-
 	return updateObject(state, {
 		todos: newTodos
 	});
@@ -73,19 +70,13 @@ const completeToggle = (state, action) => {
 const updateTodo = (state, action) => {
 	let currTodos = [...state.todos];
 	const newTodos = currTodos.map(todo => {
-		// console.log(`this todo`, todo);
-		if (todo.todoId !== action.todoId) {
-			// console.log(`holy cow we good?`, todo);
-
+		if (todo.id !== action.todo.id) {
 			return todo;
 		}
-
-		if (todo.todoId === action.todoId) {
-			console.log(`todo is diff, I see that`);
+		if (todo.id === action.todo.id) {
 			return action.todo;
 		}
 	});
-
 	return updateObject(state, {
 		todos: newTodos
 	});
@@ -95,7 +86,7 @@ const updateTodo = (state, action) => {
 
 const todoReducer = (state = intitialState, action) => {
 	switch (action.type) {
-		case actionTypes.TOGGLE_MY_DAY:
+		case actionTypes.UPDATE_TODO:
 			return updateTodo(state, action);
 		case actionTypes.COMPLETE_TOGGLE:
 			return completeToggle(state, action);

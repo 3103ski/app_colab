@@ -17,7 +17,7 @@ export {
 	addTodo,
 	completeToggle,
 	setTodoDueDate,
-	toggleMyDay
+	updateTodo
 } from './todoReducer';
 
 export {

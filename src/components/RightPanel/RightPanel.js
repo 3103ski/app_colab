@@ -9,7 +9,7 @@ import DatePicker from 'react-date-picker';
 import 'react-day-picker/lib/style.css';
 
 // Utility Function
-import { updateObject } from '../../shared/utility';
+import { updateObject, makeNow } from '../../shared/utility';
 
 // Styling
 import classes from './RightPanel.module.css';
@@ -67,11 +67,105 @@ class RightPanel extends Component {
 		}
 	};
 
-	myDay = todo => {
-		const s = todo.myDay === true ? false : true;
-		const nT = updateObject(todo, {
-			myDay: s
+	specialListsToggle = type => {
+		console.log(`SPECIAL_ADD`);
+		const today = makeNow('today');
+		const tomorrow = makeNow('tomorrow');
+		const todayExp = makeNow('todayExp');
+		const tomorrowExp = makeNow('tomorrowExp');
+
+		let newTodo = { ...this.state.todo };
+
+		switch (type) {
+			case 'myYesterday':
+				{
+					const val =
+						newTodo.specialLists.myYesterday.val === true ? false : true;
+					newTodo = updateObject(newTodo, {
+						specialLists: {
+							myYesterday: {
+								val: val,
+								exp: tomorrow,
+								added: today
+							},
+							myDay: {
+								val: false,
+								exp: today,
+								added: today
+							},
+							myTomorrow: {
+								val: false,
+								exp: today,
+								added: today
+							}
+						}
+					});
+				}
+				break;
+			case 'myDay':
+				{
+					const val = newTodo.specialLists.myDay.val === true ? false : true;
+					newTodo = updateObject(newTodo, {
+						specialLists: {
+							myYesterday: {
+								val: false,
+								exp: tomorrow,
+								added: today
+							},
+							myDay: {
+								val: val,
+								exp: todayExp,
+								added: today
+							},
+							myTomorrow: {
+								val: false,
+								exp: today,
+								added: today
+							}
+						}
+					});
+				}
+				break;
+			case 'myTomorrow':
+				{
+					const val =
+						newTodo.specialLists.myYesterday.val === true ? false : true;
+					newTodo = updateObject(newTodo, {
+						specialLists: {
+							myYesterday: {
+								val: false,
+								exp: tomorrow,
+								added: today
+							},
+							myDay: {
+								val: false,
+								exp: today,
+								added: today
+							},
+							myTomorrow: {
+								val: val,
+								exp: tomorrowExp,
+								added: today
+							}
+						}
+					});
+				}
+				break;
+		}
+		this.setState({
+			todo: newTodo
 		});
+		this.props.updateTodo(newTodo, this.props.token);
+	};
+
+	myYesterday = () => {
+		this.specialListsToggle('yesterday');
+	};
+	myDay = () => {
+		this.specialListsToggle('myDay');
+	};
+	myTomorrow = () => {
+		this.specialListsToggle('myTomorrow');
 	};
 
 	render() {
@@ -170,7 +264,7 @@ const mapDispatchToProps = dispatch => {
 		closeTodo: () => dispatch(actions.closeTodo()),
 		setDueDate: (todo, date, token) =>
 			dispatch(actions.setTodoDueDate(todo, date, token)),
-		toggleMyDay: (todo, token) => dispatch(actions.toggleMyDay(todo, token))
+		updateTodo: (todo, token) => dispatch(actions.updateTodo(todo, token))
 	};
 };
 

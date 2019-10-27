@@ -41,20 +41,20 @@ class AddTodo extends Component {
 				},
 				valid: false,
 				touched: false
-			},
-			dueDate: {
-				elementType: 'input',
-				elementConfig: {
-					type: 'text',
-					placeholder: 'Due Date'
-				},
-				value: '',
-				validation: {
-					required: false
-				},
-				valid: false,
-				touched: false
 			}
+			// dueDate: {
+			// 	elementType: 'input',
+			// 	elementConfig: {
+			// 		type: 'text',
+			// 		placeholder: 'Due Date'
+			// 	},
+			// 	value: '',
+			// 	validation: {
+			// 		required: false
+			// 	},
+			// 	valid: false,
+			// 	touched: false
+			// }
 		}
 	};
 
@@ -82,7 +82,23 @@ class AddTodo extends Component {
 			projectName: this.props.activeProject ? this.props.activeProject : null,
 			title: form.todoTitle.value,
 			notes: form.notes.value ? form.notes.value : null,
-			dueDate: form.dueDate.value ? form.dueDate.value : null,
+			specialLists: {
+				myYesterday: {
+					val: false,
+					exp: null,
+					added: null
+				},
+				myDay: {
+					val: false,
+					exp: null,
+					added: null
+				},
+				myTomorrow: {
+					val: false,
+					exp: null,
+					added: null
+				}
+			},
 			users: [this.props.userId],
 			engineerPrivs: [this.props.userId],
 			complete: false,
