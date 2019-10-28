@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 // Utility Functions
-import { updateObject, checkValidity } from '../../../shared/utility';
+import { updateObject, checkValidity, randomId } from '../../../shared/utility';
 
 // Components
 import Input from '../../UI/Input/Input';
@@ -116,6 +116,7 @@ class AddSong extends Component {
 		const form = this.state.entryForm;
 		const song = {
 			userId: this.props.userId,
+			songId: randomId(),
 			artist: this.props.currArtist,
 			projectName: this.props.activeProject,
 			name: form.songName.value,

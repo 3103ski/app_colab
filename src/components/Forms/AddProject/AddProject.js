@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 // Utility Functions
-import { updateObject, checkValidity } from '../../../shared/utility';
+import { updateObject, checkValidity, randomId } from '../../../shared/utility';
 
 // Components
 import Input from '../../UI/Input/Input';
@@ -69,6 +69,7 @@ class AddProject extends Component {
 			userId: this.props.userId,
 			artist: this.state.entryForm.artist.value,
 			projectName: this.state.entryForm.projectName.value,
+			projectId: randomId(),
 			engineer: [this.props.userId],
 			users: [this.props.userId],
 			usersWithAccess: this.state.usersWithAccess

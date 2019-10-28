@@ -15,8 +15,8 @@ import classes from './ProjectFolders.module.css';
 
 class ProjectFolders extends Component {
 	componentDidMount() {
-		this.props.getProjects(this.props.auth.token, this.props.auth.userId);
-		this.props.getSongs(this.props.auth.token, this.props.auth.userId);
+		this.props.getProjects(this.props.auth.userId);
+		this.props.getSongs(this.props.auth.userId);
 	}
 	render() {
 		// Returns Project Nav Items

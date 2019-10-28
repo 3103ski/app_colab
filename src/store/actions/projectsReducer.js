@@ -1,9 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 // axios instances
-import firebaseProjects from '../../components/FirebaseInstances/firebaseProjects';
-import firebaseSongs from '../../components/FirebaseInstances/firebaseSongs';
-import { updateObject } from '../../shared/utility';
+import { db } from '../../firebase';
 
 // Fetch projects
 
@@ -27,43 +25,43 @@ export const fetchProjectsFail = err => {
 	};
 };
 
-export const projectsInit = (token, userId) => {
+// CALLED IN COMPONENTS > LEFTPANEL > PROJECTFOLDERS > .JS
+export const projectsInit = userId => {
 	return dispatch => {
 		dispatch(fetchProjectsStart());
-		const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
-		firebaseProjects
-			.get('.json' + queryParams)
-			.then(res => {
-				const fetchedProjects = [];
-				for (let key in res.data) {
-					fetchedProjects.push({
-						...res.data[key],
-						id: key
-					});
-				}
-				dispatch(fetchProjectsSuccess(fetchedProjects));
-			})
-			.catch(error => {
-				dispatch(fetchProjectsFail(error));
+		// FIRESTORE
+		let projectArr = [];
+		db.collection(`projects`)
+			.get()
+			.then(qS => {
+				qS.forEach(doc => {
+					if (userId === doc.data().userId) {
+						let project = {
+							...doc.data()
+						};
+						projectArr.push(project);
+					}
+				});
+				dispatch(fetchProjectsSuccess(projectArr));
 			});
 	};
 };
 
-// Update Song
+// Add Projects
 
-const updateServerSong = (song, token) => {
-	const queryParams = `?auth=${token}`;
-	if (song.id !== undefined) {
-		firebaseSongs.put(`/${song.id}/.json` + queryParams, song).then(res => res);
-	}
+export const projectFormToggle = () => {
+	return {
+		type: actionTypes.PROJECT_FORM_TOGGLE
+	};
 };
 
-export const updateSong = (song, token) => {
-	let newSong = song;
-	updateServerSong(newSong, token);
+export const addProject = project => {
+	db.collection('projects')
+		.doc(project.projectId)
+		.set(project);
 	return {
-		type: actionTypes.UPDATE_SONGS,
-		song: newSong
+		type: actionTypes.ADD_PROJECT,
+		newProject: project
 	};
 };
 
@@ -89,62 +87,44 @@ export const fetchSongsFail = err => {
 	};
 };
 
-export const songsInit = (token, userId) => {
+// CALLED IN COMPONENTS > LEFTPANEL > PROJECTFOLDERS > .JS
+export const songsInit = userId => {
 	return dispatch => {
 		dispatch(fetchSongsStart());
-		const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
-		firebaseSongs
-			.get('.json' + queryParams)
-			.then(res => {
-				const fetchedSongs = [];
-				for (let key in res.data) {
-					fetchedSongs.push({
-						...res.data[key],
-						id: key
-					});
-				}
-				dispatch(fetchSongsSuccess(fetchedSongs));
-				// console.log(fetchedSongs);
-			})
-			.catch(error => {
-				dispatch(fetchSongsFail(error));
+		// FIRESTORE
+		let projectArr = [];
+		db.collection(`songs`)
+			.get()
+			.then(qS => {
+				qS.forEach(doc => {
+					if (userId === doc.data().userId) {
+						let project = {
+							...doc.data()
+						};
+						projectArr.push(project);
+					}
+				});
+				dispatch(fetchSongsSuccess(projectArr));
 			});
 	};
 };
 
-// Add Projects
+// Update Song
 
-export const addProjectToServer = (project, token) => {
-	const queryParams = `?auth=${token}`;
-	firebaseProjects
-		.post('/.json' + queryParams, project)
-		.then(res => console.log(res));
-};
-
-export const projectFormToggle = () => {
+export const updateSong = song => {
+	db.collection('songs')
+		.doc(song.songId)
+		.set(song);
 	return {
-		type: actionTypes.PROJECT_FORM_TOGGLE
+		type: actionTypes.UPDATE_SONGS,
+		song: song
 	};
 };
 
-export const addProject = (project, token) => {
-	addProjectToServer(project, token);
-	return {
-		type: actionTypes.ADD_PROJECT,
-		newProject: project
-	};
-};
-
-// Add Songs
-export const addSongToServer = (song, token) => {
-	const queryParams = `?auth=${token}`;
-	firebaseSongs
-		.post('/.json' + queryParams, song)
-		.then(res => console.log(res));
-};
-
-export const addSong = (song, token) => {
-	addSongToServer(song, token);
+export const addSong = song => {
+	db.collection('songs')
+		.doc(song.songId)
+		.set(song);
 	return {
 		type: actionTypes.ADD_SONG,
 		newSong: song

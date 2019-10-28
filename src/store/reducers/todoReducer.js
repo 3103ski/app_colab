@@ -18,7 +18,6 @@ const intitialState = {
 
 const filtersInit = (state, action) => {
 	const todos = action.todos ? action.todos : null;
-
 	todos.every(todo => {
 		return console.log(todo);
 	});
@@ -39,9 +38,12 @@ const setFilters = todos => {
 
 	const newTodos = todos.map(todo => {
 		all = all + 1;
-		if (todo.specialLists.myDay.val === true) {
+		let chkTodo = { ...todo };
+
+		if (chkTodo.specialLists.myDay.val === true) {
 			myDay = myDay + 1;
 		}
+
 		return todo;
 	});
 	const filters = {
