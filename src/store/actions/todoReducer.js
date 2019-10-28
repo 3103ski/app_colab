@@ -1,10 +1,7 @@
 import * as actionTypes from './actionTypes';
 
 // Import
-import firebaseTodos from '../../components/FirebaseInstances/firebaseTodos';
 import { db } from '../../firebase';
-import { updateObject } from '../../shared/utility';
-import firebase from 'firebase';
 
 // FETCHING ALL TODOS
 
@@ -28,48 +25,28 @@ export const fetchTodosFail = err => {
 	};
 };
 
-export const fetchTodos = (token, userId) => {
+export const fetchTodos = userId => {
 	return dispatch => {
 		dispatch(fetchTodosStart());
-
 		// FIRESTORE
 		let todoArr = [];
 		db.collection(`todos`)
 			.get()
 			.then(qS => {
 				qS.forEach(doc => {
-					let todo = {
-						id: doc.id,
-						...doc.data()
-					};
-					todoArr.push(todo);
+					if (userId === doc.data().userId) {
+						let todo = {
+							...doc.data()
+						};
+						todoArr.push(todo);
+					}
 				});
 				dispatch(fetchTodosSuccess(todoArr));
 			});
-
-		// FIREBASE RTDB
-		// const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
-		// firebaseTodos
-		// 	.get('.json' + queryParams)
-		// 	.then(res => {
-		// 		const fetchedTodos = [];
-		// 		for (let key in res.data) {
-		// 			fetchedTodos.push({
-		// 				...res.data[key],
-		// 				id: key
-		// 			});
-		// 		}
-		// 		let allTodos = [...fetchedTodos, ...todoArr];
-		// 		// console.log(`we need this`, allTodos);
-		// 		// dispatch(fetchTodosSuccess(fetchedTodos));
-		// 	})
-		// 	.catch(error => {
-		// 		dispatch(fetchTodosFail(error));
-		// 	});
 	};
 };
 
-// TODOS
+// ADD FIRESTORE TODO
 
 export const addTodo = (todo, token) => {
 	addTodoToServer(todo, token);
@@ -79,61 +56,19 @@ export const addTodo = (todo, token) => {
 	};
 };
 
-const addTodoToServer = (todo, token) => {
+const addTodoToServer = todo => {
 	// ADDS TO FIRESTORE
-	db.collection('todos').add(todo);
-	// fetchTodos();
-
-	// ADDS TO RTDB
-	// const queryParams = `?auth=${token}`;
-	// firebaseTodos.post('/.json' + queryParams, todo).then(res => res);
-};
-
-const updateServerTodo = (todo, token) => {
-	// UPDATES RTDB
-	const queryParams = `?auth=${token}`;
-	if (todo.id !== undefined) {
-		firebaseTodos.put(`/${todo.id}/.json` + queryParams, todo).then(res => res);
-	}
-
-	// UPDATES FIRESTORE
-	// db.collection('todos').add(todo);
-};
-
-// EDIT TODO STATUS'
-
-export const completeToggle = (id, todo, token) => {
 	db.collection('todos')
-		.doc(todo.id)
-		.update({ complete: todo.complete });
-	// dispatch(fetchTodos());
-	// updateServerTodo(newTodo, token);
-	return {
-		type: actionTypes.COMPLETE_TOGGLE,
-		todoId: id
-	};
-};
-
-export const setTodoDueDate = (todo, date, token) => {
-	let newTodo = updateObject(todo, {
-		dueDate: date
-	});
-	db.collection('todos')
-		.doc(todo.id)
+		.doc(todo.todoId)
 		.set(todo);
-	// updateServerTodo(newTodo, token);
-	return {
-		type: actionTypes.SET_TODO_DUE_DATE,
-		todo: newTodo
-	};
+	fetchTodos();
 };
 
-export const updateTodo = (todo, token) => {
-	console.log(`myDay or the highway`, todo);
-	// updateServerTodo(todo, token);
-	// this is in the branch -- not master
+// UPDATE FIRESTORE TODO'
+
+export const updateTodo = todo => {
 	db.collection('todos')
-		.doc(todo.id)
+		.doc(todo.todoId)
 		.set(todo);
 	return {
 		type: actionTypes.UPDATE_TODO,

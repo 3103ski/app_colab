@@ -51,7 +51,6 @@ const setFilters = todos => {
 		tomorrow: tomorrow,
 		nextSeven: 0
 	};
-	// console.log(`slam!`, filters);
 
 	return filters;
 };
@@ -75,8 +74,11 @@ const fetchTodosFail = (state, action) => {
 // ADD TODOS
 
 const addTodo = (state, action) => {
+	const nTs = [...state.todos, action.todo];
+	const newF = setFilters(nTs);
 	return updateObject(state, {
-		todos: [...state.todos, action.todo]
+		todos: nTs,
+		filters: newF
 	});
 };
 
@@ -86,17 +88,11 @@ const completeToggle = (state, action) => {
 		if (todo.todoId !== action.todoId) {
 			return todo;
 		}
-		if (todo.todoId === action.todoId && todo.complete === true) {
-			return updateObject(todo, {
-				complete: false
-			});
-		}
-		if (todo.todoId === action.todoId && todo.complete === false) {
-			return updateObject(todo, {
-				complete: true
-			});
+		if (todo.todoId === action.todoId) {
+			return action.updatedTodo;
 		}
 	});
+
 	return updateObject(state, {
 		todos: newTodos
 	});

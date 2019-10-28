@@ -15,7 +15,7 @@ class TodoList extends Component {
 	state = {};
 
 	componentDidMount() {
-		this.props.fetchTodos(this.props.auth.token, this.props.auth.userId);
+		this.props.fetchTodos(this.props.auth.userId);
 	}
 
 	render() {

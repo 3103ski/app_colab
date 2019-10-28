@@ -41,14 +41,14 @@ class TodoItem extends Component {
 		let [todo, dueDate, todoId] = [
 			this.props.todo,
 			this.props.todo.dueDate,
-			this.props.todo.id
+			this.props.todo.todoId
 		];
 
 		let ListItemClasses = [classes.TodoItem];
 
 		if (this.props.currTodo !== '' && this.props.currTodo !== null) {
 			let curr = this.props.currTodo;
-			if (curr.id === todoId) {
+			if (curr.todoId === todoId) {
 				// console.log(`check 1?`, curr);
 				ListItemClasses = [classes.TodoItem, classes.Selected];
 			}
@@ -75,7 +75,7 @@ class TodoItem extends Component {
 			this.setState({
 				completed: s
 			});
-			this.props.completeToggle(todoId, nT, this.props.token);
+			this.props.updateTodo(nT);
 		};
 
 		return (
@@ -127,8 +127,7 @@ const mapStateToProps = state => {
 const mapDispatchToState = dispatch => {
 	return {
 		setTodo: (id, todo) => dispatch(actions.selectTodo(id, todo)),
-		completeToggle: (id, todo, token) =>
-			dispatch(actions.completeToggle(id, todo, token))
+		updateTodo: todo => dispatch(actions.updateTodo(todo))
 	};
 };
 

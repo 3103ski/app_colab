@@ -69,7 +69,8 @@ class RightPanel extends Component {
 						todo: todo,
 						activeId: activeId,
 						date: null,
-						myDay: myDay
+						myDay: myDay,
+						notes: todo.notes
 						// loaded: true
 					});
 				}
@@ -95,10 +96,14 @@ class RightPanel extends Component {
 	}
 
 	changeDate = date => {
-		let dateObj = {};
+		let nT;
+		let dateObj = {
+			month: '--',
+			day: '--',
+			year: '--'
+		};
 		if (date === null) {
 			this.setState({ date: new Date() });
-			this.props.setDueDate(this.props.todo, dateObj, this.props.token);
 		} else {
 			const dStr = JSON.stringify(date)
 				.split(' ')[0]
@@ -111,13 +116,16 @@ class RightPanel extends Component {
 				day: d,
 				year: y
 			};
-			this.props.setDueDate(this.props.todo, dateObj, this.props.token);
 			this.setState({ date: date });
 		}
+		nT = updateObject(this.props.todo, {
+			dueDate: dateObj
+		});
+		this.props.updateTodo(nT);
 	};
 
 	specialListsToggle = type => {
-		console.log(`SPECIAL_ADD`);
+		// console.log(`SPECIAL_ADD`);
 		const today = makeNow('today');
 		const tomorrow = makeNow('tomorrow');
 		const todayExp = makeNow('todayExp');
@@ -224,29 +232,23 @@ class RightPanel extends Component {
 	render() {
 		// Initial Panel State
 
-		let todo, activeId, day, month, year, containerClasses, notes, mD;
+		let todo, activeId, day, month, year, containerClasses, mD;
 
 		if (this.props.todo !== null) {
 			if (this.state.loaded === false) {
-				[todo, activeId, notes, mD] = [
+				[todo, activeId, mD] = [
 					this.props.todo,
 					this.props.todo.id,
-					this.props.todo.notes,
 					this.props.todo.specialLists.myDay.val
 				];
-				// console.log(`::: INITIAL RENDER :::`, this.state.todo);
 				this.setState({
 					todo: todo,
 					activeId: activeId,
-					notes: notes,
 					loaded: true,
 					myDay: mD
 				});
 			}
 		}
-
-		// console.log(`:::LOAD PANEL STATE::: `, this.state);
-		// console.log(`:::LOAD PANEL PROPS::: `, this.props);
 
 		[day, month, year, todo] = [null, null, null, this.state.todo];
 
@@ -257,7 +259,7 @@ class RightPanel extends Component {
 			}
 			if (todo.dueDate === undefined || todo.dueDate === null) {
 				const d = new Date();
-				[day, month, year] = [d.getDate(), d.getMonth() + 1, d.getFullYear()];
+				[day, month, year] = ['--', '--', '--'];
 			}
 		}
 
@@ -307,7 +309,7 @@ class RightPanel extends Component {
 						</div>
 					</div>
 					<div className={classes.Notes}>
-						<p>{notes}</p>
+						<p>{this.state.notes}</p>
 					</div>
 				</div>
 			</div>
@@ -326,9 +328,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		closeTodo: () => dispatch(actions.closeTodo()),
-		setDueDate: (todo, date, token) =>
-			dispatch(actions.setTodoDueDate(todo, date, token)),
-		updateTodo: (todo, token) => dispatch(actions.updateTodo(todo, token))
+		updateTodo: todo => dispatch(actions.updateTodo(todo))
 	};
 };
 

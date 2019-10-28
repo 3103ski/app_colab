@@ -8,7 +8,6 @@ import * as actions from '../../../../store/actions/index';
 
 // Styles
 import classes from './NavLink.module.css';
-import { updateObject } from '../../../../shared/utility';
 
 class NLink extends Component {
 	state = {
@@ -22,22 +21,22 @@ class NLink extends Component {
 		}
 	};
 
-	// UNSAFE_componentWillReceiveProps(nextProps) {
-	// 	if (this.props.todos !== nextProps.todos) {
-	// 		console.log(`filter change`);
-	// 		return true;
-	// 	} else if (this.props.filters !== nextProps.filters) {
-	// 		return true;
-	// 	}
-	// }
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (this.props.todos !== nextProps.todos) {
+			return true;
+		} else if (this.props.filters !== nextProps.filters) {
+			return true;
+		}
+	}
 
-	// shouldComponentUpdate(nextProps) {
-	// 	console.log(`deez dem props`, nextProps);
-	// 	if (this.props.filters !== nextProps.filters) {
-	// 		console.log(`be the change you want to see`);
-	// 		return true;
-	// 	}
-	// }
+	shouldComponentUpdate(nextProps) {
+		if (this.props.todos !== nextProps.todos) {
+			this.setState({
+				filtersLoaded: false
+			});
+			return true;
+		}
+	}
 
 	render() {
 		let content, clickLink;
@@ -48,10 +47,6 @@ class NLink extends Component {
 				filters: this.props.filters
 			});
 		}
-
-		// console.log(this.props.todos.length);
-
-		// const filters = { ...this.props.filters };
 
 		const linkProps = () => {
 			switch (this.props.title) {
@@ -88,9 +83,7 @@ class NLink extends Component {
 					return { content, clickLink };
 			}
 		};
-
 		linkProps();
-		// this.props.filterUpdate(this.props.todos);
 		return (
 			<NavLink
 				activeclassname={classes.active}

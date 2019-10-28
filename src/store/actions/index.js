@@ -12,14 +12,7 @@ export {
 	closeTodo
 } from './appReducer';
 
-export {
-	fetchTodos,
-	addTodo,
-	completeToggle,
-	setTodoDueDate,
-	updateTodo,
-	filtersInit
-} from './todoReducer';
+export { fetchTodos, addTodo, updateTodo, filtersInit } from './todoReducer';
 
 export {
 	addProject,
