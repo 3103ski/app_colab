@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-
+import { db } from './firebase';
 // Styles
 import './App.css';
 
@@ -50,6 +50,20 @@ class App extends Component {
 		if (!this.props.isLoggedIn) {
 			loginRedirect = <Redirect to='/auth' />;
 		}
+
+		// db.collection('cities')
+		// 	.doc('LA')
+		// 	.set({
+		// 		name: 'Los Angeles',
+		// 		state: 'CA',
+		// 		country: 'USA'
+		// 	})
+		// 	.then(function() {
+		// 		console.log('Document successfully written!');
+		// 	})
+		// 	.catch(function(error) {
+		// 		console.error('Error writing document: ', error);
+		// 	});
 		return (
 			<div className='App'>
 				<Layout>

@@ -27,10 +27,10 @@ class Dashboard extends Component {
 		return card;
 	};
 	cardChange = (fromLan, toLane, songId, index) => {
-		console.log(`We moved something`, fromLan);
-		console.log(`We moved something`, toLane);
-		console.log(`We moved something`, songId);
-		console.log(`We moved something`, index);
+		// console.log(`We moved something`, fromLan);
+		// console.log(`We moved something`, toLane);
+		// console.log(`We moved something`, songId);
+		// console.log(`We moved something`, index);
 		let newStatus;
 		if (toLane === 'new_songs_lane') {
 			newStatus = 'New Song';
@@ -119,13 +119,13 @@ class Dashboard extends Component {
 			this.returnCard(song.id, song.name, song.artist)
 		);
 
-		console.log(`TEST new song cards`, nsCards);
-		console.log(`IN PROGRESS cards`, ipCards);
-		console.log(`MIX SENT cards`, msCards);
-		console.log(`REVISIONS REQUESTED cards`, rrCards);
-		console.log(`LIVE SECHDEULED cards`, lsCards);
-		console.log(`FINAL MIXES cards`, fmCards);
-		console.log(`COMPLETED cards`, comCards);
+		// console.log(`TEST new song cards`, nsCards);
+		// console.log(`IN PROGRESS cards`, ipCards);
+		// console.log(`MIX SENT cards`, msCards);
+		// console.log(`REVISIONS REQUESTED cards`, rrCards);
+		// console.log(`LIVE SECHDEULED cards`, lsCards);
+		// console.log(`FINAL MIXES cards`, fmCards);
+		// console.log(`COMPLETED cards`, comCards);
 		let data = {
 			lanes: [
 				{

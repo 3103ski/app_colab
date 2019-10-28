@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
+// Utility
+
+import { updateObject } from '../../../shared/utility';
+
 // Style
 import classes from './FullTodoItem.module.css';
 
@@ -65,10 +69,13 @@ class TodoItem extends Component {
 
 		const completeToggle = () => {
 			const s = this.state.completed === true ? false : true;
+			const nT = updateObject(this.props.todo, {
+				complete: s
+			});
 			this.setState({
 				completed: s
 			});
-			this.props.completeToggle(todoId, this.props.todo, this.props.token);
+			this.props.completeToggle(todoId, nT, this.props.token);
 		};
 
 		return (
