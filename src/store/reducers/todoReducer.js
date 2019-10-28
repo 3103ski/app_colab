@@ -51,7 +51,7 @@ const setFilters = todos => {
 		tomorrow: tomorrow,
 		nextSeven: 0
 	};
-	console.log(`slam!`, filters);
+	// console.log(`slam!`, filters);
 
 	return filters;
 };

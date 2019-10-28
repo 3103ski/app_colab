@@ -45,7 +45,7 @@ class TodoItem extends Component {
 		if (this.props.currTodo !== '' && this.props.currTodo !== null) {
 			let curr = this.props.currTodo;
 			if (curr.id === todoId) {
-				console.log(`check 1?`, curr);
+				// console.log(`check 1?`, curr);
 				ListItemClasses = [classes.TodoItem, classes.Selected];
 			}
 		}

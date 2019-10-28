@@ -21,7 +21,24 @@ class RightPanel extends Component {
 		activeId: null,
 		todo: null,
 		myDay: false,
-		panelOpen: false
+		panelOpen: false,
+		specialLists: {
+			myYesterday: {
+				val: false,
+				exp: null,
+				added: null
+			},
+			myDay: {
+				val: false,
+				exp: null,
+				added: null
+			},
+			myTomorrow: {
+				val: false,
+				exp: null,
+				added: null
+			}
+		}
 	};
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -32,8 +49,6 @@ class RightPanel extends Component {
 			return true;
 		}
 		if (this.state.myDay !== nextState) {
-			console.log(`this.state: `, this.state.myDay);
-			console.log(`nextState: `, nextState.myDay);
 			return true;
 		}
 	}
@@ -44,26 +59,39 @@ class RightPanel extends Component {
 			nextProps.panelOpen !== this.props.panelOpen
 		) {
 			if (nextProps.todo !== null) {
+				let myDay;
 				const todo = nextProps.todo ? nextProps.todo : null;
 				const activeId = todo !== null ? todo.id : null;
-				let myDay;
-				if (this.state.todo !== null) {
+				if (this.state.todo !== null || todo !== null) {
 					myDay = todo.specialLists.myDay.val === true ? true : false;
+					console.log(`::: WILL RECEIVE ::: :: FIRST CHK `, myDay);
+					this.setState({
+						todo: todo,
+						activeId: activeId,
+						date: null,
+						myDay: myDay
+						// loaded: true
+					});
 				}
-				console.log(`Right up in here`, nextProps);
-				this.setState({
-					todo: todo,
-					activeId: activeId,
-					date: null
-				});
 			}
+			console.log(`::: WILL RECEIVE ::: :: SETSTATE CHK `, this.state);
 		}
 		if (nextProps.panelOpen !== this.props.panelOpen) {
-			console.log(`panel should change: `, nextProps);
+			let myDay;
+			if (this.state.todo !== null) {
+				const todo = this.state.todo ? this.state.todo : null;
+				myDay = todo.specialLists.myDay.val === true ? true : false;
+				console.log(`::: WILL RECEIVE ::: :: SECOND CHK `, todo);
+			}
 			this.setState({
-				panelOpen: nextProps.panelOpen
+				panelOpen: nextProps.panelOpen,
+				myDay: myDay
 			});
 		}
+	}
+
+	componentDidMount() {
+		console.log(`:::MOUNTED:::`);
 	}
 
 	changeDate = date => {
@@ -195,21 +223,30 @@ class RightPanel extends Component {
 
 	render() {
 		// Initial Panel State
+
 		let todo, activeId, day, month, year, containerClasses, notes, mD;
 
-		if (this.state.todo !== null && this.loaded === false) {
-			[todo, activeId, notes, mD] = [
-				this.state.todo,
-				this.state.todo.id,
-				this.state.todo.notes
-			];
-			this.setState({
-				todo: todo,
-				activeId: activeId,
-				notes: notes,
-				loaded: true
-			});
+		if (this.props.todo !== null) {
+			if (this.state.loaded === false) {
+				[todo, activeId, notes, mD] = [
+					this.props.todo,
+					this.props.todo.id,
+					this.props.todo.notes,
+					this.props.todo.specialLists.myDay.val
+				];
+				console.log(`::: INITIAL RENDER :::`, this.state.todo);
+				this.setState({
+					todo: todo,
+					activeId: activeId,
+					notes: notes,
+					loaded: true,
+					myDay: mD
+				});
+			}
 		}
+
+		console.log(`:::LOAD PANEL STATE::: `, this.state);
+		console.log(`:::LOAD PANEL PROPS::: `, this.props);
 
 		[day, month, year, todo] = [null, null, null, this.state.todo];
 
@@ -220,7 +257,6 @@ class RightPanel extends Component {
 			}
 			if (todo.dueDate === undefined || todo.dueDate === null) {
 				const d = new Date();
-				console.log(`Does this d even matter???`, d);
 				[day, month, year] = [d.getDate(), d.getMonth() + 1, d.getFullYear()];
 			}
 		}
