@@ -13,11 +13,12 @@
 .TopDash {
 	display: flex;
 	height: 385px;
+	overflow-x: scroll;
 }
 .BottomDash {
-	display: flex;
+	/* display: flex; */
 	height: 400px;
-	align-items: center;
+	/* align-items: center; */
 	justify-content: center;
 }
 /* Files */
@@ -78,4 +79,14 @@
 
 .CommentInfo p {
 	font-size: 0.75rem;
+}
+
+/* Card Board */
+
+.react-trello-card {
+	background-color: red;
+}
+
+.react-trello-board {
+	background-color: purple;
 }

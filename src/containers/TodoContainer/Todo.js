@@ -12,6 +12,22 @@ import classes from './Todo.module.css';
 
 class GlobalTodoPage extends Component {
 	state = {};
+
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log(`TODO next props::::::::: `, nextProps);
+		if (nextProps.selectedSong === '') {
+			console.log(`OPEN TODO:::::::`);
+			return true;
+		}
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (nextProps.selectedSong === '') {
+			console.log(`OPEN TODO:::::::`);
+			return true;
+		}
+	}
+
 	render() {
 		const allTodos = this.props.todos
 			? [...this.props.todos, ...this.props.songTodos]
@@ -66,7 +82,8 @@ const mapStateToProps = state => {
 	return {
 		filters: state.todo.filters,
 		todos: state.todo.todos,
-		songTodos: state.projects.allSongTodos
+		songTodos: state.projects.allSongTodos,
+		selectedSong: state.app.selectedSong
 	};
 };
 

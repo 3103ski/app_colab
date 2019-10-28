@@ -38,6 +38,7 @@ const appReducer = (state = intitialState, action) => {
 				activeProject: '',
 				selectedSong: '',
 				activeTodo: '',
+				currTodo: null,
 				rightPanel: false
 			});
 		case actionTypes.RIGHT_PANEL_TOGGLE:
@@ -56,6 +57,7 @@ const appReducer = (state = intitialState, action) => {
 				activeProject: '',
 				selectedSong: '',
 				activeTodo: '',
+				currTodo: null,
 				rightPanel: false
 			});
 
@@ -73,7 +75,9 @@ const appReducer = (state = intitialState, action) => {
 			return updateObject(state, {
 				selectedSong: action.songName,
 				currSong: action.song,
-				currArtist: action.artist
+				currArtist: action.artist,
+				currTodo: null,
+				activeTodo: ''
 			});
 		case actionTypes.PROJECT_FORM_TOGGLE:
 			return updateObject(state, {
