@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 
@@ -46,7 +47,8 @@ class ProfilePage extends Component {
 					<FileUploader
 						accept='image/*'
 						name='avatar'
-						randomizeFilename
+						// randomizeFilename
+						filename={this.props.userId}
 						storageRef={firebase.storage().ref('images')}
 						onUploadStart={this.handleUploadStart}
 						onUploadError={this.handleUploadError}
@@ -59,4 +61,10 @@ class ProfilePage extends Component {
 	}
 }
 
-export default ProfilePage;
+const mapStateToProps = state => {
+	return {
+		userId: state.auth.userId
+	};
+};
+
+export default connect(mapStateToProps)(ProfilePage);
