@@ -53,7 +53,7 @@ const updateSongs = (state, action) => {
 	// console.log('is this really updating tho?', newSong);
 	const allCurrSongs = [...state.songs];
 	const updatedSongs = allCurrSongs.map(song => {
-		if (song.id === newSong.id) {
+		if (song.songId === newSong.songId) {
 			// console.log(`do all of these match? ${song.id} ::: ${newSong.id}`);
 			return newSong;
 		} else {

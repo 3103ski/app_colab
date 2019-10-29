@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Board from 'react-trello';
 import * as actions from '../../store/actions/index';
-// import * as actions from '../../store/actions/index';
 
 // Utility Functions
 import { updateObject } from '../../shared/utility';
@@ -27,10 +26,6 @@ class Dashboard extends Component {
 		return card;
 	};
 	cardChange = (fromLan, toLane, songId, index) => {
-		// console.log(`We moved something`, fromLan);
-		// console.log(`We moved something`, toLane);
-		// console.log(`We moved something`, songId);
-		// console.log(`We moved something`, index);
 		let newStatus;
 		if (toLane === 'new_songs_lane') {
 			newStatus = 'New Song';
@@ -49,13 +44,12 @@ class Dashboard extends Component {
 		}
 
 		let song = this.props.songs.filter(song =>
-			song.id === songId ? song : null
+			song.songId === songId ? song : null
 		)[0];
 		let newSong = updateObject(song, {
 			status: newStatus
 		});
-		this.props.updateStatus(newSong, this.props.token);
-		console.log(`::: UPDATE THIS ???,`, newSong);
+		this.props.updateStatus(newSong);
 	};
 	render() {
 		let newSongs,
@@ -98,34 +92,27 @@ class Dashboard extends Component {
 
 		// ARRAYS OF CARDS OBJECTS MADE OF STATUS ARRAYS
 		nsCards = newSongs.map(song => {
-			return this.returnCard(song.id, song.name, song.artist);
+			return this.returnCard(song.songId, song.name, song.artist);
 		});
 		ipCards = inProgress.map(song =>
-			this.returnCard(song.id, song.name, song.artist)
+			this.returnCard(song.songId, song.name, song.artist)
 		);
 		msCards = mixSent.map(song =>
-			this.returnCard(song.id, song.name, song.artist)
+			this.returnCard(song.songId, song.name, song.artist)
 		);
 		rrCards = revisionsRequested.map(song =>
-			this.returnCard(song.id, song.name, song.artist)
+			this.returnCard(song.songId, song.name, song.artist)
 		);
 		lsCards = liveStreamScheduled.map(song =>
-			this.returnCard(song.id, song.name, song.artist)
+			this.returnCard(song.songId, song.name, song.artist)
 		);
 		fmCards = sentFinalMixes.map(song =>
-			this.returnCard(song.id, song.name, song.artist)
+			this.returnCard(song.songId, song.name, song.artist)
 		);
 		comCards = completed.map(song =>
-			this.returnCard(song.id, song.name, song.artist)
+			this.returnCard(song.songId, song.name, song.artist)
 		);
 
-		// console.log(`TEST new song cards`, nsCards);
-		// console.log(`IN PROGRESS cards`, ipCards);
-		// console.log(`MIX SENT cards`, msCards);
-		// console.log(`REVISIONS REQUESTED cards`, rrCards);
-		// console.log(`LIVE SECHDEULED cards`, lsCards);
-		// console.log(`FINAL MIXES cards`, fmCards);
-		// console.log(`COMPLETED cards`, comCards);
 		let data = {
 			lanes: [
 				{
@@ -136,51 +123,35 @@ class Dashboard extends Component {
 				{
 					id: 'in_progress_lane',
 					title: 'In Progress',
-					// label: '0/0',
 					cards: [...ipCards]
 				},
 				{
 					id: 'mix_sent_lane',
 					title: 'Mix Sent',
-					// label: '0/0',
 					cards: [...msCards]
 				},
 				{
 					id: 'revisions_requested_lane',
 					title: 'Revisions Requested',
-					// label: '0/0',
 					cards: [...rrCards]
 				},
 				{
 					id: 'live_stream_scheduled_lane',
 					title: 'Live Stream Scheduled',
-					// label: '0/0',
 					cards: [...lsCards]
 				},
 				{
 					id: 'sent_final_mixes_lane',
 					title: 'Sent Final Mixes',
-					// label: '0/0',
 					cards: [...fmCards]
 				},
 				{
 					id: 'completed_lane',
 					title: 'Completed',
-					// label: '0/0',
 					cards: [...comCards]
 				}
 			]
 		};
-
-		const statusOptions = [
-			`New Song`,
-			`In Progress`,
-			`Mix Sent`,
-			`Revisions Requested`,
-			`Live Stream Scheduled`,
-			`Sent Final Mixes`,
-			`Completed`
-		];
 
 		return (
 			<div className={classes.DashContainer}>

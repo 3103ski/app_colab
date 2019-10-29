@@ -51,19 +51,6 @@ class App extends Component {
 			loginRedirect = <Redirect to='/auth' />;
 		}
 
-		// db.collection('cities')
-		// 	.doc('LA')
-		// 	.set({
-		// 		name: 'Los Angeles',
-		// 		state: 'CA',
-		// 		country: 'USA'
-		// 	})
-		// 	.then(function() {
-		// 		console.log('Document successfully written!');
-		// 	})
-		// 	.catch(function(error) {
-		// 		console.error('Error writing document: ', error);
-		// 	});
 		return (
 			<div className='App'>
 				<Layout>

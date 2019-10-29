@@ -64,6 +64,7 @@ export const auth = (email, password, isSignup) => {
 		firebase
 			.post(url, authData)
 			.then(res => {
+				console.log(`did we create?`, res);
 				const data = res.data;
 				const token = data.idToken;
 				const userId = data.localId;
