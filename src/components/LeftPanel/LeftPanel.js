@@ -15,10 +15,10 @@ class BlueSideNav extends Component {
 			{ title: 'LOGOUT', link: 'logout', icon: 'navtoggle' },
 			{ title: 'DASHBOARD', link: 'dashboard', icon: 'dashboard' },
 			{ title: 'TODO', link: 'todo', icon: 'checkmark' },
-			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' },
-			// { title: 'LIVE STREAM', link: 'live-stream', icon: 'livestream' },
 			{ title: 'MESSAGES', link: 'messages', icon: 'messages' },
-			{ title: 'CONTACTS', link: 'contacts', icon: 'contacts' }
+			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' },
+			{ title: 'CONTACTS', link: 'contacts', icon: 'contacts-2' },
+			{ title: 'PROFILE', link: 'user-profile', icon: 'profile-fallback' }
 		],
 		panelOpen: true
 	};

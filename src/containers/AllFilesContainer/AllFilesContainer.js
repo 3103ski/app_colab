@@ -25,7 +25,7 @@ class ProfilePage extends Component {
 		firebase
 			.storage()
 			.ref('images')
-			.child(filename)
+			.child(this.props.uid)
 			.getDownloadURL()
 			.then(url => this.setState({ avatarURL: url }));
 	};
@@ -48,13 +48,14 @@ class ProfilePage extends Component {
 						accept='image/*'
 						name='avatar'
 						// randomizeFilename
-						filename={this.props.userId}
+						filename={this.props.uid}
 						storageRef={firebase.storage().ref('images')}
 						onUploadStart={this.handleUploadStart}
 						onUploadError={this.handleUploadError}
 						onUploadSuccess={this.handleUploadSuccess}
 						onProgress={this.handleProgress}
 					/>
+					<button onClick={this.handleChangeUsername}>submit picture</button>
 				</form>
 			</div>
 		);
@@ -63,7 +64,7 @@ class ProfilePage extends Component {
 
 const mapStateToProps = state => {
 	return {
-		userId: state.auth.userId
+		uid: state.auth.userId
 	};
 };
 

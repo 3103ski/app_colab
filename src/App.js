@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-import { db } from './firebase';
+// import { db } from './firebase';
 // Styles
 import './App.css';
 
@@ -27,6 +27,7 @@ import LiveStream from './containers/LiveStreamContainer/LiveStreamContainer';
 import Contacts from './containers/ContactsContainer/ContactsContainer';
 import Messages from './containers/MessageContainer/MessagesContainer';
 import SongTemplate from './containers/SongContainer/SongContainer';
+import UserProfile from './containers/UserProfile/UserProfile';
 
 class App extends Component {
 	componentDidMount() {
@@ -64,6 +65,7 @@ class App extends Component {
 					<Route path='/live-stream' component={LiveStream}></Route>
 					<Route path='/messages' component={Messages}></Route>
 					<Route path='/contacts' component={Contacts}></Route>
+					<Route path='/user-profile' component={UserProfile}></Route>
 					<Route
 						path='/projects'
 						render={() => {

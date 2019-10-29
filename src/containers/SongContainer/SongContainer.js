@@ -8,8 +8,7 @@ import * as actions from '../../store/actions/index';
 import { getUserPics } from '../../shared/reactUtility';
 import { statusColor, updateObject } from '../../shared/utility';
 
-import { db } from '../../firebase';
-// import firebase from 'firebase';
+import firebase from '@firebase/app';
 
 // Song Container Components
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
@@ -26,7 +25,11 @@ class SongContainer extends Component {
 	state = {
 		activeTab: 'details',
 		statusColor: this.props.song ? this.props.song.status : null,
-		userURL: ''
+		profilePicURL: '',
+		userPicLoaded: false,
+		guestURLS: [],
+		guestUids: [],
+		guestUidsLoaded: false
 	};
 
 	UNSAFE_componentWillReceiveProps(nextProps) {
@@ -62,12 +65,9 @@ class SongContainer extends Component {
 	};
 
 	handleUploadSuccess = filename => {
-		this.setState({ progress: 100, isUploading: false });
-		db.storage
-			.ref('images')
-			.child(filename)
-			.getDownloadURL()
-			.then(url => this.props.onChangeImageURL(url, filename));
+		this.setState({
+			profilePicURL: filename
+		});
 	};
 
 	render() {
@@ -77,21 +77,88 @@ class SongContainer extends Component {
 			this.props.selectedSong
 		);
 
-		let songUsersPics, userPic, userId, otherUserIds;
-		let allUseers = this.props.song.users;
+		let songUsersPics, userPic;
 
-		userId = this.props.song.userId;
-		otherUserIds = allUseers.filter(user => {
-			if (user !== userId) {
-				return user;
+		const song = this.props.song;
+		const storage = firebase.storage();
+		const otherUsers = [...this.state.guestUids];
+		const getProfilePic = [`${song.userId}`];
+		const thisUser = [this.state.profilePicURL];
+		const guestURLS =
+			this.state.guestURLS.length > 0 ? [this.state.guestURLS] : [];
+
+		if (this.state.userPicLoaded === false) {
+			getProfilePic.map(filename => {
+				storage
+					.ref(`/images/${filename}.jpeg`)
+					.getDownloadURL()
+					.then(url => {
+						console.log('Got download url: ', url);
+						this.setState({
+							profilePicURL: url,
+							userPicLoaded: true
+						});
+						console.log(this.state);
+					})
+					.catch(err => {
+						storage
+							.ref(`/images/${filename}.png`)
+							.getDownloadURL()
+							.then(url => {
+								console.log('Got download url: ', url);
+								this.setState({
+									profilePicURL: url,
+									userPicLoaded: true
+								});
+								console.log(this.state);
+							})
+							.catch(err => {});
+					});
+			});
+		}
+		if (this.state.guestUids.length > 0) {
+			console.log('got guests???: ');
+
+			if (this.state.guestUidsLoaded === false) {
+				otherUsers.map(filename => {
+					storage
+						.ref(`/images/${filename}.jpeg`)
+						.getDownloadURL()
+						.then(url => {
+							console.log('Got download url: ', url);
+							this.setState({
+								guestURLS: [...this.state.guestURLS, url],
+								guestUidsLoaded: true
+							});
+							console.log(`our guests have arrived`, this.state);
+						})
+						.catch(err => {
+							storage
+								.ref(`/images/${filename}.png`)
+								.getDownloadURL()
+								.then(url => {
+									console.log('Got download url: ', url);
+									this.setState({
+										guestURLS: [...this.state.guestURLS, url],
+										guestUidsLoaded: true
+									});
+									console.log(`our guests have arrived`, this.state);
+								})
+								.catch(err => {});
+						});
+				});
 			}
-		});
+		}
 
-		userPic = getUserPics([this.props.userId]);
-		songUsersPics = getUserPics(otherUserIds);
+		userPic =
+			this.state.userPicLoaded === true ? getUserPics('url', thisUser) : null;
+		songUsersPics =
+			this.state.guestUidsLoaded === true
+				? getUserPics('url', guestURLS)
+				: null;
 		console.log(this.state);
 
-		this.handleUploadSuccess(this.props.userId);
+		// this.handleUploadSuccess(this.props.userId);
 
 		const pickTabContent = tab => {
 			switch (tab) {
