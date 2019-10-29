@@ -1,15 +1,14 @@
 // React Imports
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 
 // Utility Functions
 import { getUserPics } from '../../shared/reactUtility';
-import {
-	statusColor,
-	// getSongTodos,
-	updateObject
-} from '../../shared/utility';
+import { statusColor, updateObject } from '../../shared/utility';
+
+import firebase from '@firebase/app';
 
 // Song Container Components
 import SongDetails from '../../components/SongComponents/TabDetails/DetailsTab';
@@ -25,7 +24,12 @@ import classes from './SongContainer.module.css';
 class SongContainer extends Component {
 	state = {
 		activeTab: 'details',
-		statusColor: this.props.song ? this.props.song.status : null
+		statusColor: this.props.song ? this.props.song.status : null,
+		profilePicURL: '',
+		userPicLoaded: false,
+		guestURLS: [],
+		guestUids: [],
+		guestUidsLoaded: false
 	};
 
 	UNSAFE_componentWillReceiveProps(nextProps) {
@@ -60,6 +64,12 @@ class SongContainer extends Component {
 		return songTodos;
 	};
 
+	handleUploadSuccess = filename => {
+		this.setState({
+			profilePicURL: filename
+		});
+	};
+
 	render() {
 		// const todos
 		const activeTodos = this.getSongTodos(
@@ -67,12 +77,89 @@ class SongContainer extends Component {
 			this.props.selectedSong
 		);
 
-		let userPics;
-		if (this.props.hasPic) {
-			userPics = getUserPics(this.props.song.users);
-		} else {
-			userPics = null;
+		let songUsersPics, userPic;
+
+		const song = this.props.song;
+		const storage = firebase.storage();
+		const otherUsers = [...this.state.guestUids];
+		const getProfilePic = [`${song.userId}`];
+		const thisUser = [this.state.profilePicURL];
+		const guestURLS =
+			this.state.guestURLS.length > 0 ? [this.state.guestURLS] : [];
+
+		if (this.state.userPicLoaded === false) {
+			getProfilePic.map(filename => {
+				storage
+					.ref(`/images/${filename}.jpeg`)
+					.getDownloadURL()
+					.then(url => {
+						console.log('Got download url: ', url);
+						this.setState({
+							profilePicURL: url,
+							userPicLoaded: true
+						});
+						console.log(this.state);
+					})
+					.catch(err => {
+						storage
+							.ref(`/images/${filename}.png`)
+							.getDownloadURL()
+							.then(url => {
+								console.log('Got download url: ', url);
+								this.setState({
+									profilePicURL: url,
+									userPicLoaded: true
+								});
+								console.log(this.state);
+							})
+							.catch(err => {});
+					});
+			});
 		}
+		if (this.state.guestUids.length > 0) {
+			console.log('got guests???: ');
+
+			if (this.state.guestUidsLoaded === false) {
+				otherUsers.map(filename => {
+					storage
+						.ref(`/images/${filename}.jpeg`)
+						.getDownloadURL()
+						.then(url => {
+							console.log('Got download url: ', url);
+							this.setState({
+								guestURLS: [...this.state.guestURLS, url],
+								guestUidsLoaded: true
+							});
+							console.log(`our guests have arrived`, this.state);
+						})
+						.catch(err => {
+							storage
+								.ref(`/images/${filename}.png`)
+								.getDownloadURL()
+								.then(url => {
+									console.log('Got download url: ', url);
+									this.setState({
+										guestURLS: [...this.state.guestURLS, url],
+										guestUidsLoaded: true
+									});
+									console.log(`our guests have arrived`, this.state);
+								})
+								.catch(err => {});
+						});
+				});
+			}
+		}
+
+		userPic =
+			this.state.userPicLoaded === true ? getUserPics('url', thisUser) : null;
+		songUsersPics =
+			this.state.guestUidsLoaded === true
+				? getUserPics('url', guestURLS)
+				: null;
+		console.log(this.state);
+
+		// this.handleUploadSuccess(this.props.userId);
+
 		const pickTabContent = tab => {
 			switch (tab) {
 				case 'details': {
@@ -101,9 +188,8 @@ class SongContainer extends Component {
 			}
 		};
 
-		let tabContent = pickTabContent(this.state.activeTab);
-
 		const songStatus = this.props.song ? this.props.song.status : 'noneOpen';
+		let tabContent = pickTabContent(this.state.activeTab);
 		let songColor = statusColor(songStatus);
 
 		const updateStatus = (e, song) => {
@@ -118,26 +204,6 @@ class SongContainer extends Component {
 			});
 			this.props.updateStatus(updatedSong, this.props.token);
 		};
-
-		// const dot = (
-		// 	<div
-		// 		className={classes.StatusDot}
-		// 		style={{ backgroundColor: songColor }}></div>
-		// );
-
-		// const selector = (
-		// 	<select defaultValue={this.props.status} onChange={e => updateStatus(e)}>
-		// 		<option>New Song</option>
-		// 		<option>In Progress</option>
-		// 		<option>Mix Sent</option>
-		// 		<option>Revisions Requested</option>
-		// 		<option>Live Stream Scheduled</option>
-		// 		<option>Sent Final Mixes</option>
-		// 		<option>Completed</option>
-		// 	</select>
-		// );
-
-		// console.log(`SONG CONTAINER LOAD`, this);
 
 		return (
 			<div className={classes.SongContainer}>
@@ -156,7 +222,8 @@ class SongContainer extends Component {
 					{/* USERS */}
 					<div className={classes.Users}>
 						<div className={classes.IncludedUsers}>
-							{userPics}
+							{userPic}
+							{songUsersPics}
 							<img
 								alt='add user'
 								className={classes.AddUserPlus}
@@ -231,7 +298,8 @@ const mapStateToProps = state => {
 		projects: state.projects.projects,
 		todos: state.todo.todos,
 		song: state.app.currSong,
-		token: state.auth.token
+		token: state.auth.token,
+		userId: state.auth.userId
 	};
 };
 

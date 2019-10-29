@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import { connect } from 'react-redux';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 
@@ -24,7 +26,7 @@ class ProfilePage extends Component {
 		firebase
 			.storage()
 			.ref('images')
-			.child(filename)
+			.child(this.props.uid)
 			.getDownloadURL()
 			.then(url => this.setState({ avatarURL: url }));
 	};
@@ -46,17 +48,25 @@ class ProfilePage extends Component {
 					<FileUploader
 						accept='image/*'
 						name='avatar'
-						randomizeFilename
+						// randomizeFilename
+						filename={this.props.uid}
 						storageRef={firebase.storage().ref('images')}
 						onUploadStart={this.handleUploadStart}
 						onUploadError={this.handleUploadError}
 						onUploadSuccess={this.handleUploadSuccess}
 						onProgress={this.handleProgress}
 					/>
+					<button onClick={this.handleChangeUsername}>submit picture</button>
 				</form>
 			</div>
 		);
 	}
 }
 
-export default ProfilePage;
+const mapStateToProps = state => {
+	return {
+		uid: state.auth.userId
+	};
+};
+
+export default connect(mapStateToProps)(ProfilePage);

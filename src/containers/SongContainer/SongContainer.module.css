@@ -52,6 +52,7 @@
 .IncludedUsers img {
 	width: 35px;
 	margin-left: -7px;
+	border-radius: 50px;
 }
 
 .AddUserPlus {
