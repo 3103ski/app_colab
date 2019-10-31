@@ -37,11 +37,11 @@ const song = props => {
 						style={{ backgroundColor: status }}></div>
 					<div className={classes.QuickInfo}>
 						<div className={classes.QuickTop}>
-							{/* {userPics} */}
-							<img
+							{userPics}
+							{/* <img
 								alt='song item'
 								src={require('../../../../../assets/songIcon.png')}
-							/>
+							/> */}
 							<p>{props.songName}</p>
 						</div>
 						<div className={classes.QuickBottom}>
