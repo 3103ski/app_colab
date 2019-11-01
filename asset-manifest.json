@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/colab/static/css/main.06d9626d.chunk.css",
-    "main.js": "/colab/static/js/main.a1a414d5.chunk.js",
-    "main.js.map": "/colab/static/js/main.a1a414d5.chunk.js.map",
+    "main.js": "/colab/static/js/main.06b65693.chunk.js",
+    "main.js.map": "/colab/static/js/main.06b65693.chunk.js.map",
     "runtime~main.js": "/colab/static/js/runtime~main.a1cbd959.js",
     "runtime~main.js.map": "/colab/static/js/runtime~main.a1cbd959.js.map",
     "static/css/2.461d0f21.chunk.css": "/colab/static/css/2.461d0f21.chunk.css",
     "static/js/2.fb8b6fa5.chunk.js": "/colab/static/js/2.fb8b6fa5.chunk.js",
     "static/js/2.fb8b6fa5.chunk.js.map": "/colab/static/js/2.fb8b6fa5.chunk.js.map",
     "index.html": "/colab/index.html",
-    "precache-manifest.a6d9591c63bec31d32d876adf85e54d4.js": "/colab/precache-manifest.a6d9591c63bec31d32d876adf85e54d4.js",
+    "precache-manifest.2585ec964f7ad406cd7b21f7fdcf8b5d.js": "/colab/precache-manifest.2585ec964f7ad406cd7b21f7fdcf8b5d.js",
     "service-worker.js": "/colab/service-worker.js",
     "static/css/2.461d0f21.chunk.css.map": "/colab/static/css/2.461d0f21.chunk.css.map",
     "static/css/main.06d9626d.chunk.css.map": "/colab/static/css/main.06d9626d.chunk.css.map",
