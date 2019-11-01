@@ -64,25 +64,22 @@ class RightPanel extends Component {
 				const activeId = todo !== null ? todo.id : null;
 				if (this.state.todo !== null || todo !== null) {
 					myDay = todo.specialLists.myDay.val === true ? true : false;
-					// console.log(`::: WILL RECEIVE ::: :: FIRST CHK `, myDay);
+
 					this.setState({
 						todo: todo,
 						activeId: activeId,
 						date: null,
 						myDay: myDay,
 						notes: todo.notes
-						// loaded: true
 					});
 				}
 			}
-			// console.log(`::: WILL RECEIVE ::: :: SETSTATE CHK `, this.state);
 		}
 		if (nextProps.panelOpen !== this.props.panelOpen) {
 			let myDay;
 			if (this.state.todo !== null) {
 				const todo = this.state.todo ? this.state.todo : null;
 				myDay = todo.specialLists.myDay.val === true ? true : false;
-				// console.log(`::: WILL RECEIVE ::: :: SECOND CHK `, todo);
 			}
 			this.setState({
 				panelOpen: nextProps.panelOpen,
@@ -98,9 +95,9 @@ class RightPanel extends Component {
 	changeDate = date => {
 		let nT;
 		let dateObj = {
-			month: '--',
-			day: '--',
-			year: '--'
+			month: '',
+			day: '',
+			year: ''
 		};
 		if (date === null) {
 			this.setState({ date: new Date() });
@@ -125,7 +122,6 @@ class RightPanel extends Component {
 	};
 
 	specialListsToggle = type => {
-		// console.log(`SPECIAL_ADD`);
 		const today = makeNow('today');
 		const tomorrow = makeNow('tomorrow');
 		const todayExp = makeNow('todayExp');

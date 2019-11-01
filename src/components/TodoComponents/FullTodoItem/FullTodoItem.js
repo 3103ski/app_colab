@@ -58,7 +58,11 @@ class TodoItem extends Component {
 
 		if (dueDate !== undefined && this.state.dateLoaded === false) {
 			let pD;
-			if (dueDate.month !== undefined) {
+			if (
+				dueDate.month !== '' &&
+				dueDate.month !== null &&
+				dueDate.month !== undefined
+			) {
 				pD = `${dueDate.month}/${dueDate.day}/${dueDate.year} `;
 			} else {
 				pD = ``;

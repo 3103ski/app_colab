@@ -135,11 +135,11 @@ class Dashboard extends Component {
 					title: 'Revisions Requested',
 					cards: [...rrCards]
 				},
-				{
-					id: 'live_stream_scheduled_lane',
-					title: 'Live Stream Scheduled',
-					cards: [...lsCards]
-				},
+				// {
+				// 	id: 'live_stream_scheduled_lane',
+				// 	title: 'Live Stream Scheduled',
+				// 	cards: [...lsCards]
+				// },
 				{
 					id: 'sent_final_mixes_lane',
 					title: 'Sent Final Mixes',
