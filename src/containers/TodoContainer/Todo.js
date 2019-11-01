@@ -10,20 +10,19 @@ import TodoList from '../../components/TodoComponents/TodoList/TodoList';
 // Styles
 import classes from './Todo.module.css';
 
+// Form
+
 class GlobalTodoPage extends Component {
 	state = {};
 
 	shouldComponentUpdate(nextProps, nextState) {
-		console.log(`TODO next props::::::::: `, nextProps);
 		if (nextProps.selectedSong === '') {
-			console.log(`OPEN TODO:::::::`);
 			return true;
 		}
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.selectedSong === '') {
-			console.log(`OPEN TODO:::::::`);
 			return true;
 		}
 	}
@@ -32,9 +31,7 @@ class GlobalTodoPage extends Component {
 		const allTodos = this.props.todos
 			? [...this.props.todos, ...this.props.songTodos]
 			: [];
-		// const allTodos = this.props.songTodos
-		// 	? [...this.props.songTodos]
-		// 	: [...this.props.todos, ...this.props.songTodos];
+		console.log(allTodos);
 
 		return (
 			<div className={classes.Container}>

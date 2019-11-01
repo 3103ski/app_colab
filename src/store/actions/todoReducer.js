@@ -34,6 +34,7 @@ export const fetchTodos = userId => {
 			.get()
 			.then(qS => {
 				qS.forEach(doc => {
+					console.log(`INSIDE`, doc.data());
 					if (userId === doc.data().userId) {
 						let todo = {
 							...doc.data()
@@ -42,6 +43,7 @@ export const fetchTodos = userId => {
 					}
 				});
 				dispatch(fetchTodosSuccess(todoArr));
+				console.log(`We fetched these todos!! `, todoArr);
 			});
 	};
 };
@@ -49,6 +51,7 @@ export const fetchTodos = userId => {
 // ADD FIRESTORE TODO
 
 export const addTodo = (todo, token) => {
+	console.log(`This is ADDTODO `, todo);
 	addTodoToServer(todo, token);
 	return {
 		type: actionTypes.ADD_TODO,
@@ -58,6 +61,7 @@ export const addTodo = (todo, token) => {
 
 const addTodoToServer = todo => {
 	// ADDS TO FIRESTORE
+	console.log(`This is ADDTOSERVER `, todo);
 	db.collection('todos')
 		.doc(todo.todoId)
 		.set(todo);
@@ -67,9 +71,11 @@ const addTodoToServer = todo => {
 // UPDATE FIRESTORE TODO'
 
 export const updateTodo = todo => {
+	console.log(`This is UPDATETODO`, todo);
 	db.collection('todos')
 		.doc(todo.todoId)
 		.set(todo);
+
 	return {
 		type: actionTypes.UPDATE_TODO,
 		todo: todo

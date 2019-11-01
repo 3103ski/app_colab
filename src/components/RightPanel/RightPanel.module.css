@@ -3,6 +3,7 @@
 	background-color: white;
 	transition: 0.25s ease;
 	z-index: 500;
+	position: relative;
 	overflow-x: hidden;
 	right: 0;
 	box-shadow: -2px 0px 5px #80808017;

@@ -13,7 +13,8 @@ const intitialState = {
 		nextSeven: 0
 	},
 	todos: [],
-	loading: false
+	loading: false,
+	loaded: false
 };
 
 const filtersInit = (state, action) => {
@@ -62,7 +63,8 @@ const fetchTodosSuccess = (state, action) => {
 	return updateObject(state, {
 		filters: filters,
 		loading: false,
-		todos: [...action.todos]
+		loaded: true,
+		todos: action.todos
 	});
 };
 
@@ -85,12 +87,14 @@ const addTodo = (state, action) => {
 };
 
 const completeToggle = (state, action) => {
-	let currTodos = [...state.todos];
+	let currTodos = state.todos;
 	const newTodos = currTodos.map(todo => {
 		if (todo.todoId !== action.todoId) {
+			console.log(todo.todoId, ` ? === ?`, action.todoId);
 			return todo;
 		}
 		if (todo.todoId === action.todoId) {
+			console.log(todo.todoId, ` ? === ?`, action.todoId);
 			return action.updatedTodo;
 		}
 	});
@@ -102,18 +106,21 @@ const completeToggle = (state, action) => {
 
 const updateTodo = (state, action) => {
 	let currTodos = [...state.todos];
+
 	const newTodos = currTodos.map(todo => {
-		if (todo.id !== action.todo.id) {
+		if (todo.todoId !== action.todoIdd) {
 			return todo;
 		}
-		if (todo.id === action.todo.id) {
+		if (todo.todoId === action.todoIdd) {
 			return action.todo;
 		}
 	});
 	const filters = setFilters(newTodos);
+
 	return updateObject(state, {
 		todos: newTodos,
-		filters: filters
+		filters: filters,
+		loaded: false
 	});
 };
 

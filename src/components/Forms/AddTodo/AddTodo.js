@@ -28,20 +28,20 @@ class AddTodo extends Component {
 				},
 				valid: false,
 				touched: false
-			},
-			notes: {
-				elementType: 'input',
-				elementConfig: {
-					type: 'text',
-					placeholder: 'Notes'
-				},
-				value: '',
-				validation: {
-					required: false
-				},
-				valid: false,
-				touched: false
 			}
+			// notes: {
+			// 	elementType: 'input',
+			// 	elementConfig: {
+			// 		type: 'text',
+			// 		placeholder: 'Notes'
+			// 	},
+			// 	value: '',
+			// 	validation: {
+			// 		required: false
+			// 	},
+			// 	valid: false,
+			// 	touched: false
+			// }
 			// dueDate: {
 			// 	elementType: 'input',
 			// 	elementConfig: {
@@ -81,7 +81,8 @@ class AddTodo extends Component {
 			artist: this.props.currArtist ? this.props.currArtist : null,
 			projectName: this.props.activeProject ? this.props.activeProject : null,
 			title: form.todoTitle.value,
-			notes: form.notes.value ? form.notes.value : null,
+			// notes: form.notes.value ? form.notes.value : null,
+			notes: '',
 			specialLists: {
 				myYesterday: {
 					val: false,
@@ -122,25 +123,39 @@ class AddTodo extends Component {
 		}
 
 		let form = formElArr.map(config => (
-			<Input
-				shouldVal={config.elementConfig.validation}
-				invalid={config.elementConfig.valid}
-				key={config.id}
-				elementType={config.elementConfig.elementType}
-				elementConfig={config.elementConfig.elementConfig}
-				value={config.elementConfig.value}
-				changed={event => {
-					this.inputChangedHandler(event, config.id);
-				}}
-				touched={config.elementConfig.touched}
-			/>
+			<div className={classes.Space} key={config.id}>
+				<Input
+					todoInput='todo'
+					shouldVal={config.elementConfig.validation}
+					invalid={config.elementConfig.valid}
+					key={config.id}
+					elementType={config.elementConfig.elementType}
+					elementConfig={config.elementConfig.elementConfig}
+					value={config.elementConfig.value}
+					changed={event => {
+						this.inputChangedHandler(event, config.id);
+					}}
+					touched={config.elementConfig.touched}
+				/>
+			</div>
 		));
+
 		return (
-			<div className={classes.FormContainer}>
-				<h1>Add Todo</h1>
-				<form onSubmit={this.submitHandler}>
+			<div
+				className={
+					this.props.currSong !== null
+						? classes.FormContainer
+						: classes.FormContainerSong
+				}>
+				{/* <h1>Add Todo</h1> */}
+				<form onSubmit={this.submitHandler} className={classes.EnterTodo}>
 					{form}
-					<button>Add Todo</button>
+					<button className={classes.TodoBtn}>
+						<img
+							src={require('../../../assets/add.png')}
+							alt='add'
+							style={{ width: '22px', opacity: '.7' }}></img>
+					</button>
 				</form>
 			</div>
 		);

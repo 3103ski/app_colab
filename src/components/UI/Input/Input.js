@@ -11,6 +11,10 @@ const input = props => {
 		inputClasses.push(classes.Invalid);
 	}
 
+	if (props.todoInput === 'todo') {
+		inputClasses = [classes.TodoInput];
+	}
+
 	switch (props.elementType) {
 		case 'input':
 			inputElement = (
@@ -57,7 +61,7 @@ const input = props => {
 	}
 	return (
 		<div className={classes.Input}>
-			<label className={classes.Label}>{props.label}</label>
+			{/* <label className={classes.Label}>{props.label}</label> */}
 			{inputElement}
 		</div>
 	);

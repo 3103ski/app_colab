@@ -223,6 +223,7 @@ class RightPanel extends Component {
 		this.specialListsToggle('yesterday');
 	};
 	myDay = () => {
+		console.log(`ADDEDDDD`);
 		this.specialListsToggle('myDay');
 	};
 	myTomorrow = () => {

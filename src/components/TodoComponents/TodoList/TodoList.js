@@ -8,14 +8,19 @@ import * as actions from '../../../store/actions/index';
 import FullTodoItem from '../FullTodoItem/FullTodoItem';
 import DashTodoItem from '../SmallTodoItem/SmallTodoItem';
 
-// Helper Functions
-// import { randomId } from '../../../shared/utility';
-
 class TodoList extends Component {
-	state = {};
+	state = {
+		fetchedTodos: false
+	};
 
 	componentDidMount() {
 		this.props.fetchTodos(this.props.auth.userId);
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps) {
+		if (nextProps.loaded !== this.props.loaded) {
+			this.props.fetchTodos(this.props.auth.userId);
+		}
 	}
 
 	render() {
@@ -47,6 +52,7 @@ class TodoList extends Component {
 					list =
 						this.props.todoArr.length > 0 ? (
 							this.props.todos.map(todo => {
+								console.log(todo);
 								return (
 									<FullTodoItem
 										todo={todo}
@@ -101,7 +107,8 @@ class TodoList extends Component {
 const mapStateToProps = state => {
 	return {
 		auth: state.auth,
-		todos: state.todo.todos
+		todos: state.todo.todos,
+		loaded: state.todo.loaded
 	};
 };
 

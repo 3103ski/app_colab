@@ -31,8 +31,9 @@ class TodoItem extends Component {
 	}
 
 	UNSAFE_componentWillReceiveProps(nextProps) {
+		console.log(`date is changed, but am I?`, nextProps);
 		if (this.props.todo !== nextProps.todo) {
-			this.setState({ dateLoaded: false });
+			this.setState({ dateLoaded: false, dueDate: undefined });
 		}
 	}
 
@@ -43,13 +44,14 @@ class TodoItem extends Component {
 			this.props.todo.dueDate,
 			this.props.todo.todoId
 		];
-
+		let checkBG = classes.ItemContainer;
 		let ListItemClasses = [classes.TodoItem];
 
 		if (this.props.currTodo !== '' && this.props.currTodo !== null) {
 			let curr = this.props.currTodo;
 			if (curr.todoId === todoId) {
 				// console.log(`check 1?`, curr);
+				checkBG = [classes.Selected, classes.ItemContainer].join(' ');
 				ListItemClasses = [classes.TodoItem, classes.Selected];
 			}
 		}
@@ -80,11 +82,11 @@ class TodoItem extends Component {
 
 		return (
 			<div
+				className={checkBG}
 				style={{
 					display: 'flex',
 					alignItems: `center`
-				}}
-				className={classes.ItemContainer}>
+				}}>
 				<img
 					src={require(`../../../assets/${
 						this.state.completed === true ? 'todo-done' : `todo-undone`

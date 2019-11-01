@@ -23,6 +23,8 @@
 .TodoListContainer {
 	height: calc(100vh - 185px);
 	overflow: scroll;
+	display: flex;
+	flex-direction: column;
 }
 
 .ListContainerTab {

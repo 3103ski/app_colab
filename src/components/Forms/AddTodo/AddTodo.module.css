@@ -1,6 +1,40 @@
 .FormContainer {
-	width: 70vw;
-	height: 75vh;
 	background-color: white;
 	z-index: 200;
+	display: flex;
+	margin-top: auto;
+}
+
+.FormContainerSong {
+	background-color: white;
+	z-index: 200;
+	display: flex;
+	margin-top: auto;
+	position: absolute;
+	width: 66%;
+	bottom: 5%;
+}
+
+.EnterTodo {
+	display: flex;
+	width: 100%;
+	margin: auto 15px 0px 15px;
+}
+
+.Space {
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+}
+
+.TodoBtn {
+	width: 15%;
+	border-radius: 0px 4px 4px 0px;
+	background-color: #fafafa;
+	padding: 2px 0px;
+	border-top: solid 1px #b6b6b638;
+	border-right: solid 1px #b6b6b638;
+	border-bottom: solid 1px #b6b6b638;
+	border-left: none;
+	display: flex;
+	justify-content: center;
 }

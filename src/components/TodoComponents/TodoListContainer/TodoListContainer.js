@@ -9,6 +9,9 @@ import Aux from '../../../hoc/Aux/Aux';
 // Style
 import classes from './TodoListContainer.module.css';
 
+// Form
+import TodoInput from '../../Forms/AddTodo/AddTodo';
+
 class TodoListContainer extends Component {
 	state = {};
 	render() {
@@ -25,18 +28,13 @@ class TodoListContainer extends Component {
 						<img src={require('../../../assets/move-dark.png')} alt='move' />
 						<img src={require('../../../assets/check-todo.png')} alt='check' />
 					</div>
-					<img
+					{/* <img
 						src={require('../../../assets/add.png')}
 						alt='trash'
 						className={classes.TodoAdd}
 						onClick={this.props.todoForm}
-					/>
+					/> */}
 				</div>
-				{/* <div className={classes.ColTitles}>
-					<p className={classes.TodoTtl}>Todo</p>
-					<p className={classes.LocationTtl}>Project / Song</p>
-					<p className={classes.DueTtl}>Due</p>
-				</div> */}
 				<div
 					className={
 						this.props.activeSong === ''
@@ -44,6 +42,7 @@ class TodoListContainer extends Component {
 							: classes.ListContainerTab
 					}>
 					<div className={classes.TodoList}>{listItems}</div>
+					<TodoInput></TodoInput>
 				</div>
 			</Aux>
 		);
