@@ -1,11 +1,19 @@
 main {
 	overflow-x: scroll;
-	transition: margin-right 0.5s;
+	transition: 0.25s ease;
 }
 
-/* Deducts the menu width */
-.SignedIn {
+.Left {
 	width: calc(100% - 230px);
+}
+.LeftCenter {
+	width: calc(100% - 440px);
+}
+.LeftRight {
+	width: calc(100% - 530px);
+}
+.LeftCenterRight {
+	width: calc(100% - 740px);
 }
 
 .SignedOut {
