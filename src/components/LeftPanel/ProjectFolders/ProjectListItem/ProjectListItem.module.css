@@ -1,8 +1,11 @@
 /* Folder List Items *********** */
 .FolderListItem {
 	display: flex;
-	padding: 10px 5px;
+	padding: 5px 5px;
 	align-items: center;
+	height: 60px;
+	text-align: left;
+	width: 100%;
 }
 
 .active {
@@ -30,11 +33,26 @@
 
 .ItemDetails p {
 	margin: 0px;
-	font-size: 0.8rem;
 }
 
-.ProjectTxt {
+.projectName {
+	padding: 0;
+	font-size: 0.5rem;
+	color: #ffffffad;
+}
+.artistName {
+	padding: 0;
+	font-size: 0.8rem;
 	color: white;
+}
+.NavLink {
+	display: flex;
+}
+.Active {
+	background-color: #5ebcf1a6;
+}
+.active {
+	background-color: #5ebcf1a6;
 }
 
 .AddTxt {
@@ -67,5 +85,6 @@
 
 .FolderRight p {
 	color: white;
-	margin: 0px 5px;
+	margin: 0px 18px 0px 5px;
+	font-size: 0.75rem;
 }

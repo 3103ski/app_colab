@@ -1,7 +1,7 @@
 // React Imports
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
+
 import * as actions from '../../store/actions/index';
 
 // Utility Functions
@@ -17,6 +17,7 @@ import Todos from '../../components/SongComponents/TabTodo/TodoTab';
 import Files from '../../components/SongComponents/TabFiles/TabFiles';
 import LiveStreams from '../../components/SongComponents/TabLiveStream/TabLiveStream';
 import StatusSelect from '../../components/UI/DropSelect/DropSelect';
+import UserPics from '../../components/ProfilePics/ProfilePics';
 
 // Styling
 import classes from './SongContainer.module.css';
@@ -28,7 +29,10 @@ class SongContainer extends Component {
 		profilePicURL: '',
 		userPicLoaded: false,
 		guestURLS: [],
-		guestUids: [],
+		guestUids: [
+			' oQdYQabDt2QaALYl5S2t2jyE4Yu2',
+			'FqprybMl0BMoa3gPleutooFlmxD3'
+		],
 		guestUidsLoaded: false
 	};
 
@@ -58,16 +62,8 @@ class SongContainer extends Component {
 				}
 			}
 		});
-
 		const songTodos = onlySongs.filter(todo => todo.song === currSong);
-
 		return songTodos;
-	};
-
-	handleUploadSuccess = filename => {
-		this.setState({
-			profilePicURL: filename
-		});
 	};
 
 	render() {
@@ -76,87 +72,6 @@ class SongContainer extends Component {
 			this.props.todos,
 			this.props.selectedSong
 		);
-
-		let songUsersPics, userPic;
-
-		const song = this.props.song;
-		const storage = firebase.storage();
-		const otherUsers = [...this.state.guestUids];
-		const getProfilePic = [`${song.userId}`];
-		const thisUser = [this.state.profilePicURL];
-		const guestURLS =
-			this.state.guestURLS.length > 0 ? [this.state.guestURLS] : [];
-
-		if (this.state.userPicLoaded === false) {
-			getProfilePic.map(filename => {
-				storage
-					.ref(`/images/${filename}.jpeg`)
-					.getDownloadURL()
-					.then(url => {
-						console.log('Got download url: ', url);
-						this.setState({
-							profilePicURL: url,
-							userPicLoaded: true
-						});
-						console.log(this.state);
-					})
-					.catch(err => {
-						storage
-							.ref(`/images/${filename}.png`)
-							.getDownloadURL()
-							.then(url => {
-								console.log('Got download url: ', url);
-								this.setState({
-									profilePicURL: url,
-									userPicLoaded: true
-								});
-								console.log(this.state);
-							})
-							.catch(err => {});
-					});
-			});
-		}
-		if (this.state.guestUids.length > 0) {
-			console.log('got guests???: ');
-
-			if (this.state.guestUidsLoaded === false) {
-				otherUsers.map(filename => {
-					storage
-						.ref(`/images/${filename}.jpeg`)
-						.getDownloadURL()
-						.then(url => {
-							console.log('Got download url: ', url);
-							this.setState({
-								guestURLS: [...this.state.guestURLS, url],
-								guestUidsLoaded: true
-							});
-							console.log(`our guests have arrived`, this.state);
-						})
-						.catch(err => {
-							storage
-								.ref(`/images/${filename}.png`)
-								.getDownloadURL()
-								.then(url => {
-									console.log('Got download url: ', url);
-									this.setState({
-										guestURLS: [...this.state.guestURLS, url],
-										guestUidsLoaded: true
-									});
-									console.log(`our guests have arrived`, this.state);
-								})
-								.catch(err => {});
-						});
-				});
-			}
-		}
-
-		userPic =
-			this.state.userPicLoaded === true ? getUserPics('url', thisUser) : null;
-		songUsersPics =
-			this.state.guestUidsLoaded === true
-				? getUserPics('url', guestURLS)
-				: null;
-		console.log(this.state);
 
 		// this.handleUploadSuccess(this.props.userId);
 
@@ -211,8 +126,6 @@ class SongContainer extends Component {
 					<div className={classes.QuickInfo}>
 						<h2>{this.props.selectedSong ? this.props.selectedSong : null}</h2>
 						<div className={classes.Status}>
-							{/* {dot}
-							{selector} */}
 							<StatusSelect
 								updateStatus={updateStatus}
 								token={this.props.token}
@@ -221,15 +134,13 @@ class SongContainer extends Component {
 					</div>
 					{/* USERS */}
 					<div className={classes.Users}>
-						<div className={classes.IncludedUsers}>
-							{userPic}
-							{songUsersPics}
+						<UserPics size='songPage' song={this.props.song}>
 							<img
 								alt='add user'
 								className={classes.AddUserPlus}
 								src={require('../../assets/add.png')}
 							/>
-						</div>
+						</UserPics>
 					</div>
 				</div>
 

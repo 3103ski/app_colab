@@ -5,6 +5,7 @@
 
 .BtnsContainer img {
 	width: 20px;
+	margin-bottom: 10px;
 }
 .LeftBtns {
 	margin-left: 30px;
@@ -33,7 +34,7 @@
 .ColTitles {
 	display: flex;
 	align-items: center;
-	margin: 15px 15px 0px 15px;
+	margin-bottom: 10px;
 	border-bottom: solid 1px #b6b6b6;
 	padding-bottom: 5px;
 }

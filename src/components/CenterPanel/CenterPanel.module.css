@@ -9,7 +9,7 @@
 }
 
 .PanelOpen {
-	min-width: 280px;
+	min-width: 210px;
 }
 
 .PanelClose {
@@ -43,7 +43,7 @@
 }
 
 .AddUserToProject img {
-	width: 30px;
+	width: 23px;
 	margin-right: 10px;
 }
 
@@ -54,7 +54,7 @@
 .AddUserToProject h4 {
 	margin: 0;
 	font-weight: 100;
-	font-size: 0.8rem;
+	font-size: 0.65rem;
 	color: #00000025;
 }
 
@@ -74,12 +74,12 @@
 }
 
 .AddSongToProject img {
-	width: 25px;
+	width: 20px;
 	margin-right: 10px;
 }
 
 .AddSongToProject p {
 	margin: 0;
-	font-size: 0.85rem;
+	font-size: 0.65rem;
 	color: #00000035;
 }

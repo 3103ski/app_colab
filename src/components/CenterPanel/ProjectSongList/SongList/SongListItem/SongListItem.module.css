@@ -38,8 +38,10 @@ a {
 
 .QuickTop {
 	display: inherit;
-	align-items: center;
-	padding-bottom: 5px;
+	align-items: flex-start;
+	width: 150px;
+	flex-direction: column;
+	margin-bottom: 6px;
 }
 
 .QuickTop img {
@@ -82,5 +84,6 @@ a {
 
 .RightSide h4 {
 	margin: 0;
+	font-size: 0.65rem;
 	font-weight: 100;
 }

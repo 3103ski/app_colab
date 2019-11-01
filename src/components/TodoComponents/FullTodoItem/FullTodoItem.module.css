@@ -1,8 +1,17 @@
+.ItemContainer {
+	padding: 0;
+	border: solid 1px #b6b6b638;
+	margin: 4px 15px 0px 15px;
+	border-radius: 4px;
+	background-color: #00000005;
+	box-shadow: 0px 1px 2px #00000012;
+}
+
 .TodoItem {
 	display: flex;
 	align-items: center;
-	margin: 0px 15px 0px 0px;
-	border-bottom: solid 1px #b6b6b6;
+	/* margin: 0px 15px 0px 0px;
+	border-bottom: solid 1px #b6b6b6; */
 	position: relative;
 	z-index: 400;
 	width: 100%;
@@ -19,10 +28,10 @@
 .TodoItem p {
 	font-weight: 300;
 	margin: 0;
-	font-size: 0.95rem;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	text-align: left;
 }
 
 .Completed {
@@ -30,6 +39,7 @@
 	margin: 0px 8px;
 	position: relative;
 	z-index: 401;
+	opacity: 0.3;
 }
 
 .TodoName {
@@ -37,27 +47,46 @@
 	text-align: left;
 	display: flex;
 	align-items: center;
-	padding-left: 20px;
+	padding-left: 0px;
 	box-sizing: border-box;
 }
-
+.TodoName p {
+	font-size: 0.95rem;
+	color: #000000b0;
+}
 .TodoLocation {
 	width: 30%;
 	text-align: left;
 	display: flex;
 	align-items: center;
 }
+.TodoLocation p {
+	font-size: 0.7rem;
+	color: #000000b0;
+}
 
 .TodoDate {
 	width: 15%;
 	text-align: center;
 }
+.TodoDate p {
+	font-size: 0.7rem;
+	color: #000000b0;
+}
+.TodoDetails {
+	width: 100%;
+	padding: 5px 0px;
+	display: flex;
+	flex-direction: column;
+	min-height: 40px;
+	justify-content: center;
+}
 
 .TodoIcons {
 	width: 15%;
-	height: 35px;
+	height: 40px;
 	box-sizing: border-box;
-	border-left: solid 1px #b6b6b6;
+	border-left: solid 1px #b6b6b638;
 	display: flex;
 	align-items: center;
 	justify-content: center;

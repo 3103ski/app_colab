@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 
 import * as actions from '../../../../../store/actions/index';
 
+// Import Pics
+import UserPics from '../../../../ProfilePics/ProfilePics';
+
 // Helper Functions
 import { statusColor } from '../../../../../shared/utility';
 import { getUserPics } from '../../../../../shared/reactUtility';
@@ -37,12 +40,8 @@ const song = props => {
 						style={{ backgroundColor: status }}></div>
 					<div className={classes.QuickInfo}>
 						<div className={classes.QuickTop}>
-							{userPics}
-							{/* <img
-								alt='song item'
-								src={require('../../../../../assets/songIcon.png')}
-							/> */}
 							<p>{props.songName}</p>
+							<UserPics song={props.song} size='songlist'></UserPics>
 						</div>
 						<div className={classes.QuickBottom}>
 							<div className={classes.SongUsers}>{userPics}</div>

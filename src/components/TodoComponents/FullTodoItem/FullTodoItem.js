@@ -57,7 +57,7 @@ class TodoItem extends Component {
 		if (dueDate !== undefined && this.state.dateLoaded === false) {
 			let pD;
 			if (dueDate.month !== undefined) {
-				pD = `${dueDate.month} / ${dueDate.day} / ${dueDate.year} `;
+				pD = `${dueDate.month}/${dueDate.day}/${dueDate.year} `;
 			} else {
 				pD = ``;
 			}
@@ -83,7 +83,8 @@ class TodoItem extends Component {
 				style={{
 					display: 'flex',
 					alignItems: `center`
-				}}>
+				}}
+				className={classes.ItemContainer}>
 				<img
 					src={require(`../../../assets/${
 						this.state.completed === true ? 'todo-done' : `todo-undone`
@@ -95,15 +96,17 @@ class TodoItem extends Component {
 				<div
 					className={ListItemClasses.join(' ')}
 					onClick={() => this.props.setTodo(todoId, todo)}>
-					<div className={classes.TodoName}>
-						<p>{this.props.title}</p>
-					</div>
-					<div className={classes.TodoLocation}>
-						<p>
-							{this.props.artist}{' '}
-							{this.props.project ? ` > ${this.props.project}` : null}{' '}
-							{this.props.song ? ` > ${this.props.song}` : null}
-						</p>
+					<div className={classes.TodoDetails}>
+						<div className={classes.TodoName}>
+							<p>{this.props.title}</p>
+						</div>
+						<div className={classes.TodoLocation}>
+							<p>
+								{this.props.artist}{' '}
+								{this.props.project ? ` > ${this.props.project}` : null}{' '}
+								{this.props.song ? ` > ${this.props.song}` : null}
+							</p>
+						</div>
 					</div>
 					<div className={classes.TodoDate}>
 						<p>{this.state.printDate}</p>

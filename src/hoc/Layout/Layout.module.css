@@ -3,8 +3,9 @@ main {
 	transition: margin-right 0.5s;
 }
 
+/* Deducts the menu width */
 .SignedIn {
-	width: calc(100% - 280px);
+	width: calc(100% - 230px);
 }
 
 .SignedOut {

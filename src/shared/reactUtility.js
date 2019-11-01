@@ -13,7 +13,6 @@ import firebase from 'firebase';
 export const getUserPics = (type, uids) => {
 	let userPics;
 	if (type === 'default') {
-		// userPics = uids.map((userName, index) => {
 		return (
 			<img
 				key={randomId()}
@@ -21,7 +20,6 @@ export const getUserPics = (type, uids) => {
 				src={require(`../assets/contacts-2.png`)}
 			/>
 		);
-		// });
 	}
 	if (type === 'url') {
 		userPics = uids.map((userName, index) => {

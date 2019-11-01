@@ -86,7 +86,7 @@ class NLink extends Component {
 		linkProps();
 		return (
 			<NavLink
-				activeclassname={classes.active}
+				activeClassName={classes.Active}
 				key={this.props.link}
 				className={classes.NavItem}
 				to={`/${this.props.link}`}

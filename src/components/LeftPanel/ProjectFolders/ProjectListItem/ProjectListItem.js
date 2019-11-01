@@ -43,19 +43,20 @@ const ProjectItem = props => {
 		: [classes.AddTxt, classes.ItemDetails];
 
 	const listItemContent = !props.add ? (
-		<NavLink to={`/projects/${props.projectName}`}>
+		<NavLink
+			to={`/projects/${props.projectName}`}
+			activeClassName={classes.Active}
+			className={classes.NavLink}>
 			<div
 				className={classes.FolderListItem}
-				activeclassname={classes.active}
 				onClick={() => {
 					props.openProject(props.projectName, props.artist);
 				}}>
 				<div className={classes.FolderLeft}>
 					<img alt='folder' src={require(`../../../../assets/${open}.png`)} />
 					<div className={detailsClasses.join(' ')}>
-						<p>
-							{props.artist} - {props.projectName}
-						</p>
+						<p className={classes.artistName}>{props.artist}</p>
+						<p className={classes.projectName}>{props.projectName}</p>
 						<div className={classes.StatusDots}>{dots}</div>
 					</div>
 				</div>
@@ -71,7 +72,7 @@ const ProjectItem = props => {
 		<NavLink to={`/projects/${props.projectName}`}>
 			<div
 				className={classes.FolderListItem}
-				activeclassname={classes.active}
+				activeClassName={classes.Active}
 				onClick={() => {
 					props.addProject();
 				}}>

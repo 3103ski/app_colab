@@ -32,11 +32,11 @@ class TodoListContainer extends Component {
 						onClick={this.props.todoForm}
 					/>
 				</div>
-				<div className={classes.ColTitles}>
+				{/* <div className={classes.ColTitles}>
 					<p className={classes.TodoTtl}>Todo</p>
 					<p className={classes.LocationTtl}>Project / Song</p>
 					<p className={classes.DueTtl}>Due</p>
-				</div>
+				</div> */}
 				<div
 					className={
 						this.props.activeSong === ''

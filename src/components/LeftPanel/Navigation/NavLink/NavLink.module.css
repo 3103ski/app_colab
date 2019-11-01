@@ -8,7 +8,7 @@ a {
 	width: 100%;
 }
 
-.active {
+.Active {
 	background-color: #5ebcf1a6;
 }
 
@@ -24,7 +24,7 @@ a {
 }
 
 .LeftItems h2 {
-	font-size: 1.1rem;
+	font-size: 0.9rem;
 }
 
 .RightItems {
@@ -34,7 +34,7 @@ a {
 }
 
 .RightItems h2 {
-	font-size: 0.8rem;
+	font-size: 0.65rem;
 }
 
 .NavItem h2 {
