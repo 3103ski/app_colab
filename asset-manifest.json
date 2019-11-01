@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/colab/static/css/main.06d9626d.chunk.css",
+    "main.js": "/colab/static/js/main.a1a414d5.chunk.js",
+    "main.js.map": "/colab/static/js/main.a1a414d5.chunk.js.map",
+    "runtime~main.js": "/colab/static/js/runtime~main.a1cbd959.js",
+    "runtime~main.js.map": "/colab/static/js/runtime~main.a1cbd959.js.map",
+    "static/css/2.461d0f21.chunk.css": "/colab/static/css/2.461d0f21.chunk.css",
+    "static/js/2.fb8b6fa5.chunk.js": "/colab/static/js/2.fb8b6fa5.chunk.js",
+    "static/js/2.fb8b6fa5.chunk.js.map": "/colab/static/js/2.fb8b6fa5.chunk.js.map",
+    "index.html": "/colab/index.html",
+    "precache-manifest.a6d9591c63bec31d32d876adf85e54d4.js": "/colab/precache-manifest.a6d9591c63bec31d32d876adf85e54d4.js",
+    "service-worker.js": "/colab/service-worker.js",
+    "static/css/2.461d0f21.chunk.css.map": "/colab/static/css/2.461d0f21.chunk.css.map",
+    "static/css/main.06d9626d.chunk.css.map": "/colab/static/css/main.06d9626d.chunk.css.map",
+    "static/media/contacts-2.png": "/colab/static/media/contacts-2.7478ef03.png",
+    "static/media/loginScreen.png": "/colab/static/media/loginScreen.79d9626a.png",
+    "static/media/photo-camera-2.png": "/colab/static/media/photo-camera-2.259d2a02.png",
+    "static/media/playerPlaceholder.png": "/colab/static/media/playerPlaceholder.6ce2d020.png",
+    "static/media/userPic-Dave.png": "/colab/static/media/userPic-Dave.8b1836db.png",
+    "static/media/userPic-Franky.png": "/colab/static/media/userPic-Franky.736a3acc.png",
+    "static/media/userPic-MhwAMHFv7rRHxW5AMmYHQUCnzgY2.png": "/colab/static/media/userPic-MhwAMHFv7rRHxW5AMmYHQUCnzgY2.113d20cf.png"
+  }
+}
