@@ -70,7 +70,8 @@ class RightPanel extends Component {
 						activeId: activeId,
 						date: null,
 						myDay: myDay,
-						notes: todo.notes
+						notes: todo.notes,
+						title: todo.title
 					});
 				}
 			}
@@ -229,20 +230,21 @@ class RightPanel extends Component {
 	render() {
 		// Initial Panel State
 
-		let todo, activeId, day, month, year, containerClasses, mD;
+		let todo, activeId, day, month, year, containerClasses, mD, title;
 
 		if (this.props.todo !== null) {
 			if (this.state.loaded === false) {
-				[todo, activeId, mD] = [
+				[todo, activeId, mD, title] = [
 					this.props.todo,
 					this.props.todo.id,
-					this.props.todo.specialLists.myDay.val
+					this.props.todo.specialLists.myDay.val,
+					this.props.todo.title
 				];
 				this.setState({
 					todo: todo,
 					activeId: activeId,
 					loaded: true,
-					myDay: mD
+					title: title
 				});
 			}
 		}
@@ -274,6 +276,7 @@ class RightPanel extends Component {
 				/>
 
 				<div className={containerClasses.join(' ')}>
+					<h2>{this.state.title}</h2>
 					<div className={classes.SubTasks}></div>
 					<div className={classes.EditButtons}>
 						<div className={classes.EditButton}>

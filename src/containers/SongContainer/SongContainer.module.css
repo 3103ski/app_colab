@@ -1,7 +1,7 @@
 .SongContainer {
 	height: 100vh;
 	width: 100%;
-	min-width: 800px;
+	/* min-width: 800px; */
 	display: flex;
 	align-items: center;
 	flex-direction: column;
