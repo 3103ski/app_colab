@@ -178,6 +178,11 @@ class ProfilePics extends Component {
 					sizeClasses = [classes.IncludedUsersSP, classes.SongPage].join(' ');
 				}
 				break;
+			case 'blueNav':
+				{
+					sizeClasses = [classes.UserPic, classes.BlueNav].join(' ');
+				}
+				break;
 		}
 
 		return (
