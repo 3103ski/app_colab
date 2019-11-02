@@ -18,7 +18,8 @@
 .Notes {
 	background-color: #f8f8f8;
 	border: solid 1px #dcdcdc;
-	margin: 10px 0px 10px 5px;
+	margin: 4px 0px 0px 5px;
+	border-radius: 3px;
 }
 
 .DetailTitle,

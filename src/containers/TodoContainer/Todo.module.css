@@ -2,7 +2,6 @@
 .Container {
 	overflow: hidden;
 	height: 100vh;
-	min-width: 700px;
 }
 
 /* ********** SEARCH BAR AND TOP RIGHT ICONS */

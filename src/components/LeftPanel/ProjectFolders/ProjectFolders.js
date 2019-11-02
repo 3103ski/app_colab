@@ -42,7 +42,7 @@ class ProjectFolders extends Component {
 			<Aux>
 				<div className={classes.FoldersNav}>
 					<div className={classes.ListTitles}>
-						<h4 className={classes.LeftTitle}>Name</h4>
+						<h4 className={classes.LeftTitle}>Projects</h4>
 						<h4 className={classes.RightTitle}>Status</h4>
 					</div>
 					<div className={classes.FolderList}>{projects}</div>

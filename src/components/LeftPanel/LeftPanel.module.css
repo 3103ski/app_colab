@@ -10,10 +10,17 @@
 .ToggleIcon {
 	position: absolute;
 	bottom: 15px;
-	left: 15px;
-	width: 35px;
+	left: 10px;
+	width: 30px;
 }
 
 .ToggleIcon:hover {
 	cursor: pointer;
+}
+
+.ProfileIcon {
+	position: absolute;
+	bottom: 10px;
+	left: 180px;
+	width: 40px;
 }
