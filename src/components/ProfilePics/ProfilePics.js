@@ -65,95 +65,107 @@ class ProfilePics extends Component {
 									userPicLoaded: true
 								});
 							})
-							.catch(err => {});
-					})
-					.catch(err => {
-						storage
-							.ref(`/images/${filename}.JPG`)
-							.getDownloadURL()
-							.then(url => {
-								this.setState({
-									profilePicURL: url,
-									userPicLoaded: true
-								});
-							})
 							.catch(err => {
-								console.log(`[We have an ERROR in ProfilePic.js]`, err);
+								storage
+									.ref(`/images/${filename}.JPG`)
+									.getDownloadURL()
+									.then(url => {
+										this.setState({
+											profilePicURL: url,
+											userPicLoaded: true
+										});
+									})
+									.catch(err => {
+										storage
+											.ref(`/images/profile-fallback.png`)
+											.getDownloadURL()
+											.then(url => {
+												this.setState({
+													profilePicURL: url,
+													userPicLoaded: true
+												});
+											})
+											.catch(err => {
+												console.log(`[We have an ERROR in ProfilePic.js]`, err);
+											});
+									});
 							});
 					});
 			});
 		}
 
 		// FETCH GUEST PROFILE PICS
-		if (song.users.length > this.state.guestURLS.length) {
-			if (this.state.guestUidsLoaded === false) {
-				this.setState({
-					guestUids: song.users,
-					guestUidsLoaded: true,
-					guestUrlsLoaded: false
-				});
-			}
+		if (this.props.size !== 'blueNav') {
+			if (song.users.length > this.state.guestURLS.length) {
+				if (this.state.guestUidsLoaded === false) {
+					this.setState({
+						guestUids: song.users,
+						guestUidsLoaded: true,
+						guestUrlsLoaded: false
+					});
+				}
 
-			if (this.state.guestUrlsLoaded === false) {
-				otherUsers.map((filename, index) => {
-					console.log(
-						`This is the userId: `,
-						song.userId,
-						`And this is the filename: `,
-						filename
-					);
-					if (filename !== song.userId) {
-						storage
-							.ref(`/images/${filename}.jpeg`)
-							.getDownloadURL()
-							.then(url => {
-								this.setState(state => {
-									let newGuests = state.guestURLS.concat(url);
-									return {
-										guestURLS: newGuests,
-										userPicLoaded: true
-									};
-								});
-							})
-							.catch(err => {
-								storage
-									.ref(`/images/${filename}.png`)
-									.getDownloadURL()
-									.then(url => {
-										this.setState(state => {
-											let newGuests = state.guestURLS.concat(url);
-											return {
-												guestURLS: newGuests,
-												userPicLoaded: true
-											};
-										});
-									})
-									.catch(err => {
-										storage
-											.ref(`/images/${filename}.JPG`)
-											.getDownloadURL()
-											.then(url => {
-												this.setState(state => {
-													let newGuests = state.guestURLS.concat(url);
-													return {
-														guestURLS: newGuests,
-														userPicLoaded: true
-													};
-												});
-											})
-											.catch(err => {
-												console.log(
-													`[Figure this shit out: Guest number: ${index}`,
-													err
-												);
-											});
+				if (this.state.guestUrlsLoaded === false) {
+					otherUsers.map((filename, index) => {
+						console.log(
+							`This is the userId: `,
+							song.userId,
+							`And this is the filename: `,
+							filename
+						);
+						if (filename !== song.userId) {
+							storage
+								.ref(`/images/${filename}.jpeg`)
+								.getDownloadURL()
+								.then(url => {
+									this.setState(state => {
+										let newGuests = state.guestURLS.concat(url);
+										return {
+											guestURLS: newGuests,
+											userPicLoaded: true
+										};
 									});
-							});
-					}
-				});
-				this.setState({
-					guestUrlsLoaded: true
-				});
+								})
+								.catch(err => {
+									storage
+										.ref(`/images/${filename}.png`)
+										.getDownloadURL()
+										.then(url => {
+											this.setState(state => {
+												let newGuests = state.guestURLS.concat(url);
+												return {
+													guestURLS: newGuests,
+													userPicLoaded: true
+												};
+											});
+										})
+										.catch(err => {
+											storage
+												.ref(`/images/${filename}.JPG`)
+												.getDownloadURL()
+												.then(url => {
+													this.setState(state => {
+														let newGuests = state.guestURLS.concat(url);
+														return {
+															guestURLS: newGuests,
+															userPicLoaded: true
+														};
+													});
+												})
+												.catch(err => {
+													console.log(
+														`[Figure this shit out: Guest number: ${index}`,
+														err
+													);
+												});
+										});
+								});
+						}
+					});
+					this.setState({
+						guestUrlsLoaded: true
+					});
+				}
 			}
 		}
 

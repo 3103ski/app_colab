@@ -20,7 +20,6 @@ class AddProject extends Component {
 		entryForm: {
 			artist: {
 				'data-role': 'materialinput',
-				'data-label': 'User email',
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',

@@ -33,12 +33,14 @@ class BlueSideNav extends Component {
 	render() {
 		const storage = firebase.storage();
 		if (this.state.userPicLoaded === false) {
-			console.log(`PASS 1 :::::::::::`);
 			storage
-				.ref(`/images/FqprybMl0BMoa3gPleutooFlmxD3.JPG`)
+				.ref(
+					`/images/${
+						this.props.userId ? this.props.userId : 'profile-fallback'
+					}.jpeg`
+				)
 				.getDownloadURL()
 				.then(url => {
-					console.log(`USER ID JPEG :::::::::::`);
 					this.setState({
 						profilePicURL: url,
 						userPicLoaded: true
@@ -53,24 +55,6 @@ class BlueSideNav extends Component {
 						)
 						.getDownloadURL()
 						.then(url => {
-							console.log(`USER ID PNG :::::::::::`);
-							this.setState({
-								profilePicURL: url,
-								userPicLoaded: true
-							});
-						})
-						.catch(err => {});
-				})
-				.catch(err => {
-					storage
-						.ref(
-							`/images/${
-								this.props.userId ? this.props.userId : 'profile-fallback'
-							}.JPG`
-						)
-						.getDownloadURL()
-						.then(url => {
-							console.log(`USER ID JPG :::::::::::`);
 							this.setState({
 								profilePicURL: url,
 								userPicLoaded: true
@@ -78,14 +62,29 @@ class BlueSideNav extends Component {
 						})
 						.catch(err => {
 							storage
-								.ref(`/images/profile-fallback.png`)
+								.ref(
+									`/images/${
+										this.props.userId ? this.props.userId : 'profile-fallback'
+									}.JPG`
+								)
 								.getDownloadURL()
 								.then(url => {
-									console.log(`FALLBACK :::::::::::`);
 									this.setState({
 										profilePicURL: url,
 										userPicLoaded: true
 									});
+								})
+								.catch(err => {
+									storage
+										.ref(`/images/profile-fallback.png`)
+										.getDownloadURL()
+										.then(url => {
+											console.log(`FALLBACK :::::::::::`);
+											this.setState({
+												profilePicURL: url,
+												userPicLoaded: true
+											});
+										});
 								});
 						});
 				});
