@@ -9,7 +9,8 @@ export {
 	rightPanel,
 	todoForm,
 	selectTodo,
-	closeTodo
+	closeTodo,
+	closePanels
 } from './appReducer';
 
 export { fetchTodos, addTodo, updateTodo, filtersInit } from './todoReducer';

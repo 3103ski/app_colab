@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import firebase from '@firebase/app';
 
+// Actions
+import * as actions from '../../store/actions/index';
+
 // Components
 import TopNav from './Navigation/Navigation';
 import FolderNav from './ProjectFolders/ProjectFolders';
@@ -12,7 +15,6 @@ import '../ProfilePics/ProfilePics';
 
 // Styles
 import classes from './LeftPanel.module.css';
-import ProfilePics from '../ProfilePics/ProfilePics';
 
 class BlueSideNav extends Component {
 	state = {
@@ -93,14 +95,17 @@ class BlueSideNav extends Component {
 			<div className={classes.NavContainer}>
 				<TopNav nav={this.state.topnav}></TopNav>
 				<FolderNav></FolderNav>
-				<a href='/logout'>
+				<a onClick={this.props.logout}>
 					<img
 						alt='toggle'
 						className={classes.ToggleIcon}
 						src={require('../../assets/navtoggle.png')}
 					/>
 				</a>
-				<NavLink to='/user-profile' className={classes.ProfileIcon}>
+				<NavLink
+					onClick={this.props.closePanels}
+					to='/user-profile'
+					className={classes.ProfileIcon}>
 					{/* <img
 						alt='toggle'
 						className={classes.ProfileIcon}
@@ -130,4 +135,14 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(BlueSideNav);
+const mapDispatchToProps = dispatch => {
+	return {
+		logout: () => dispatch(actions.logout()),
+		closePanels: () => dispatch(actions.closePanels())
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(BlueSideNav);

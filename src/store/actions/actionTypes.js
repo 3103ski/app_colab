@@ -8,6 +8,7 @@ export const SELECT_SONG = 'SELECT_SONG';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const PROJECT_FORM_TOGGLE = 'PROJECT_FORM_TOGGLE';
 export const SONG_FORM_TOGGLE = 'SONG_FORM_TOGGLE';
+export const CLOSE_PANELS = 'CLOSE_PANELS';
 
 // ***** [auth.js] - reducer actionTypes *****
 

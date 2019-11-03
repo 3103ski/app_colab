@@ -26,6 +26,12 @@ export const selectTodo = (id, todo) => {
 	};
 };
 
+export const closePanels = () => {
+	return {
+		type: actionTypes.CLOSE_PANELS
+	};
+};
+
 export const todoForm = () => {
 	return {
 		type: actionTypes.TODO_FORM

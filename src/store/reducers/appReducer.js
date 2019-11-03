@@ -8,12 +8,12 @@ const intitialState = {
 	isAddingTodo: false,
 	centerPanel: false,
 	rightPanel: false,
+	currArtist: ``,
 	projectIsOpen: false,
-	activeTodo: '',
 	activeProject: '',
 	selectedSong: '',
-	currArtist: ``,
 	currSong: null,
+	activeTodo: '',
 	currTodo: null
 };
 
@@ -95,6 +95,18 @@ const appReducer = (state = intitialState, action) => {
 				isAddingProject: false,
 				isAddingSong: false,
 				isAddingTodo: false
+			});
+		case actionTypes.CLOSE_PANELS:
+			return updateObject(state, {
+				centerPanel: false,
+				rightPanel: false,
+				currArtist: ``,
+				projectIsOpen: false,
+				activeProject: '',
+				selectedSong: '',
+				currSong: null,
+				activeTodo: '',
+				currTodo: null
 			});
 
 		default:
