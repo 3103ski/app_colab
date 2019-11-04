@@ -28,13 +28,11 @@ export const fetchTodosFail = err => {
 export const fetchTodos = userId => {
 	return dispatch => {
 		dispatch(fetchTodosStart());
-		// FIRESTORE
 		let todoArr = [];
 		db.collection(`todos`)
 			.get()
 			.then(qS => {
 				qS.forEach(doc => {
-					// console.log(`INSIDE`, doc.data());
 					if (userId === doc.data().userId) {
 						let todo = {
 							...doc.data()
@@ -43,7 +41,6 @@ export const fetchTodos = userId => {
 					}
 				});
 				dispatch(fetchTodosSuccess(todoArr));
-				// console.log(`We fetched these todos!! `, todoArr);
 			});
 	};
 };

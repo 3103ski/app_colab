@@ -24,3 +24,10 @@ export {
 } from './projectsReducer';
 
 export { auth, logout, setAuthRedirectPath, authCheckState } from './auth';
+
+export {
+	updateProfile,
+	loadProfile,
+	logoutUserProfile,
+	setPicUrl
+} from './userReducer';

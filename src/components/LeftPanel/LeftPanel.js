@@ -32,6 +32,11 @@ class BlueSideNav extends Component {
 		profilePicURL: '',
 		userPicLoaded: false
 	};
+
+	logoutUser = () => {
+		this.props.logout();
+		this.props.clearProfile();
+	};
 	render() {
 		const storage = firebase.storage();
 		if (this.state.userPicLoaded === false) {
@@ -43,6 +48,7 @@ class BlueSideNav extends Component {
 				)
 				.getDownloadURL()
 				.then(url => {
+					this.props.setPicUrl(url);
 					this.setState({
 						profilePicURL: url,
 						userPicLoaded: true
@@ -57,6 +63,7 @@ class BlueSideNav extends Component {
 						)
 						.getDownloadURL()
 						.then(url => {
+							this.props.setPicUrl(url);
 							this.setState({
 								profilePicURL: url,
 								userPicLoaded: true
@@ -71,6 +78,7 @@ class BlueSideNav extends Component {
 								)
 								.getDownloadURL()
 								.then(url => {
+									this.props.setPicUrl(url);
 									this.setState({
 										profilePicURL: url,
 										userPicLoaded: true
@@ -91,11 +99,12 @@ class BlueSideNav extends Component {
 						});
 				});
 		}
+
 		return (
 			<div className={classes.NavContainer}>
 				<TopNav nav={this.state.topnav}></TopNav>
 				<FolderNav></FolderNav>
-				<a onClick={this.props.logout}>
+				<a onClick={this.logoutUser}>
 					<img
 						alt='toggle'
 						className={classes.ToggleIcon}
@@ -138,7 +147,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		logout: () => dispatch(actions.logout()),
-		closePanels: () => dispatch(actions.closePanels())
+		clearProfile: () => dispatch(actions.logoutUserProfile()),
+		closePanels: () => dispatch(actions.closePanels()),
+		setPicUrl: url => dispatch(actions.setPicUrl(url))
 	};
 };
 
