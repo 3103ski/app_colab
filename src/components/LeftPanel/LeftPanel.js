@@ -24,8 +24,8 @@ class BlueSideNav extends Component {
 			{ title: 'DASHBOARD', link: 'dashboard', icon: 'dashboard' },
 			{ title: 'TODO', link: 'todo', icon: 'checkmark' },
 			{ title: 'MESSAGES', link: 'messages', icon: 'messages' },
-			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' },
-			{ title: 'CONTACTS', link: 'contacts', icon: 'contacts-2' }
+			{ title: 'ALL FILES', link: 'all-files', icon: 'allfiles' }
+			// { title: 'CONTACTS', link: 'contacts', icon: 'contacts-2' }
 			// { title: 'PROFILE', link: 'user-profile', icon: 'profile-fallback' }
 		],
 		panelOpen: true,

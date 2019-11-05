@@ -10,6 +10,17 @@
 	margin: 1px 4px;
 	border-radius: 5px;
 }
+.FolderListItemAdd {
+	display: flex;
+	padding: 5px 5px;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	width: 212px;
+	background-color: rgba(255, 255, 255, 0);
+	margin: 1px 4px;
+	border-radius: 5px;
+}
 
 .active {
 	background-color: white;

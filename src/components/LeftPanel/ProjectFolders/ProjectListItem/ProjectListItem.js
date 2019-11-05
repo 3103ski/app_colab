@@ -71,7 +71,7 @@ const ProjectItem = props => {
 	) : (
 		<NavLink to={`/projects/${props.projectName}`}>
 			<div
-				className={classes.FolderListItem}
+				className={classes.FolderListItemAdd}
 				activeClassName={classes.Active}
 				onClick={() => {
 					props.addProject();
@@ -79,7 +79,7 @@ const ProjectItem = props => {
 				<div className={classes.FolderLeft}>
 					<img alt='folder' src={require(`../../../../assets/addfolder.png`)} />
 					<div className={detailsClasses.join(' ')}>
-						<p>Add Project</p>
+						<p></p>
 					</div>
 				</div>
 			</div>

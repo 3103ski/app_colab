@@ -24,7 +24,7 @@ import classes from './SongContainer.module.css';
 
 class SongContainer extends Component {
 	state = {
-		activeTab: 'details',
+		activeTab: 'todo',
 		statusColor: this.props.song ? this.props.song.status : null,
 		profilePicURL: '',
 		userPicLoaded: false,

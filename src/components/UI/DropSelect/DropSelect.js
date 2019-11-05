@@ -42,7 +42,7 @@ class Selector extends Component {
 			`In Progress`,
 			`Mix Sent`,
 			`Revisions Requested`,
-			`Live Stream Scheduled`,
+			// `Live Stream Scheduled`,
 			`Sent Final Mixes`,
 			`Completed`
 		];

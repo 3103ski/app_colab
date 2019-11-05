@@ -28,8 +28,10 @@
 }
 
 .ListContainerTab {
-	height: 300px;
+	height: 50vh;
+	display: flex;
 	overflow: scroll;
+	flex-direction: column;
 }
 
 /* TITLES */
